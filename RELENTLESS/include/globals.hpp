@@ -3,5 +3,5 @@
 #include "lemlib/api.hpp"
 
 namespace globals {
-    extern pros::Controller controller;
+    extern Controller controller;
 }

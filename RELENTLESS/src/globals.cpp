@@ -1,7 +1,7 @@
 #include "globals.hpp"
 
 namespace globals {
-    pros::Controller controller(pros::E_CONTROLLER_MASTER);
+    Controller controller(ControllerId::master);
 
     // Chassis
 
