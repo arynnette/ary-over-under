@@ -80,8 +80,7 @@ void autonomous() {}
 void opcontrol() {
 
 	while (true) {
-		double leftX = globals::controller->getAnalog(ControllerAnalog::leftX);
-		double leftY = globals::controller->getAnalog(ControllerAnalog::leftY);
+		
 
 		pros::delay(20);
 	}

@@ -3,17 +3,17 @@
 #include "lemlib/api.hpp"
 
 namespace globals {
-    extern std::shared_ptr<okapi::Controller> controller;
+    extern pros::Controller master;
 
-    extern okapi::Motor motor_fl;
-    extern okapi::Motor motor_ml;
-    extern okapi::Motor motor_bl;
-    extern okapi::Motor motor_fr;
-    extern okapi::Motor motor_mr;
-    extern okapi::Motor motor_br;
+    extern pros::Motor motor_fl;
+    extern pros::Motor motor_ml;
+    extern pros::Motor motor_bl;
+    extern pros::Motor motor_fr;
+    extern pros::Motor motor_mr;
+    extern pros::Motor motor_br;
 
-    extern std::shared_ptr<okapi::MotorGroup> leftDrive;
-    extern std::shared_ptr<okapi::MotorGroup> rightDrive;
+    extern pros::Motor_Group left_drive;
+    extern pros::Motor_Group right_drive;
 
-    extern std::shared_ptr<okapi::ChassisController> chassis;
+    extern lemlib::Drivetrain_t drivetrain;
 }
