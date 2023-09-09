@@ -41,9 +41,6 @@ void test_auton() {
     pros::delay(500);
     chassis.set_drive_pid(-2, DRIVE_SPEED, false, false);
     chassis.set_turn_pid(130, TURN_SPEED);
-    
-
-    // finishing the base what the heck is wrong 
 
   //pros::task_t intakeTask(run_intake_for, (void*) malloc(sizeof(double)), TASK_PRIORITY_DEFAULT, TASK_STACK_DEPTH_DEFAULT, "runIntakeFor");
 }
