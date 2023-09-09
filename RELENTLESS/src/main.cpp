@@ -80,6 +80,7 @@ void autonomous() {}
 void opcontrol() {
 
 	while (true) {
+		chassis.arcade_standard(ary::SPLIT, e_curve_type::DEFAULT);
 		
 
 		pros::delay(20);
