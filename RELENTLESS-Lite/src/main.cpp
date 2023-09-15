@@ -15,10 +15,10 @@ void initialize() {
   chassis.set_curve_buttons(pros::E_CONTROLLER_DIGITAL_LEFT, pros::E_CONTROLLER_DIGITAL_RIGHT);
   chassis.toggle_modify_curve_with_controller(true);
   chassis.set_active_brake(0.1);
-  chassis.set_curve_default(0, 0);
+  chassis.set_curve_default(0.5, 0.5);
 
   chassis.set_joystick_drivescale(1.0);
-  chassis.set_joystick_turnscale(0.75);
+  chassis.set_joystick_turnscale(1.0);
 
   default_constants(); 
   exit_condition_defaults();
@@ -26,6 +26,8 @@ void initialize() {
   ary::autonselector::auton_selector.add_autons({
     Auton("Test Auton\n\nTesting Autonomous on field", test_auton),
   });
+
+  chassis.set_drive_brake(MOTOR_BRAKE_COAST);
 
   chassis.initialize();
   ary::autonselector::initialize();
@@ -58,7 +60,8 @@ void opcontrol() {
   chassis.set_drive_brake(MOTOR_BRAKE_COAST);
 
   while (true) {
-    chassis.arcade_standard(ary::SINGLE, ary::DEFAULT); // Flipped single arcade
+    chassis.arcade_standard(ary::SINGLE, ary::DEFAULT); 
+    //chassis.tank();
     
 
 
