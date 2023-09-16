@@ -51,7 +51,8 @@ void autonomous() {
   chassis.reset_pid_targets();
   chassis.reset_gyro();
   chassis.reset_drive_sensor();
-  chassis.set_drive_brake(MOTOR_BRAKE_HOLD);
+  chassis.set_drive_brake(MOTOR_BRAKE_COAST);
+  default_constants();
 
   ary::autonselector::auton_selector.call_selected_auton();
 }
@@ -60,11 +61,8 @@ void opcontrol() {
   chassis.set_drive_brake(MOTOR_BRAKE_COAST);
 
   while (true) {
-    chassis.arcade_standard(ary::SINGLE, ary::DEFAULT); 
-    //chassis.tank();
-    
-
-
+    //chassis.arcade_standard(ary::SdPLIT, ary::DEFAULT); 
+    chassis.tank();
     pros::delay(ary::util::DELAY_TIME);
   }
 }
