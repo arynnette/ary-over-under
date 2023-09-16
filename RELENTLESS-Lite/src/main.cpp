@@ -62,7 +62,7 @@ void opcontrol() {
 
   while (true) {
     //chassis.arcade_standard(ary::SdPLIT, ary::DEFAULT); 
-    chassis.tank();
+    chassis.arcade_standard(ary::SPLIT, ary::DEFAULT);
     pros::delay(ary::util::DELAY_TIME);
   }
 }
