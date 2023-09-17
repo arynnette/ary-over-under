@@ -333,7 +333,7 @@
     },
     "upload_options": {
       "description": "the scrim bot!",
-      "slot": 7,
+      "slot": 1,
       "icon": "planet"
     }
   }
