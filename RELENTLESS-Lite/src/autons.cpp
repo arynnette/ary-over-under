@@ -35,11 +35,18 @@ void exit_condition_defaults() {
 void test_auton() {
   chassis.set_drive_pid(48, DRIVE_SPEED, true, true);
   chassis.wait_drive();
-  chassis.set_turn_pid(-45, TURN_SPEED);
+  chassis.set_turn_pid(-65, TURN_SPEED);
   chassis.wait_drive();
-  chassis.set_drive_pid(48, DRIVE_SPEED, true, true);
+  chassis.set_drive_pid(60, DRIVE_SPEED, true, true);
   chassis.wait_drive();
   chassis.set_drive_pid(-10, DRIVE_SPEED, false, true);
   chassis.wait_drive();
-  chassis.set_turn_pid(90, TURN_SPEED);
+  chassis.set_turn_pid(57, TURN_SPEED);
+  chassis.wait_drive();
+  chassis.set_drive_pid(48, DRIVE_SPEED, true, true);
+  chassis.wait_drive();
+  chassis.set_swing_pid(LEFT_SWING, 80, SWING_SPEED);
+  chassis.wait_drive();
+  chassis.set_drive_pid(2, DRIVE_SPEED, false, true);
+  chassis.wait_drive();
 }
