@@ -62,7 +62,16 @@ void opcontrol() {
 
   while (true) {
     //chassis.arcade_standard(ary::SdPLIT, ary::DEFAULT); 
-    chassis.arcade_standard(ary::SPLIT, ary::DEFAULT);
+    //chassis.arcade_standard(ary::SPLIT, ary::DEFAULT);
+    chassis.tank();
+
+    if  (globals::master.get_digital(DIGITAL_R1)) {
+      cata_left.move_voltage(12000);
+      cata_right.move_voltage(-12000);
+    } else {
+      cata_left.move_voltage(0);
+      cata_right.move_voltage(0);
+    }
     pros::delay(ary::util::DELAY_TIME);
   }
 }

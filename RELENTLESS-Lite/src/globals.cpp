@@ -35,6 +35,9 @@ namespace globals {
         0.6
     );
 
+    pros::Motor cata_left(15, MOTOR_GEAR_100, true);
+    pros::Motor cata_right(13, MOTOR_GEAR_100, false);
+
     
     // Electronics / Pneumatics / Sensors
     // pros::Rotation enc_left();

@@ -18,6 +18,9 @@ namespace globals {
     extern lemlib::Drivetrain_t chassis_odom;
     extern Drive chassis;
 
+    extern pros::Motor cata_left;
+    extern pros::Motor cata_right;
+
     extern pros::Rotation enc_left;
     extern pros::Rotation enc_right;
     extern pros::Rotation enc_theta;
