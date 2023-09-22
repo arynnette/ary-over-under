@@ -3,7 +3,10 @@
 #include "lemlib/api.hpp"
 #include "ary-lib/drive/drive.hpp"
 
-#define TRACK_WDITH 11.5;
+#define TRACK_WDITH 11.5
+#define PLACEHOLDER_TC_OFFSET 2.5
+#define WHEEL_SIZE 2.75
+#define DRIVE_RATIO 0.75
 
 namespace globals {
     extern pros::Controller master;
@@ -21,9 +24,13 @@ namespace globals {
     extern pros::Motor_Group right_drive;
 
     extern lemlib::Drivetrain_t chassis_odom;
-    extern Drive chassis;
 
-    extern pros::Rotation enc_left;
-    extern pros::Rotation enc_right;
+    extern pros::Rotation rot_vert;
+    extern pros::Rotation rot_horiz;
     extern pros::Rotation enc_theta;
+
+    extern lemlib::TrackingWheel vert_tracking_wheel;
+    extern lemlib::TrackingWheel horiz_tracking_wheel;
+
+    extern Drive chassis;
 }
