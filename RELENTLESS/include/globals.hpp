@@ -7,6 +7,7 @@
 #define PLACEHOLDER_TC_OFFSET 2.5
 #define WHEEL_SIZE 2.75
 #define DRIVE_RATIO 0.75
+#define DRIVE_RPM 450
 
 namespace globals {
     extern pros::Controller master;

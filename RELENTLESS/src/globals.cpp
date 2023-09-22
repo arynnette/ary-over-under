@@ -26,13 +26,13 @@ namespace globals {
     lemlib::Drivetrain_t chassis_odom {
         &left_drive,
         &right_drive,
-        11.5,
+        TRACK_WIDTH,
         WHEEL_SIZE, 
-        450
+        DRIVE_RPM
     };
 
-    lemlib::TrackingWheel vert_tracking_wheel(&rot_vert, 2.75, PLACEHOLDER_TC_OFFSET, 1); // subject to change: p3 -> tracking center offset
-    lemlib::TrackingWheel hroiz_tracking_wheel(&rot_horiz, 2.75, PLACEHOLDER_TC_OFFSET, 1); 
+    lemlib::TrackingWheel vert_tracking_wheel(&rot_vert, WHEEL_SIZE, PLACEHOLDER_TC_OFFSET, 1); // subject to change: p3 -> tracking center offset
+    lemlib::TrackingWheel hroiz_tracking_wheel(&rot_horiz, WHEEL_SIZE, PLACEHOLDER_TC_OFFSET, 1); 
 
     Drive chassis(
         {-4,-4,-4,-4},
