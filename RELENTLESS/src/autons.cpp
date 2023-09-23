@@ -43,4 +43,3 @@ void test_auton() {
     chassis.set_turn_pid(130, TURN_SPEED);
 
   //pros::task_t intakeTask(run_intake_for, (void*) malloc(sizeof(double)), TASK_PRIORITY_DEFAULT, TASK_STACK_DEPTH_DEFAULT, "runIntakeFor");
-}
