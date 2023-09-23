@@ -12,6 +12,15 @@ void initialize() {
   
   pros::delay(500); // legacy ports configure
 
+  /*
+    When the robot first starts up we want to do a couple things:
+      - Adjust the drivetrain curve bottons so it does not interfere with any of the driver controls.
+      - Enable the joystick curve
+      - Enable active break on the drive
+        - Active break is a P controller applied to the drivetrain in order to help it maintain it's position, resisting external forces.
+        - 
+  */
+
   chassis.set_curve_buttons(pros::E_CONTROLLER_DIGITAL_LEFT, pros::E_CONTROLLER_DIGITAL_RIGHT);
   chassis.toggle_modify_curve_with_controller(true);
   chassis.set_active_brake(0.1);
@@ -25,7 +34,7 @@ void initialize() {
 
   ary::autonselector::auton_selector.add_autons({
     Auton("Test Auton\n\nTesting Autonomous on field", test_auton),
-    Auton("Test Auton - The Sequel\n\nyo mama", test_second)
+    Auton("Test Auton - The Sequel\n\nyo mama", test_second) // TODO: Change this before putting this in the notebook LOL
   });
 
   chassis.set_drive_brake(MOTOR_BRAKE_COAST);
