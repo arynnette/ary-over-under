@@ -63,6 +63,7 @@ void autonomous() {
 
 void opcontrol() {
   chassis.set_drive_brake(MOTOR_BRAKE_COAST);
+  chassis.set_active_brake(0);
 
   while (true) {
     //chassis.arcade_standard(ary::SdPLIT, ary::DEFAULT); 
@@ -78,4 +79,5 @@ void opcontrol() {
     }
     pros::delay(ary::util::DELAY_TIME);
   }
+  
 }
