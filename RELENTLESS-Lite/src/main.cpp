@@ -25,6 +25,7 @@ void initialize() {
 
   ary::autonselector::auton_selector.add_autons({
     Auton("Test Auton\n\nTesting Autonomous on field", test_auton),
+    Auton("Test Auton - The Sequel\n\nyo mama", test_second)
   });
 
   chassis.set_drive_brake(MOTOR_BRAKE_COAST);
