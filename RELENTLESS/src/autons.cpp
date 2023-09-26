@@ -8,9 +8,6 @@ using namespace globals;
 using namespace superstruct;
 
 // **CONSTANTS** //
-const int DRIVE_SPEED = 110;
-const int TURN_SPEED  = 90;
-const int SWING_SPEED = 90;
 
 void default_constants() {
   chassis.set_slew_min_power(80, 80);
@@ -37,9 +34,10 @@ void test_auton() {
     chassis.set_swing_pid(e_swing::LEFT_SWING, 50, TURN_SPEED);
     chassis.set_drive_pid(36, DRIVE_SPEED, true, true);
     chassis.wait_until(24);
+    
     /* RUN THE INTAKE */
     pros::delay(500);
     chassis.set_drive_pid(-2, DRIVE_SPEED, false, false);
     chassis.set_turn_pid(130, TURN_SPEED);
-
+}
   //pros::task_t intakeTask(run_intake_for, (void*) malloc(sizeof(double)), TASK_PRIORITY_DEFAULT, TASK_STACK_DEPTH_DEFAULT, "runIntakeFor");
