@@ -78,11 +78,16 @@ void autonomous() {}
  * task, not resume it from where it left off.
  */
 void opcontrol() {
-
-	while (true) {
-		chassis.arcade_standard(ary::SPLIT, e_curve_type::DEFAULT);
+	while (true) {	
+		//chassis.arcade_standard(ary::SPLIT, e_curve_type::DEFAULT);
+		if (globals::master.get_digital(DIGITAL_R1)) {
+			motor_tlb.move_voltage(-8500);
+			motor_trb.move_voltage(8500);
+		} else {
+			motor_tlb.move_voltage(0);
+			motor_trb.move_voltage(0);
+		}
 		
-
 		pros::delay(20);
 	}
 }
