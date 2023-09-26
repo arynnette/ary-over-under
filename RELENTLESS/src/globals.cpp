@@ -8,9 +8,9 @@ namespace globals {
     pros::Motor motor_tlf(4, MOTOR_GEARSET_06, true);
     pros::Motor motor_tlb(4, MOTOR_GEARSET_06, true);
     pros::Motor motor_blf(4, MOTOR_GEARSET_06, true);
-    pros::Motor motor_blb(4, MOTOR_GEARSET_06, true);
+    pros::Motor motor_blb(3, MOTOR_GEARSET_06, true);
     pros::Motor motor_trf(4, MOTOR_GEARSET_06, true);
-    pros::Motor motor_trb(4, MOTOR_GEARSET_06, true);
+    pros::Motor motor_trb(5, MOTOR_GEARSET_06, true);
     pros::Motor motor_brf(4, MOTOR_GEARSET_06, true);
     pros::Motor motor_brb(4, MOTOR_GEARSET_06, true);
 
