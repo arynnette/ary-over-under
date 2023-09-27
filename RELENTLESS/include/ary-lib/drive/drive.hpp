@@ -511,7 +511,7 @@ class Drive {
    * \param toggle_heading
    *        toggle for heading correction
    */
-  void set_drive_pid(double target, int speed, bool slew_on = false, bool toggle_heading = true);
+  void set_drive(double target, int speed, bool slew_on = false, bool toggle_heading = true);
 
   /**
    * Sets the robot to turn using PID.

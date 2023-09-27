@@ -38,7 +38,7 @@ int Drive::get_swing_min() { return swing_min; }
 e_mode Drive::get_mode() { return mode; }
 
 // Set drive PID
-void Drive::set_drive_pid(double target, int speed, bool slew_on, bool toggle_heading) {
+void Drive::set_drive(double target, int speed, bool slew_on, bool toggle_heading) {
   TICK_PER_INCH = get_tick_per_inch();
 
   // Print targets
