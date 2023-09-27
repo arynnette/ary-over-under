@@ -521,7 +521,7 @@ class Drive {
    * \param speed
    *        0 to 127, max speed during motion
    */
-  void set_turn_pid(double target, int speed);
+  void set_turn(double target, int speed);
 
   /**
    * Turn using only the left or right side.

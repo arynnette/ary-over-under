@@ -85,7 +85,7 @@ void Drive::set_drive(double target, int speed, bool slew_on, bool toggle_headin
 }
 
 // Set turn PID
-void Drive::set_turn_pid(double target, int speed) {
+void Drive::set_turn(double target, int speed) {
   // Print targets
   if (print_toggle) printf("Turn Started... Target Value: %f\n", target);
 
