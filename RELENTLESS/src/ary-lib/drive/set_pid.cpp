@@ -99,7 +99,7 @@ void Drive::set_turn(double target, int speed) {
 }
 
 // Set swing PID
-void Drive::set_swing_pid(e_swing type, double target, int speed) {
+void Drive::set_swing(e_swing type, double target, int speed) {
   // Print targets
   if (print_toggle) printf("Swing Started... Target Value: %f\n", target);
   current_swing = type;

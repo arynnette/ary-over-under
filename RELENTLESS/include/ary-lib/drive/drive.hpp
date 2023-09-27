@@ -533,7 +533,7 @@ class Drive {
    * \param speed
    *        0 to 127, max speed during motion
    */
-  void set_swing_pid(e_swing type, double target, int speed);
+  void set_swing(e_swing type, double target, int speed);
 
   /**
    * Resets all PID targets to 0.
