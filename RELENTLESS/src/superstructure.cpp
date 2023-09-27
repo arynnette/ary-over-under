@@ -34,18 +34,22 @@ namespace superstruct {
 
   // motion and stuff
   void driveChassis(double dist, double speedScale, bool useHeadingCorrection) {
+    //chassis.set_mode(ary::DRIVE);
     chassis.set_drive(dist, DRIVE_SPEED * speedScale, (dist > 14.0) ? true : false, useHeadingCorrection); 
   }
 
   void turnChassis(double theta, double turnSpeedScale) {
+    //chassis.set_mode(ary::TURN);
     chassis.set_turn(theta, TURN_SPEED * turnSpeedScale);
   }
 
   void leftSwing(double theta, double swingSpeedScale) {
+    //chassis.set_mode(SWING);
     chassis.set_swing(LEFT_SWING, theta, SWING_SPEED * swingSpeedScale);
   }
 
   void rightSwing(double theta, double swingSpeedScale) {
+    //chassis.set_mode(SWING);
     chassis.set_swing(RIGHT_SWING, theta, SWING_SPEED * swingSpeedScale);
   }
 }
