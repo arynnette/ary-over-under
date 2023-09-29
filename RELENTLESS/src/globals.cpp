@@ -22,7 +22,7 @@ namespace globals {
     pros::Rotation rot_horiz(1);
     // pros::Rotation enc_right();
     // pros::Rotation enc_theta();
-    pros::ADIAnalogOut pto_piston(1);
+    pros::ADIAnalogOut pto_piston('A');
 
     lemlib::Drivetrain_t chassis_odom {
         &left_drive,
@@ -44,6 +44,6 @@ namespace globals {
         DRIVE_RATIO
     ); 
 
-    // Misc
-
+    pros::Motor& cata_left = chassis.left_motors[3];
+    pros::Motor& cata_right = chassis.right_motors[3];
 }

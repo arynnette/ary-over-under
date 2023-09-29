@@ -57,12 +57,36 @@ namespace superstruct {
 
   // Structure methods
 
-  void togglePto() {
-    int state = (ptoEnabled) ? 1 : 0;
-    pto_piston.set_value(state);
+  void togglePto(bool toggle) {
+    ptoEnabled = toggle;
+    chassis.pto_toggle({cata_left, cata_right}, toggle);
+    pto_piston.set_value(toggle);
+
+    if (toggle) {
+      cata_left.set_brake_mode(MOTOR_BRAKE_COAST);
+      cata_right.set_brake_mode(MOTOR_BRAKE_COAST);
+    }
   }
 
-  // bool getPtoState() {
-  //   return (pto_piston.get_value() == 1) ? true : false;
-  // }
+  void runCata(double inpt) {
+    if (!ptoEnabled) return;
+    cata_left = inpt;
+    cata_right = inpt;
+  }
+
+  int lock = 0;
+  void cataControl() {
+    if (globals::master.get_digital(DIGITAL_LEFT) && lock == 0) {
+      togglePto(!ptoEnabled);
+      lock = 1;
+    } else if(!globals::master.get_digital(DIGITAL_LEFT)) {
+      lock = 0;
+    }
+
+    if (globals::master.get_digital(DIGITAL_R1)) {
+			runCata(12000);
+		} else {
+			runCata(0);
+		}
+  }
 }

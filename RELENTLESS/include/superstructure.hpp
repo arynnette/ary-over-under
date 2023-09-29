@@ -23,6 +23,7 @@ namespace superstruct {
 
     //- Structure methods
     void togglePto();
-    bool getPtoState();
+    void runCata();
+    void controlCata();
     
 }

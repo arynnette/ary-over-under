@@ -38,4 +38,7 @@ namespace globals {
     extern lemlib::TrackingWheel horiz_tracking_wheel;
 
     extern Drive chassis;
+
+    extern pros::Motor& cata_left;
+    extern pros::Motor& cata_right;
 }
