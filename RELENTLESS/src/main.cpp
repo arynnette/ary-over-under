@@ -1,8 +1,10 @@
 #include "main.h"
 #include "lemlib/api.hpp"
 #include "globals.hpp"
+#include "superstructure.hpp"
 
 using namespace globals;
+using namespace superstruct;
 
 /**
  * A callback function for LLEMU's center button.
@@ -86,6 +88,10 @@ void opcontrol() {
 		} else {
 			motor_tlb.move_voltage(0);
 			motor_trb.move_voltage(0);
+		}
+
+		if (globals::master.get_digital_new_press(DIGITAL_LEFT)) {
+			togglePto();
 		}
 		
 		pros::delay(20);

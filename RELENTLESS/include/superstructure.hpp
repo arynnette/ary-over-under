@@ -20,5 +20,9 @@ namespace superstruct {
     void turnChassis(double theta, double turnSpeedScale);
     void leftSwing(double theta, double swingSpeedScale);
     void rightSwing(double theta, double swingSpeedScale);
+
+    //- Structure methods
+    void togglePto();
+    bool getPtoState();
     
 }

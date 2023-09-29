@@ -9,6 +9,8 @@
 #define DRIVE_RATIO 0.75
 #define DRIVE_RPM 450
 
+bool ptoEnabled;
+
 namespace globals {
     extern pros::Controller master;
 
@@ -29,6 +31,8 @@ namespace globals {
     extern pros::Rotation rot_vert;
     extern pros::Rotation rot_horiz;
     extern pros::Rotation enc_theta;
+
+    extern pros::ADIAnalogOut pto_piston;
 
     extern lemlib::TrackingWheel vert_tracking_wheel;
     extern lemlib::TrackingWheel horiz_tracking_wheel;

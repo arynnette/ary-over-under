@@ -2,6 +2,8 @@
 
 using namespace ary;
 using namespace globals;
+
+bool ptoEnabled = false;
 namespace superstruct {
   void configureExitConditions() {
     chassis.set_exit_condition(chassis.turn_exit, 100, 3, 500, 7, 500, 500);
@@ -52,4 +54,15 @@ namespace superstruct {
     //chassis.set_mode(SWING);
     chassis.set_swing(RIGHT_SWING, theta, SWING_SPEED * swingSpeedScale);
   }
+
+  // Structure methods
+
+  void togglePto() {
+    int state = (ptoEnabled) ? 1 : 0;
+    pto_piston.set_value(state);
+  }
+
+  // bool getPtoState() {
+  //   return (pto_piston.get_value() == 1) ? true : false;
+  // }
 }
