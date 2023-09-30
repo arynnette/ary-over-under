@@ -4,6 +4,10 @@ using namespace ary;
 using namespace globals;
 
 bool ptoEnabled = false;
+
+double speedScale = 1.0;
+double turnScale = 1.0;
+double swingScale = 1.0;
 namespace superstruct {
   void configureExitConditions() {
     chassis.set_exit_condition(chassis.turn_exit, 100, 3, 500, 7, 500, 500);
@@ -21,6 +25,16 @@ namespace superstruct {
     chassis.set_pid_constants(&chassis.swingPID, 6, 0, 40, 0);
   }
 
+  void autonomousResets() {
+    chassis.reset_pid_targets();
+  	chassis.reset_gyro();
+  	chassis.reset_drive_sensor();
+    configureConstants();
+    configureExitConditions();
+    motorsBrake();
+    
+  }
+
   void motorsCoast() {
     chassis.set_drive_brake(MOTOR_BRAKE_COAST);
   }
@@ -33,26 +47,42 @@ namespace superstruct {
     chassis.set_drive_brake(MOTOR_BRAKE_BRAKE);
   }
 
+  void disableActiveBrake() {
+    chassis.set_active_brake(0.0);
+  }
+
 
   // motion and stuff
-  void driveChassis(double dist, double speedScale, bool useHeadingCorrection) {
+  void driveChassis(double dist, bool useHeadingCorrection) {
     //chassis.set_mode(ary::DRIVE);
     chassis.set_drive(dist, DRIVE_SPEED * speedScale, (dist > 14.0) ? true : false, useHeadingCorrection); 
   }
 
-  void turnChassis(double theta, double turnSpeedScale) {
+  void turnChassis(double theta) {
     //chassis.set_mode(ary::TURN);
-    chassis.set_turn(theta, TURN_SPEED * turnSpeedScale);
+    chassis.set_turn(theta, TURN_SPEED * turnScale);
   }
 
-  void leftSwing(double theta, double swingSpeedScale) {
+  void leftSwing(double theta) {
     //chassis.set_mode(SWING);
-    chassis.set_swing(LEFT_SWING, theta, SWING_SPEED * swingSpeedScale);
+    chassis.set_swing(LEFT_SWING, theta, SWING_SPEED * swingScale);
   }
 
-  void rightSwing(double theta, double swingSpeedScale) {
+  void rightSwing(double theta) {
     //chassis.set_mode(SWING);
-    chassis.set_swing(RIGHT_SWING, theta, SWING_SPEED * swingSpeedScale);
+    chassis.set_swing(RIGHT_SWING, theta, SWING_SPEED * swingScale);
+  }
+
+  void setDriveScale(double val) {
+    speedScale = std::clamp(val, 0.1, 1.0);
+  }
+
+  void setTurnScale(double val) {
+    turnScale = std::clamp(val, 0.1, 1.0);
+  }
+
+  void setSwingScale(double val) {
+    swingScale = std::clamp(val, 0.1, 1.0);
   }
 
   // Structure methods

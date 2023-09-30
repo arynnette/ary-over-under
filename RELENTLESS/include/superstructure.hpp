@@ -10,16 +10,23 @@ namespace superstruct {
     //configs
     void configureExitConditions();
     void configureConstants();
+    void autonomousResets();
     void motorsCoast();
     void motorsHold();
     void motorsBrake();
+
+    void disableActiveBrake();
     
 
     // Movement Methods
-    void driveChassis(double dist, double speedScale, bool useHeadingCorrection);
-    void turnChassis(double theta, double turnSpeedScale);
-    void leftSwing(double theta, double swingSpeedScale);
-    void rightSwing(double theta, double swingSpeedScale);
+    void driveChassis(double dist, bool useHeadingCorrection);
+    void turnChassis(double theta);
+    void leftSwing(double theta);
+    void rightSwing(double theta);
+    
+    void setDriveScale(double val);
+    void setTurnScale(double val);
+    void setSwingScale(double val);
 
     //- Structure methods
     void togglePto();
