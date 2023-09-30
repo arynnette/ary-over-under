@@ -29,10 +29,38 @@ void on_center_button() {
  * to keep execution time for this mode under a few seconds.
  */
 void initialize() {
-	pros::lcd::initialize();
-	pros::lcd::set_text(1, "Hello PROS User!");
+	ary::print_ez_template();
+  
+	pros::delay(500); // legacy ports configure
 
-	pros::lcd::register_btn1_cb(on_center_button);
+	/*
+		When the robot first starts up we want to do a couple things:
+		- Adjust the drivetrain curve bottons so it does not interfere with any of the driver controls.
+		- Enable the joystick curve
+		- Enable active break on the drive
+			- Active break is a P controller applied to the drivetrain in order to help it maintain it's position, resisting external forces.
+			- 
+	*/
+
+	chassis.set_curve_buttons(pros::E_CONTROLLER_DIGITAL_LEFT, pros::E_CONTROLLER_DIGITAL_RIGHT);
+	chassis.toggle_modify_curve_with_controller(true);
+	chassis.set_active_brake(0.1);
+	chassis.set_curve_default(0.375, 0.375);
+
+	chassis.set_joystick_drivescale(1.0);
+	chassis.set_joystick_turnscale(1.0);
+
+	default_constants(); 
+	exit_condition_defaults();
+
+	ary::autonselector::auton_selector.add_autons({
+		Auton("Exhibit One\n\nyo mama", test_auton) // TODO: Change this before putting this in the notebook LOL
+	});
+
+	motorsCoast();
+
+	chassis.initialize();
+	ary::autonselector::initialize();
 }
 
 /**
@@ -64,7 +92,10 @@ void competition_initialize() {}
  * will be stopped. Re-enabling the robot will restart the task, not re-start it
  * from where it left off.
  */
-void autonomous() {}
+void autonomous() {
+	autonomousResets();
+	ary::autonselector::auton_selector.call_selected_auton();
+}
 
 /**
  * Runs the operator control code. This function will be started in its own task
@@ -80,9 +111,12 @@ void autonomous() {}
  * task, not resume it from where it left off.
  */
 void opcontrol() {
+	motorsCoast();
+	disableActiveBrake();
+
 	while (true) {	
 		chassis.tank();
 		superstruct::cataControl();
-		pros::delay(20);
+		pros::delay(ary::util::DELAY_TIME);
 	}
 }
