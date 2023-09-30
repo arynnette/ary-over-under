@@ -3,13 +3,11 @@
 #include "lemlib/api.hpp"
 #include "ary-lib/drive/drive.hpp"
 
-#define TRACK_WDITH 11.5
+#define TRACK_WIDTH 11.5
 #define PLACEHOLDER_TC_OFFSET 2.5
 #define WHEEL_SIZE 2.75
 #define DRIVE_RATIO 0.75
 #define DRIVE_RPM 450
-
-bool ptoEnabled;
 
 namespace globals {
     extern pros::Controller master;
@@ -32,7 +30,10 @@ namespace globals {
     extern pros::Rotation rot_horiz;
     extern pros::Rotation enc_theta;
 
-    extern pros::ADIAnalogOut pto_piston;
+    extern pros::ADIDigitalOut pto_piston;
+
+    extern pros::ADIPort left_wing_piston;
+    extern pros::ADIPort right_wing_piston;
 
     extern lemlib::TrackingWheel vert_tracking_wheel;
     extern lemlib::TrackingWheel horiz_tracking_wheel;

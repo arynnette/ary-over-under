@@ -24,6 +24,6 @@ namespace superstruct {
     //- Structure methods
     void togglePto();
     void runCata();
-    void controlCata();
+    void cataControl();
     
 }

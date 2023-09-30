@@ -5,6 +5,14 @@ double JOYSTICK_TURN_SCALE = 1;
 
 double cata_active_brake_kp = 0.1;
 
+void Drive::save_l_curve_sd() {
+  return;
+}
+
+void Drive::save_r_curve_sd() {
+  return;
+}
+
 // Set curve defaults
 void Drive::set_curve_default(double left, double right) {
   left_curve_scale = left;

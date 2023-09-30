@@ -82,7 +82,7 @@ void autonomous() {}
 void opcontrol() {
 	while (true) {	
 		chassis.tank();
-		superstruct::controlCata();
+		superstruct::cataControl();
 		pros::delay(20);
 	}
 }

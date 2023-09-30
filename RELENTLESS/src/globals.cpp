@@ -20,9 +20,14 @@ namespace globals {
     // Electronics / Pneumatics / Sensors
     pros::Rotation rot_vert(0);
     pros::Rotation rot_horiz(1);
-    // pros::Rotation enc_right();
-    // pros::Rotation enc_theta();
-    pros::ADIAnalogOut pto_piston('A');
+
+    pros::ADIDigitalOut pto_piston('A');
+
+    // pros::ADIDigitalOut left_wing_piston(2);
+    // pros::ADIDigitalOut right_wing_piston(3);
+
+    pros::ADIPort left_wing_piston('B', pros::E_ADI_DIGITAL_OUT);
+    pros::ADIPort right_wing_piston('C', pros::E_ADI_DIGITAL_OUT);
 
     lemlib::Drivetrain_t chassis_odom {
         &left_drive,
