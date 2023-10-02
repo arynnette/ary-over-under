@@ -47,11 +47,12 @@ void initialize() {
 	chassis.set_active_brake(0.1);
 	chassis.set_curve_default(0.375, 0.375);
 
+	/* Adjust the adjust the factor by which the drive velocity is adjusted */ 
 	chassis.set_joystick_drivescale(1.0);
 	chassis.set_joystick_turnscale(1.0);
 
-	default_constants(); 
-	exit_condition_defaults();
+	configureConstants();
+	configureExitConditions();
 
 	ary::autonselector::auton_selector.add_autons({
 		Auton("Exhibit One\n\nyo mama", test_auton) // TODO: Change this before putting this in the notebook LOL
