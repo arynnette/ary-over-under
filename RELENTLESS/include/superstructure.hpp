@@ -19,7 +19,10 @@ namespace superstruct {
     
 
     // Movement Methods
-    void driveChassis(double dist, bool useHeadingCorrection);
+    void driveChassisAsync(double dist, bool useHeadingCorrection);
+    void driveChassisSync(double dist, bool useHeadingCorrection);
+    void driveChasissWithMD(double dist, bool useHeadingCorrection, double waitUntilDist);
+
     void turnChassis(double theta);
     void leftSwing(double theta);
     void rightSwing(double theta);
