@@ -8,6 +8,15 @@ using namespace globals;
 using namespace superstruct;
 
 /*
+  TODO:
+    - AUTONS
+      - SameBarQual
+      - OppBarQual
+      - SameBarElims
+      - OppBar Elims
+*/
+
+/*
   chassis.wait_drive() -> Waits for the drivetrain to complete whatever movement is happening
   chassis.wait_until(double measurement) -> Waits for the drivetrain to reach a certain measurement before performing the next task.
 */
