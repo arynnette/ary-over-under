@@ -53,24 +53,30 @@ namespace superstruct {
 
 
   // motion and stuff
-  void driveChassisAsync(double dist, bool useHeadingCorrection) {
+  void driveAsync(double dist, bool useHeadingCorrection) {
     //chassis.set_mode(ary::DRIVE);
     chassis.set_drive(dist, DRIVE_SPEED * speedScale, (dist > 14.0) ? true : false, useHeadingCorrection); 
   }
 
-  void driveChassisSync(double dist, bool useHeadingCorrection) {
+  void driveSync(double dist, bool useHeadingCorrection) {
     //chassis.set_mode(ary::DRIVE);
     chassis.set_drive(dist, DRIVE_SPEED * speedScale, (dist > 14.0) ? true : false, useHeadingCorrection); 
     chassis.wait_drive();
   }
 
-  void driveChasissWithMD(double dist, bool useHeadingCorrection, double waitUntilDist) {
+  void driveWithMD(double dist, bool useHeadingCorrection, double waitUntilDist) {
     //chassis.set_mode(ary::DRIVE);
     chassis.set_drive(dist, DRIVE_SPEED * speedScale, (dist > 14.0) ? true : false, useHeadingCorrection); 
     chassis.wait_until(waitUntilDist);
   }
 
-  void turnChassis(double theta) {
+  void turnSync(double theta) {
+    //chassis.set_mode(ary::TURN);
+    chassis.set_turn(theta, TURN_SPEED * turnScale);
+    chassis.wait_drive();
+  }
+
+  void turnAsync(double theta) {
     //chassis.set_mode(ary::TURN);
     chassis.set_turn(theta, TURN_SPEED * turnScale);
   }
