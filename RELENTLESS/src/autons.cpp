@@ -39,7 +39,7 @@ void test_auton() {
 
   //Drive backwards, turn to get the next triball off the line
   driveSync(-48, true); // Move away from the goal towards the nearest triball
-  turnChassis(-90); // Turn to the triball and intake
+  turnSync(-90); // Turn to the triball and intake
   driveSync(12, true);
 
   // chassis.set_drive_pid(2, DRIVE_SPEED, false, true);
