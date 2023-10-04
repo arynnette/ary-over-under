@@ -8,6 +8,7 @@
 
 namespace superstruct {
     //configs
+    void chassisInit();
     void configureExitConditions();
     void configureConstants();
     void autonomousResets();

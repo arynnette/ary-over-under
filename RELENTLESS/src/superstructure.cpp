@@ -9,6 +9,26 @@ double speedScale = 1.0;
 double turnScale = 1.0;
 double swingScale = 1.0;
 namespace superstruct {
+  void chassisInit() {
+    /*
+      When the robot first starts up we want to do a couple things:
+      - Adjust the drivetrain curve bottons so it does not interfere with any of the driver controls.
+      - Enable the joystick curve
+      - Enable active break on the drive
+        - Active break is a P controller applied to the drivetrain in order to help it maintain it's position, resisting external forces.
+        - 
+    */
+
+    chassis.set_curve_buttons(pros::E_CONTROLLER_DIGITAL_LEFT, pros::E_CONTROLLER_DIGITAL_RIGHT);
+    chassis.toggle_modify_curve_with_controller(true);
+    chassis.set_active_brake(0.1);
+    chassis.set_curve_default(0.375, 0.375);
+
+    /* Adjust the adjust the factor by which the drive velocity is adjusted */ 
+    chassis.set_joystick_drivescale(1.0);
+    chassis.set_joystick_turnscale(1.0); 
+  }
+
   void configureExitConditions() {
     chassis.set_exit_condition(chassis.turn_exit, 100, 3, 500, 7, 500, 500);
     chassis.set_exit_condition(chassis.swing_exit, 100, 3, 500, 7, 500, 500);
