@@ -8,9 +8,9 @@ namespace globals {
     pros::Motor motor_tlf(4, MOTOR_GEARSET_06, true);
     pros::Motor motor_tlb(4, MOTOR_GEARSET_06, true);
     pros::Motor motor_blf(4, MOTOR_GEARSET_06, true);
-    pros::Motor motor_blb(3, MOTOR_GEARSET_06, true);
+    pros::Motor motor_blb(5, MOTOR_GEARSET_06, true);
     pros::Motor motor_trf(4, MOTOR_GEARSET_06, true);
-    pros::Motor motor_trb(5, MOTOR_GEARSET_06, true);
+    pros::Motor motor_trb(3, MOTOR_GEARSET_06, true);
     pros::Motor motor_brf(4, MOTOR_GEARSET_06, true);
     pros::Motor motor_brb(4, MOTOR_GEARSET_06, true);
 
@@ -41,8 +41,8 @@ namespace globals {
     lemlib::TrackingWheel hroiz_tracking_wheel(&rot_horiz, WHEEL_SIZE, PLACEHOLDER_TC_OFFSET, 1); 
 
     Drive chassis(
-        {-4,-4,-4,-3},
-        {1,1,1,1},
+        {-4,-4,-4,-5},
+        {1,1,1,3},
         16,
         WHEEL_SIZE,
         600,
