@@ -323,6 +323,10 @@ void Drive::set_drive_brake(pros::motor_brake_mode_e_t brake_type) {
   }
 }
 
+void Drive::init_curve_sd() {
+  // do absolutely nothing
+}
+
 void Drive::initialize() {
   init_curve_sd();
   imu_calibrate();

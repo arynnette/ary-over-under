@@ -41,7 +41,7 @@ namespace globals {
     lemlib::TrackingWheel hroiz_tracking_wheel(&rot_horiz, WHEEL_SIZE, PLACEHOLDER_TC_OFFSET, 1); 
 
     Drive chassis(
-        {-4,-4,-4,-4},
+        {-4,-4,-4,-3},
         {1,1,1,1},
         16,
         WHEEL_SIZE,
