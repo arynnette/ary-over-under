@@ -152,7 +152,7 @@ namespace superstruct {
     }
 
     if (globals::master.get_digital(DIGITAL_R1)) {
-			runCata(12000);
+			runCata(-12000);
 		} else {
 			runCata(0);
 		}
