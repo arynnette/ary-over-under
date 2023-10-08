@@ -1,6 +1,9 @@
 #include "main.h"
 
-#define TRACK_WIDTH 11.5;
+#define TRACK_WIDTH 11.5
+#define DRIVE_RATIO 0.75
+#define DRIVE_RPM 450
+#define WHEEL_SIZE 2.75
 
 namespace globals {
     extern pros::Controller master;

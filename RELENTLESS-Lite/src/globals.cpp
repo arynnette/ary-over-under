@@ -22,15 +22,15 @@ namespace globals {
     lemlib::Drivetrain_t chassis_odom {
         &left_drive,
         &right_drive,
-        11.5,
-        2.75, 
-        450
+        TRACK_WIDTH,
+        WHEEL_SIZE, 
+        DRIVE_RPM
     };
 
     Drive chassis(
         {-20, -17, 8},
         {12, 1, -4},
-        2,
+        10,
         2.75,
         600,
         0.75
