@@ -41,9 +41,12 @@
  */
 #include "okapi/api.hpp"
 #include "ary-lib/api.hpp"
+#include "lemlib/api.hpp"
 //#include "pros/api_legacy.h"
 
 #include "autons.hpp"
+#include "superstructure.hpp"
+#include "globals.hpp"
 
 /**
  * If you find doing pros::Motor() to be tedious and you'd prefer just to do

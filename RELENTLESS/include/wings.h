@@ -1,5 +1,5 @@
-#ifndef _wings_h_
-#define _wings_h_
+#ifndef _Wings_h
+#define _Wings_h_
 
 #include "main.h"
 
@@ -11,7 +11,6 @@ class Wings {
         void toggleLeft(int value);
         void toggleRight(int value);
         void openFor(double duration);
-        std::uint8_t getState();
     
     private:
         std::uint8_t wingsopen;

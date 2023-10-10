@@ -1,7 +1,4 @@
 #include "main.h"
-#include "lemlib/api.hpp"
-#include "globals.hpp"
-#include "superstructure.hpp"
 #include "wings.h"
 
 using namespace globals;
