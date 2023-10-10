@@ -168,7 +168,7 @@ class PID {
   double cur;
   double error;
   double target;
-  double prev_error;
+  double lastError;
   double integral;
   double derivative;
   long time;

@@ -2,6 +2,7 @@
 #include "lemlib/api.hpp"
 #include "globals.hpp"
 #include "superstructure.hpp"
+#include "wings.h"
 
 using namespace globals;
 using namespace superstruct;
@@ -101,6 +102,17 @@ void opcontrol() {
 	while (true) {	
 		chassis.tank();
 		superstruct::cataControl();
-		pros::delay(ary::util::DELAY_TIME);
+
+		if (globals::master.get_digital_new_press(DIGITAL_L2)) {
+			left_wing_piston.set_value(1);
+    		right_wing_piston.set_value(1);
+		}
+
+		if (globals::master.get_digital_new_press(DIGITAL_L1)) {
+			left_wing_piston.set_value(0);
+    		right_wing_piston.set_value(0);
+		}
+
+ 		pros::delay(ary::util::DELAY_TIME);
 	}
 }

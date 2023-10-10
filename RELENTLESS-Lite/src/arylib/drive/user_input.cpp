@@ -182,7 +182,7 @@ void Drive::tank() {
   int r_stick = left_curve_function(master.get_analog(ANALOG_RIGHT_Y));
 
   // Set robot to l_stick and r_stick, check joystick threshold, set active brake
-  joy_thresh_opcontrol(l_stick, r_stick);
+  joy_thresh_opcontrol(l_stick * JOYSTICK_DRIVE_SCALE, r_stick * JOYSTICK_DRIVE_SCALE);
 }
 
 // Arcade standarddouble JOYSTICK_DRIVE_SCALE = 1;

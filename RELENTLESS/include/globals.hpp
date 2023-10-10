@@ -2,6 +2,7 @@
 #include "okapi/api.hpp"
 #include "lemlib/api.hpp"
 #include "ary-lib/drive/drive.hpp"
+#include "wings.h"
 
 #define TRACK_WIDTH 11.5
 #define PLACEHOLDER_TC_OFFSET 2.5
@@ -32,8 +33,8 @@ namespace globals {
 
     extern pros::ADIDigitalOut pto_piston;
 
-    extern pros::ADIPort left_wing_piston;
-    extern pros::ADIPort right_wing_piston;
+    extern pros::ADIDigitalOut left_wing_piston;
+    extern pros::ADIDigitalOut right_wing_piston;
 
     extern lemlib::TrackingWheel vert_tracking_wheel;
     extern lemlib::TrackingWheel horiz_tracking_wheel;

@@ -18,7 +18,6 @@ namespace superstruct {
 
     void disableActiveBrake();
     
-
     // Movement Methods
     void driveAsync(double dist, bool useHeadingCorrection);
     void driveSync(double dist, bool useHeadingCorrection);

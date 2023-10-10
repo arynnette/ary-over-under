@@ -1,9 +1,3 @@
-/*
-This Source Code Form is subject to the terms of the Mozilla Public
-License, v. 2.0. If a copy of the MPL was not distributed with this
-file, You can obtain one at http://mozilla.org/MPL/2.0/.
-*/
-
 #include "main.h"
 #include "util.hpp"
 
@@ -13,7 +7,7 @@ void PID::reset_variables() {
   output = 0;
   target = 0;
   error = 0;
-  prev_error = 0;
+  lastError = 0;
   integral = 0;
   time = 0;
   prev_time = 0;
@@ -54,21 +48,24 @@ void PID::set_exit_condition(int p_small_exit_time, double p_small_error, int p_
 void PID::set_target(double input) { target = input; }
 double PID::get_target() { return target; }
 
-double PID::compute(double current) {
-  error = target - current;
-  derivative = error - prev_error;
+double PID::compute(double dist) {
+  error = target - dist; // Calculate the error
+  derivative = error - lastError; // Calculate the derivative term
 
+  /*
+    If the integral constant is a non-zero value, accumulate the integral term with the calculated error.
+    If the sign of the error is not equal to the sign of the previously recorded error, abandon the integral term.
+  */
   if (constants.ki != 0) {
-    if (fabs(error) < constants.start_i)
       integral += error;
 
-    if (util::sgn(error) != util::sgn(prev_error))
+    if (util::sgn(error) != util::sgn(lastError))
       integral = 0;
   }
 
   output = (error * constants.kp) + (integral * constants.ki) + (derivative * constants.kd);
 
-  prev_error = error;
+  lastError = error;
 
   return output;
 }

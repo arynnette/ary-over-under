@@ -10,7 +10,7 @@ namespace globals {
     pros::Motor motor_blf(2, MOTOR_GEARSET_06, true);
     pros::Motor motor_tlb(5, MOTOR_GEARSET_06, false);
     pros::Motor motor_trf(16, MOTOR_GEARSET_06, true);
-    pros::Motor motor_trb(3, MOTOR_GEARSET_06, true);//
+    pros::Motor motor_trb(3, MOTOR_GEARSET_06, true);
     pros::Motor motor_brf(1, MOTOR_GEARSET_06, false);
     pros::Motor motor_brb(4, MOTOR_GEARSET_06, false);
 
@@ -23,11 +23,8 @@ namespace globals {
 
     pros::ADIDigitalOut pto_piston('A');
 
-    // pros::ADIDigitalOut left_wing_piston(2);
-    // pros::ADIDigitalOut right_wing_piston(3);
-
-    pros::ADIPort left_wing_piston('B', pros::E_ADI_DIGITAL_OUT);
-    pros::ADIPort right_wing_piston('C', pros::E_ADI_DIGITAL_OUT);
+    pros::ADIDigitalOut left_wing_piston('C');
+    pros::ADIDigitalOut right_wing_piston('B');
 
     lemlib::Drivetrain_t chassis_odom {
         &left_drive,
