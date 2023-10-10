@@ -1,6 +1,4 @@
 #include "main.h"
-#include "ary-lib/api.hpp"
-#include "globals.hpp"
 
 #define DRIVE_SPEED 110
 #define TURN_SPEED 90

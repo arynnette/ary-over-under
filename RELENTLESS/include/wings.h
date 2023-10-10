@@ -1,3 +1,4 @@
+#pragma once
 #ifndef _Wings_h
 #define _Wings_h_
 

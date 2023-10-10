@@ -1,5 +1,5 @@
 #include "main.h"
-#include "wings.h"
+#include "Wings.h"
 
 using namespace globals;
 

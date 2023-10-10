@@ -26,6 +26,8 @@ namespace globals {
     pros::ADIDigitalOut left_wing_piston('C');
     pros::ADIDigitalOut right_wing_piston('B');
 
+    Wings wings;
+
     lemlib::Drivetrain_t chassis_odom {
         &left_drive,
         &right_drive,

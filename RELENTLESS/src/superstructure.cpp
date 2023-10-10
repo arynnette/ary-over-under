@@ -165,13 +165,11 @@ namespace superstruct {
 
   void wingsControl() {
     if (globals::master.get_digital_new_press(DIGITAL_L2)) {
-			left_wing_piston.set_value(1);
-    		right_wing_piston.set_value(1);
+			wings.open();
 		}
 
 		if (globals::master.get_digital_new_press(DIGITAL_L1)) {
-			left_wing_piston.set_value(0);
-    		right_wing_piston.set_value(0);
+			wings.close();
 		}
   }
 }
