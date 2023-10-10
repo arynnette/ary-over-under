@@ -1,8 +1,5 @@
-#include <stdlib.h>
-
 #include "main.h"
-#include "globals.hpp"
-#include "superstructure.hpp"
+#include <stdlib.h>
 
 using namespace globals;
 using namespace superstruct;
