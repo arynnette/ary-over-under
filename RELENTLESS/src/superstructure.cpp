@@ -29,6 +29,11 @@ namespace superstruct {
     chassis.set_joystick_turnscale(1.0); 
   }
 
+  void opControlInit() {
+    motorsCoast();
+	  disableActiveBrake();
+  }
+
   void configureExitConditions() {
     chassis.set_exit_condition(chassis.turn_exit, 100, 3, 500, 7, 500, 500);
     chassis.set_exit_condition(chassis.swing_exit, 100, 3, 500, 7, 500, 500);
@@ -155,6 +160,18 @@ namespace superstruct {
 			runCata(-12000);
 		} else {
 			runCata(0);
+		}
+  }
+
+  void wingsControl() {
+    if (globals::master.get_digital_new_press(DIGITAL_L2)) {
+			left_wing_piston.set_value(1);
+    		right_wing_piston.set_value(1);
+		}
+
+		if (globals::master.get_digital_new_press(DIGITAL_L1)) {
+			left_wing_piston.set_value(0);
+    		right_wing_piston.set_value(0);
 		}
   }
 }

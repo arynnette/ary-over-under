@@ -166,7 +166,7 @@ void Drive::joy_thresh_opcontrol(int l_stick, int r_stick) {
 }
 
 // Tank control
-void Drive::tank() {
+void Drive::tank_control() {
   is_tank = true;
   reset_drive_sensors_opcontrol();
 

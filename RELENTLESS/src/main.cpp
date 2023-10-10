@@ -93,22 +93,12 @@ void autonomous() {
  * task, not resume it from where it left off.
  */
 void opcontrol() {
-	motorsCoast();
-	disableActiveBrake();
+	opControlInit();
 
 	while (true) {	
-		chassis.tank();
+		chassis.tank_control();
 		superstruct::cataControl();
-
-		if (globals::master.get_digital_new_press(DIGITAL_L2)) {
-			left_wing_piston.set_value(1);
-    		right_wing_piston.set_value(1);
-		}
-
-		if (globals::master.get_digital_new_press(DIGITAL_L1)) {
-			left_wing_piston.set_value(0);
-    		right_wing_piston.set_value(0);
-		}
+		superstruct::wingsControl();
 
  		pros::delay(ary::util::DELAY_TIME);
 	}

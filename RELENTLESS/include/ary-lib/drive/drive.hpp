@@ -213,7 +213,7 @@ class Drive {
    * Sets the chassis to controller joysticks using tank control.  Run is usercontrol.
    * This passes the controller through the curve functions, but is disabled by default.  Use toggle_controller_curve_modifier() to enable it.
    */
-  void tank();
+  void tank_control();
 
   /**
    * Sets the chassis to controller joysticks using standard arcade control.  Run is usercontrol.

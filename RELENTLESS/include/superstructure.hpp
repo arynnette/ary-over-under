@@ -9,6 +9,7 @@
 namespace superstruct {
     //configs
     void chassisInit();
+    void opControlInit();
     void configureExitConditions();
     void configureConstants();
     void autonomousResets();
@@ -37,5 +38,6 @@ namespace superstruct {
     void togglePto();
     void runCata();
     void cataControl();
+    void wingsControl();
     
 }
