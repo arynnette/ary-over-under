@@ -98,7 +98,7 @@ class PID {
    * \param current
    *        Current sensor library.
    */
-  double compute(double current);
+  double calculate(double current);
 
   /**
    * Returns target value.

@@ -31,9 +31,9 @@ void Drive::ez_auto_task() {
 // Drive PID task
 void Drive::drive_pid_task() {
   // Compute PID
-  leftPID.compute(left_sensor());
-  rightPID.compute(right_sensor());
-  headingPID.compute(get_gyro());
+  leftPID.calculate(left_sensor());
+  rightPID.calculate(right_sensor());
+  headingPID.calculate(get_gyro());
 
   // Compute slew
   double l_slew_out = slew_calculate(left_slew, left_sensor());
@@ -58,7 +58,7 @@ void Drive::drive_pid_task() {
 // Turn PID task
 void Drive::turn_pid_task() {
   // Compute PID
-  turnPID.compute(get_gyro());
+  turnPID.calculate(get_gyro());
 
   // Clip gyroPID to max speed
   double gyro_out = util::clip_num(turnPID.output, max_speed, -max_speed);
@@ -77,7 +77,7 @@ void Drive::turn_pid_task() {
 // Swing PID task
 void Drive::swing_pid_task() {
   // Compute PID
-  swingPID.compute(get_gyro());
+  swingPID.calculate(get_gyro());
 
   // Clip swingPID to max speed
   double swing_out = util::clip_num(swingPID.output, max_speed, -max_speed);

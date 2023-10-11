@@ -48,7 +48,7 @@ void PID::set_exit_condition(int p_small_exit_time, double p_small_error, int p_
 void PID::set_target(double input) { target = input; }
 double PID::get_target() { return target; }
 
-double PID::compute(double dist) {
+double PID::calculate(double dist) {
   error = target - dist; // Calculate the error
   derivative = error - lastError; // Calculate the derivative term
 
@@ -63,9 +63,9 @@ double PID::compute(double dist) {
       integral = 0;
   }
 
-  output = (error * constants.kp) + (integral * constants.ki) + (derivative * constants.kd);
+  output = (error * constants.kp) + (integral * constants.ki) + (derivative * constants.kd); // Combine all of the terms to get an output speed
 
-  lastError = error;
+  lastError = error; // Set the last error to the previously calculated error.
 
   return output;
 }
