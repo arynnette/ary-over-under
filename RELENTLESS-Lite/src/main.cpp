@@ -21,28 +21,38 @@ void initialize() {
         - 
   */
 
-  chassis.set_curve_buttons(pros::E_CONTROLLER_DIGITAL_LEFT, pros::E_CONTROLLER_DIGITAL_RIGHT);
-  chassis.toggle_modify_curve_with_controller(true);
-  chassis.set_active_brake(0.1);
-  chassis.set_curve_default(0.5, 0.5);
+  chassisRight.set_curve_buttons(pros::E_CONTROLLER_DIGITAL_LEFT, pros::E_CONTROLLER_DIGITAL_RIGHT);
+  chassisRight.toggle_modify_curve_with_controller(true);
+  chassisRight.set_active_brake(0.1);
+  chassisRight.set_curve_default(0.5, 0.5);
 
-  chassis.set_joystick_drivescale(1.0);
-  chassis.set_joystick_turnscale(1.0);
+  chassisRight.set_joystick_drivescale(1.0);
+  chassisRight.set_joystick_turnscale(1.0);
+
+  chassisLeft.set_curve_buttons(pros::E_CONTROLLER_DIGITAL_LEFT, pros::E_CONTROLLER_DIGITAL_RIGHT);
+  chassisLeft.toggle_modify_curve_with_controller(true);
+  chassisLeft.set_active_brake(0.1);
+  chassisLeft.set_curve_default(0.5, 0.5);
+
+  chassisLeft.set_joystick_drivescale(1.0);
+  chassisLeft.set_joystick_turnscale(1.0);
 
   default_constants(); 
   exit_condition_defaults();
 
   ary::autonselector::auton_selector.add_autons({
     Auton("Test Auton\n\nTesting Autonomous on field", test_auton),
-    Auton("Test Auton - The Sequel\n\nyo mama", test_second) // TODO: Change this before putting this in the notebook LOL
+    Auton("Test Auton - The Sequel\n\nyo mama", test_second), // TODO: Change this before putting this in the notebook LOL
+    Auton("CURVATURE, ARCING, AND EVERYTHING IN BETWEEN", arc_testing)
   });
 
-  chassis.set_drive_brake(MOTOR_BRAKE_COAST);
+  chassisRight.set_drive_brake(MOTOR_BRAKE_COAST);
+  chassisLeft.set_drive_brake(MOTOR_BRAKE_COAST);
 
   //handle pto and stuff 
-  //chassis.pto_add();
+  //chassisRight.pto_add();
 
-  chassis.initialize();
+  chassisRight.initialize();
   ary::autonselector::initialize();
 }
 
@@ -61,23 +71,28 @@ void competition_initialize() {
 }
 
 void autonomous() {
-  chassis.reset_pid_targets();
-  chassis.reset_gyro();
-  chassis.reset_drive_sensor();
-  chassis.set_drive_brake(MOTOR_BRAKE_COAST);
+  chassisRight.reset_pid_targets();
+  chassisRight.reset_gyro();
+  chassisRight.reset_drive_sensor();
+  chassisRight.set_drive_brake(MOTOR_BRAKE_COAST);
+
+  chassisLeft.reset_pid_targets();
+  chassisLeft.reset_gyro();
+  chassisLeft.reset_drive_sensor();
+  chassisLeft.set_drive_brake(MOTOR_BRAKE_COAST);
   default_constants();
 
   ary::autonselector::auton_selector.call_selected_auton();
 }
 
 void opcontrol() {
-  chassis.set_drive_brake(MOTOR_BRAKE_COAST);
-  chassis.set_active_brake(0);
+  chassisRight.set_drive_brake(MOTOR_BRAKE_COAST);
+  chassisRight.set_active_brake(0);
 
   while (true) {
-    //chassis.arcade_standard(ary::SdPLIT, ary::DEFAULT); 
-    //chassis.arcade_standard(ary::SPLIT, ary::DEFAULT);
-    chassis.tank();
+    //chassisRight.arcade_standard(ary::SdPLIT, ary::DEFAULT); 
+    //chassisRight.arcade_standard(ary::SPLIT, ary::DEFAULT);
+    chassisRight.tank();
 
     // if  (globals::master.get_digital(DIGITAL_R1)) {
     //   cata_left.move_voltage(12000);

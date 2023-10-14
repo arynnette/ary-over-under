@@ -5,6 +5,8 @@
 #define DRIVE_RPM 450
 #define WHEEL_SIZE 2.75
 
+extern pros::Task swing_other;
+
 namespace globals {
     extern pros::Controller master;
 
@@ -19,7 +21,8 @@ namespace globals {
     extern pros::Motor_Group right_drive;
 
     extern lemlib::Drivetrain_t chassis_odom;
-    extern Drive chassis;
+    extern Drive chassisRight;
+    extern Drive chassisLeft;
 
     extern pros::Motor cata_left;
     extern pros::Motor cata_right;
