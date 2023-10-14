@@ -89,7 +89,7 @@ extern bool AUTON_RAN;
 /**
  * Returns 1 if input is positive and -1 if input is negative
  */
-int sgn(double input);
+int signum(double input);
 
 /**
  * Returns true if the input is < 0

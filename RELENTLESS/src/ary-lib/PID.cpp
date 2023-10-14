@@ -2,6 +2,7 @@
 #include "util.hpp"
 
 using namespace ary;
+using namespace util;
 
 void PID::reset_variables() {
   output = 0;
@@ -59,7 +60,7 @@ double PID::calculate(double dist) {
   if (constants.ki != 0) {
       integral += error;
 
-    if (util::sgn(error) != util::sgn(lastError))
+    if (signum(error) != signum(lastError))
       integral = 0;
   }
 

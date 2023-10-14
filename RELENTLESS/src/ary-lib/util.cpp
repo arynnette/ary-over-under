@@ -131,7 +131,7 @@ bool is_reversed(double input) {
   return false;
 }
 
-int sgn(double input) {
+int signum(double input) {
   if (input > 0)
     return 1;
   else if (input < 0)
