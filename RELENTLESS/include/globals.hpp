@@ -42,4 +42,11 @@ namespace globals {
 
     extern pros::Motor& cata_left;
     extern pros::Motor& cata_right;
+
+    enum e_controlsch {
+        RENU,
+        RIA
+    };
+
+    extern e_controlsch current_user;
 }
