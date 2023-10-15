@@ -50,6 +50,4 @@ namespace globals {
 
     pros::Motor& cata_left = chassis.left_motors[3];
     pros::Motor& cata_right = chassis.right_motors[3];
-
-    e_controlsch current_user = ;
 }
