@@ -12,12 +12,20 @@ const int DRIVE_SPEED = 110;
 const int TURN_SPEED  = 101.5;
 const int SWING_SPEED = 101.5;
 
-void swingOther(void* p) {
-  chassisLeft.initialize();
-  chassisLeft.set_swing_pid(LEFT_SWING, 180, SWING_SPEED);
-}
+bool taskSwing = true;
 
-pros::Task swing_other(swingOther);
+void swingAsync() {
+  while (true) {
+    if (taskSwing) {
+      chassisRight.set_swing_pid(ary::RIGHT_SWING, 60, -SWING_SPEED);
+      pros::delay(10);
+      taskSwing = false;
+    }
+    pros::delay(10);
+  }
+} 
+
+pros::Task swingTask(swingAsync);
 
 void default_constants() {
   chassisRight.set_slew_min_power(80, 80);
@@ -118,6 +126,12 @@ void test_second() {
 }
 
 void arc_testing() {
-  chassisRight.set_swing_pid(RIGHT_SWING, 180, SWING_SPEED);
-  swing_other.resume();
+  while (true) {
+    if (!taskSwing) {
+      chassisRight.set_swing_pid(ary::LEFT_SWING, 45, 110);
+      pros::delay(10);
+      taskSwing = true;
+    }
+    pros::delay(10);
+  }
 }
