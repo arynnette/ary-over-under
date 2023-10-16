@@ -47,6 +47,4 @@ namespace globals {
         RENU,
         RIA
     };
-
-    extern e_controlsch current_user;
 }
