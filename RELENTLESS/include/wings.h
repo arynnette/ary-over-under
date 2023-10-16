@@ -12,9 +12,11 @@ class Wings {
         void toggleLeft(int value);
         void toggleRight(int value);
         void openFor(double duration);
+        int getState();
     
     private:
-        std::uint8_t wingsopen;
+        int left_wing_state;
+        int right_wing_state;
 };
 
 #endif
