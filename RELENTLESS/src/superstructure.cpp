@@ -209,6 +209,6 @@ namespace superstruct {
   void ria_control() {
     cataControl(RIA_PTO_TOGGLE, RIA_CATA_CONTROL);
     wingsControlSingle(RIA_WINGS_CONTROL);
-    intakeControl(RIA_INTAKE_CONTORL);
+    intakeControl(RIA_INTAKE_CONTROL);
   }
 }
