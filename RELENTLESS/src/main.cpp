@@ -4,6 +4,8 @@
 using namespace globals;
 using namespace superstruct;
 
+e_controlsch currentuser = RENU;
+
 /**
  * A callback function for LLEMU's center button.
  *
@@ -97,8 +99,14 @@ void opcontrol() {
 
 	while (true) {	
 		chassis.tank_control();
-		superstruct::cataControl();
-		superstruct::wingsControl();
+
+		if (currentuser == RENU) {
+			renu_control();
+		} else if (currentuser = RIA) {
+			ria_control();
+		} else {
+			renu_control();
+		}
 
  		pros::delay(ary::util::DELAY_TIME);
 	}

@@ -1,3 +1,5 @@
+#pragma once
+
 #include "main.h"
 #include "Wings.h"
 
@@ -6,6 +8,8 @@
 #define WHEEL_SIZE 2.75
 #define DRIVE_RATIO 0.75
 #define DRIVE_RPM 450
+
+
 
 namespace globals {
     extern pros::Controller master;
@@ -32,6 +36,8 @@ namespace globals {
 
     extern pros::ADIDigitalOut left_wing_piston;
     extern pros::ADIDigitalOut right_wing_piston;
+
+    extern pros::ADIDigitalOut intake_piston;
 
     extern Wings wings;
 

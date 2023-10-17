@@ -4,6 +4,8 @@ using namespace ary;
 using namespace globals;
 
 bool ptoEnabled = false;
+bool wingsOpen = false;
+bool intakeEngaged = false;
 
 double speedScale = 1.0;
 double turnScale = 1.0;
@@ -129,6 +131,17 @@ namespace superstruct {
   }
 
   // Structure methods
+  void intakeControl(pros::controller_digital_e_t intakeButton) {
+    if (globals::master.get_digital_new_press(intakeButton)) {
+      if (intakeEngaged == false) {
+        intake_piston.set_value(1);
+        intakeEngaged = true;
+      } else if (intakeEngaged == true) {
+        intake_piston.set_value(0);
+        intakeEngaged = false;
+      }
+    }
+  }
 
   void togglePto(bool toggle) {
     ptoEnabled = toggle;
@@ -148,15 +161,15 @@ namespace superstruct {
   }
 
   int lock = 0;
-  void cataControl() {
-    if (globals::master.get_digital(DIGITAL_LEFT) && lock == 0) {
+  void cataControl(pros::controller_digital_e_t ptoToggleButton, pros::controller_digital_e_t cataRunButton) {
+    if (globals::master.get_digital(ptoToggleButton) && lock == 0) {
       togglePto(!ptoEnabled);
       lock = 1;
-    } else if(!globals::master.get_digital(DIGITAL_LEFT)) {
+    } else if(!globals::master.get_digital(ptoToggleButton)) {
       lock = 0;
     }
 
-    if (globals::master.get_digital(DIGITAL_R1)) {
+    if (globals::master.get_digital(cataRunButton)) {
 			runCata(-12000);
 		} else {
 			runCata(0);
@@ -171,5 +184,31 @@ namespace superstruct {
 		if (globals::master.get_digital_new_press(DIGITAL_L1)) {
 			wings.close();
 		}
+  }
+
+  void wingsControlComplex(pros::controller_analog_e_t leftWingButton, pros::controller_analog_e_t rightWingButton, pros::controller_analog_e_t wingButton)
+ {
+
+ }
+  void wingsControlSingle(pros::controller_digital_e_t wingControlButton) {
+    if (globals::master.get_digital_new_press(wingControlButton)) {
+      if (wings.getState() == 0)
+        wings.open();
+      else if (wings.getState() == 3)
+        wings.close();
+    }
+  }
+
+  void renu_control() {
+    cataControl(RENU_PTO_TOGGLE, RENU_CATA_CONTROL);
+    wingsControl();
+    intakeControl(RENU_INTAKE_CONTROL);
+    
+  }
+  
+  void ria_control() {
+    cataControl(RIA_PTO_TOGGLE, RIA_CATA_CONTROL);
+    wingsControlSingle(RIA_WINGS_CONTROL);
+    intakeControl(RIA_INTAKE_CONTORL);
   }
 }

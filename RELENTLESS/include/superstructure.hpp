@@ -4,6 +4,21 @@
 #define TURN_SPEED 90
 #define SWING_SPEED 90
 
+// Renu's control preferences
+#define RENU_PTO_TOGGLE DIGITAL_R2
+#define RENU_CATA_CONTROL DIGITAL_R1
+#define RENU_INTAKE_CONTROL DIGITAL_L1
+#define RENU_LEFT_WING_CONTROL DIGITAL_LEFT
+#define RENU_RIGHT_WING_CONTROL DIGITAL_RIGHT
+#define RENU_WING_CONTROL DIGITAL_L2
+
+// Ria's control preferences
+#define RIA_PTO_TOGGLE DIGITAL_LEFT
+#define RIA_CATA_CONTROL DIGITAL_A
+#define RIA_INTAKE_CONTORL DIGITAL_R1
+#define RIA_WINGS_CONTROL DIGITAL_L1
+
+
 namespace superstruct {
     //configs
     void chassisInit();
@@ -33,9 +48,15 @@ namespace superstruct {
     void setSwingScale(double val);
 
     //- Structure methods
+    void intakeControl(pros::controller_digital_e_t intakeButton);
     void togglePto();
     void runCata();
-    void cataControl();
+    void cataControl(pros::controller_digital_e_t ptoToggleButton, pros::controller_digital_e_t cataRunButton);
     void wingsControl();
+    void wingsControlSingle(pros::controller_digital_e_t wingControlButton);
+    void wingsControlComplex(pros::controller_analog_e_t leftWingButton, pros::controller_analog_e_t rightWingButton, pros::controller_analog_e_t wingButton);
+
+    void renu_control();
+    void ria_control();
     
 }
