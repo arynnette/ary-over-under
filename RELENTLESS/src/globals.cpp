@@ -28,6 +28,8 @@ namespace globals {
 
     pros::ADIDigitalOut intake_piston('D');
 
+    pros::ADIDigitalOut doinker_piston('E');
+
     Wings wings;
 
     lemlib::Drivetrain_t chassis_odom {

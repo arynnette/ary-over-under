@@ -39,6 +39,8 @@ namespace globals {
 
     extern pros::ADIDigitalOut intake_piston;
 
+    extern pros::ADIDigitalOut doinker_piston;
+
     extern Wings wings;
 
     extern lemlib::TrackingWheel vert_tracking_wheel;
