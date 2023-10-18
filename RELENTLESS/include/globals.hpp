@@ -53,6 +53,7 @@ namespace globals {
 
     enum e_controlsch {
         RENU,
-        RIA
+        RIA,
+        CHRIS
     };
 }

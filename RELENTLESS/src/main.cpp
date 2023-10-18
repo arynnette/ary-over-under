@@ -7,22 +7,6 @@ using namespace superstruct;
 e_controlsch currentuser = RENU;
 
 /**
- * A callback function for LLEMU's center button.
- *
- * When this callback is fired, it will toggle line 2 of the LCD text between
- * "I was pressed!" and nothing.
- */
-void on_center_button() {
-	static bool pressed = false;
-	pressed = !pressed;
-	if (pressed) {
-		pros::lcd::set_text(2, "I was pressed!");
-	} else {
-		pros::lcd::clear_line(2);
-	}
-}
-
-/**
  * Runs initialization code. This occurs as soon as the program is started.
  *
  * All other competition modes are blocked by initialize; it is recommended
@@ -98,13 +82,14 @@ void opcontrol() {
 	opControlInit();
 
 	while (true) {	
-		chassis.tank_control();
-
 		if (currentuser == RENU) {
+			chassis.tank_control();
 			renu_control();
 		} else if (currentuser = RIA) {
+			chassis.tank_control();
 			ria_control();
-		} else {
+		} else if (currentuser == CHRIS) {
+			chassis.arcade_standard(ary::SPLIT, ary::DEFAULT);
 			renu_control();
 		}
 
