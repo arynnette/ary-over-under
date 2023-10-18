@@ -209,12 +209,11 @@ namespace superstruct {
   /*
     Handle respective controls
   */
- 
+
   void renu_control() {
     cataControl(RENU_PTO_TOGGLE, RENU_CATA_CONTROL);
-    wingsControl();
+    wingsControlSingle(RENU_WING_CONTROL);
     intakeControl(RENU_INTAKE_CONTROL);
-    
   }
   
   void ria_control() {

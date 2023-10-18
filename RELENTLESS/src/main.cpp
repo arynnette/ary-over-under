@@ -66,6 +66,7 @@ void opcontrol() {
 			Available Options:
 			RENU, RIA, CHRIS
 		*/
+
 		if (currentuser == RENU) {
 			chassis.tank_control();
 			renu_control();
@@ -74,6 +75,8 @@ void opcontrol() {
 			ria_control();
 		} else if (currentuser == CHRIS) {
 			chassis.arcade_standard(ary::SPLIT, ary::DEFAULT);
+			renu_control();
+		} else {
 			renu_control();
 		}
 
