@@ -11,7 +11,7 @@ pros::Controller master(pros::E_CONTROLLER_MASTER);
 namespace ary {
 int mode = DISABLE;
 
-void print_ez_template() {
+void printScr() {
   std::cout << R"(
 
 

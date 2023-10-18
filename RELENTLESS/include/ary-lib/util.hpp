@@ -22,7 +22,7 @@ namespace ary {
 /**
  * Prints our branding all over your pros terminal
  */
-void print_ez_template();
+void printScr();
 
 /**
  * Prints to the brain screen in one string.  Splits input between lines with
