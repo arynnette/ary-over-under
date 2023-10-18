@@ -7,6 +7,13 @@ bool ptoEnabled = false;
 bool wingsOpen = false;
 bool intakeEngaged = false;
 
+/*
+  SCALE SPEEDS: Determines what percentage speeds of autonomous movements should move at
+    speedScale -> The scale of how fast the drivetrain goes forward and backwards
+    turnScale -> The scale of how fast the drivetrain turns
+    swingScale -> The scale of fast one side of the chassis moves
+*/
+
 double speedScale = 1.0;
 double turnScale = 1.0;
 double swingScale = 1.0;
@@ -36,12 +43,14 @@ namespace superstruct {
 	  disableActiveBrake();
   }
 
+  // Adjust exit conditions to allow for quick movements
   void configureExitConditions() {
     chassis.set_exit_condition(chassis.turn_exit, 100, 3, 500, 7, 500, 500);
     chassis.set_exit_condition(chassis.swing_exit, 100, 3, 500, 7, 500, 500);
     chassis.set_exit_condition(chassis.drive_exit, 80, 50, 300, 150, 500, 500);
   }
 
+  // Adjust PID constants for accurate movements
   void configureConstants() {
     chassis.set_slew_min_power(80, 80);
     chassis.set_slew_distance(7, 7);
@@ -52,6 +61,7 @@ namespace superstruct {
     chassis.set_pid_constants(&chassis.swingPID, 6, 0, 40, 0);
   }
 
+  // Prepare the bot for the autonomous period of a match
   void autonomousResets() {
     chassis.reset_pid_targets();
   	chassis.reset_gyro();
@@ -74,49 +84,60 @@ namespace superstruct {
     chassis.set_drive_brake(MOTOR_BRAKE_BRAKE);
   }
 
+  // The chassis will not apply a constant voltage to prevent it from being moved
   void disableActiveBrake() {
     chassis.set_active_brake(0.0);
   }
 
 
-  // motion and stuff
+  // Drives forward, runs next commands WITHOUT waiting for the drive to complete 
   void driveAsync(double dist, bool useHeadingCorrection) {
     //chassis.set_mode(ary::DRIVE);
     chassis.set_drive(dist, DRIVE_SPEED * speedScale, (dist > 14.0) ? true : false, useHeadingCorrection); 
   }
 
+  // Drives forward, runs next commands AFTER waiting for the drive to complete 
   void driveSync(double dist, bool useHeadingCorrection) {
     //chassis.set_mode(ary::DRIVE);
     chassis.set_drive(dist, DRIVE_SPEED * speedScale, (dist > 14.0) ? true : false, useHeadingCorrection); 
     chassis.wait_drive();
   }
 
+  // Drives forward, runs next commands AFTER reaching a certain measurement/error along the path
   void driveWithMD(double dist, bool useHeadingCorrection, double waitUntilDist) {
     //chassis.set_mode(ary::DRIVE);
     chassis.set_drive(dist, DRIVE_SPEED * speedScale, (dist > 14.0) ? true : false, useHeadingCorrection); 
     chassis.wait_until(waitUntilDist);
   }
 
+  // Turns the chassis, runs other commands after it has run.
   void turnSync(double theta) {
     //chassis.set_mode(ary::TURN);
     chassis.set_turn(theta, TURN_SPEED * turnScale);
     chassis.wait_drive();
   }
 
+  // Turns the chassis, runs other commands immediately after call
   void turnAsync(double theta) {
     //chassis.set_mode(ary::TURN);
     chassis.set_turn(theta, TURN_SPEED * turnScale);
   }
 
+  // Moves only the right side of the chassis so it can make a left turn
   void leftSwing(double theta) {
     //chassis.set_mode(SWING);
     chassis.set_swing(LEFT_SWING, theta, SWING_SPEED * swingScale);
   }
 
+  // Moves only the left side of the chassis so it can make a right turn
   void rightSwing(double theta) {
     //chassis.set_mode(SWING);
     chassis.set_swing(RIGHT_SWING, theta, SWING_SPEED * swingScale);
   }
+
+  /*
+    Each of the scale values must be clamed between 0.1 - 1 (10% to 100%) to avoid saturation of motors.
+  */
 
   void setDriveScale(double val) {
     speedScale = std::clamp(val, 0.1, 1.0);
@@ -145,7 +166,7 @@ namespace superstruct {
 
   void togglePto(bool toggle) {
     ptoEnabled = toggle;
-    chassis.pto_toggle({cata_left, cata_right}, toggle);
+    chassis.pto_toggle({cata_left, cata_right}, toggle); // Configure the listed PTO motors to whatever value toggle is.
     pto_piston.set_value(toggle);
 
     if (toggle) {
@@ -162,8 +183,8 @@ namespace superstruct {
 
   int lock = 0;
   void cataControl(pros::controller_digital_e_t ptoToggleButton, pros::controller_digital_e_t cataRunButton) {
-    if (globals::master.get_digital(ptoToggleButton) && lock == 0) {
-      togglePto(!ptoEnabled);
+    if (globals::master.get_digital(ptoToggleButton) && lock == 0) { // If the PTO button has been pressed and the PTO is not engaged
+      togglePto(!ptoEnabled); // Toggle the PTO so that cataput is useable
       lock = 1;
     } else if(!globals::master.get_digital(ptoToggleButton)) {
       lock = 0;
@@ -176,29 +197,19 @@ namespace superstruct {
 		}
   }
 
-  void wingsControl() {
-    if (globals::master.get_digital_new_press(DIGITAL_L2)) {
-			wings.open();
-		}
-
-		if (globals::master.get_digital_new_press(DIGITAL_L1)) {
-			wings.close();
-		}
-  }
-
-  void wingsControlComplex(pros::controller_analog_e_t leftWingButton, pros::controller_analog_e_t rightWingButton, pros::controller_analog_e_t wingButton)
- {
-
- }
   void wingsControlSingle(pros::controller_digital_e_t wingControlButton) {
     if (globals::master.get_digital_new_press(wingControlButton)) {
-      if (wings.getState() == 0)
+      if (wings.getState() == 0) // A value of 0 indicates that both wings are closed
         wings.open();
-      else if (wings.getState() == 3)
+      else if (wings.getState() == 3) // A value of 3 indicates that both wings are open
         wings.close();
     }
   }
 
+  /*
+    Handle respective controls
+  */
+ 
   void renu_control() {
     cataControl(RENU_PTO_TOGGLE, RENU_CATA_CONTROL);
     wingsControl();
