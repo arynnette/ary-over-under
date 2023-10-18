@@ -18,7 +18,7 @@ using namespace superstruct;
   chassis.wait_until(double measurement) -> Waits for the drivetrain to reach a certain measurement before performing the next task.
 */
 
-void test_auton() {
+void near_side() {
   // Score the triball preload
   driveSync(107, true); // Go forward
   
@@ -42,4 +42,7 @@ void test_auton() {
   // chassis.set_drive_pid(2, DRIVE_SPEED, false, true);
   // chassis.wait_drive();
 }
-  //pros::task_t intakeTask(run_intake_for, (void*) malloc(sizeof(double)), TASK_PRIORITY_DEFAULT, TASK_STACK_DEPTH_DEFAULT, "runIntakeFor");
+
+void far_side() {
+
+}

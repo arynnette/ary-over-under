@@ -2,7 +2,8 @@
 
 #include "ary-lib/drive/drive.hpp"
 
-void test_auton();
+void near_side();
+void far_side();
 
 void default_constants();
 void exit_condition_defaults();

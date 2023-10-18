@@ -22,10 +22,11 @@ void initialize() {
 	configureExitConditions();
 
 	ary::autonselector::auton_selector.add_autons({
-		Auton("Exhibit One\n\nyo mama", test_auton) // TODO: Change this before putting this in the notebook LOL
+		Auton("Near side (close to alliance goal) \n\nTo run when near alliance goal", near_side), // TODO: Change this before putting this in the notebook LOL
+		Auton("Far side (far from alliance goal) \n\nTo run hwhen far from alliance goal", far_side)
 	});
 
-	motorsCoast();
+	motorsCoast(); // Allow the motors to coast initially
 
 	chassis.initialize();
 	ary::autonselector::initialize();

@@ -1,3 +1,10 @@
+/*
+    globals.cpp
+    
+    Contains all devices and electronics used for the robot
+    Holds other mechanicsm classes.
+*/
+
 #include "globals.hpp"
 
 using namespace ary;
@@ -18,8 +25,7 @@ namespace globals {
     pros::Motor_Group right_drive({ motor_trf, motor_trb, motor_brf, motor_brb });
 
     // Electronics / Pneumatics / Sensors
-    pros::Rotation rot_vert(0);
-    pros::Rotation rot_horiz(1);
+    pros::Distance intake_dist_sens(21);
 
     pros::ADIDigitalOut pto_piston('A');
 
@@ -31,17 +37,6 @@ namespace globals {
     pros::ADIDigitalOut doinker_piston('E');
 
     Wings wings;
-
-    lemlib::Drivetrain_t chassis_odom {
-        &left_drive,
-        &right_drive,
-        TRACK_WIDTH,
-        WHEEL_SIZE, 
-        DRIVE_RPM
-    };
-
-    lemlib::TrackingWheel vert_tracking_wheel(&rot_vert, WHEEL_SIZE, PLACEHOLDER_TC_OFFSET, 1); // subject to change: p3 -> tracking center offset
-    lemlib::TrackingWheel hroiz_tracking_wheel(&rot_horiz, WHEEL_SIZE, PLACEHOLDER_TC_OFFSET, 1); 
 
     Drive chassis(
         {-2, -6, 12, 5},
