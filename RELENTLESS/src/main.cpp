@@ -29,6 +29,7 @@ void initialize() {
 		configureConstants() -> Sets PID constants on the chassis
 		configureExitConditions() -> Sets default values for PID Exit conditions
 	*/
+	
 	chassisInit();
 	configureConstants();
 	configureExitConditions();
@@ -71,13 +72,13 @@ void opcontrol() {
 			chassis.tank_control();
 			renu_control();
 		} else if (currentuser = RIA) {
-			chassis.tank_control();
+			chassis.tank_control(); // 
 			ria_control();
 		} else if (currentuser == CHRIS) {
 			chassis.arcade_standard(ary::SPLIT, ary::DEFAULT);
 			renu_control();
 		} else {
-			renu_control();
+			renu_control(); 
 		}
 
  		pros::delay(ary::util::DELAY_TIME);
