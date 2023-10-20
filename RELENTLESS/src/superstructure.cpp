@@ -45,20 +45,20 @@ namespace superstruct {
 
   // Adjust exit conditions to allow for quick movements
   void configureExitConditions() {
-    chassis.set_exit_condition(chassis.turn_exit, 100, 3, 500, 7, 500, 500);
+    chassis.set_exit_condition(chassis.turn_exit, 50, 2, 220, 3, 500, 500);
     chassis.set_exit_condition(chassis.swing_exit, 100, 3, 500, 7, 500, 500);
-    chassis.set_exit_condition(chassis.drive_exit, 80, 50, 300, 150, 500, 500);
+    chassis.set_exit_condition(chassis.drive_exit, 40, 80, 300, 150, 500, 500);
   }
 
   // Adjust PID constants for accurate movements
   void configureConstants() {
     chassis.set_slew_min_power(80, 80);
     chassis.set_slew_distance(7, 7);
-    chassis.set_pid_constants(&chassis.headingPID, 11, 0, 20, 0);
-    chassis.set_pid_constants(&chassis.forward_drivePID, 0.45, 0, 5, 0);
-    chassis.set_pid_constants(&chassis.backward_drivePID, 0.45, 0, 5, 0);
-    chassis.set_pid_constants(&chassis.turnPID, 4, 0.003, 35, 15);
-    chassis.set_pid_constants(&chassis.swingPID, 6, 0, 40, 0);
+    chassis.set_pid_constants(&chassis.headingPID, 16, 0, 32, 0);
+    chassis.set_pid_constants(&chassis.forward_drivePID, 0.55, 0, 5, 0);
+    chassis.set_pid_constants(&chassis.backward_drivePID, 0.55, 0, 5, 0);
+    chassis.set_pid_constants(&chassis.turnPID, 6.5, 0.003, 35, 15);
+    chassis.set_pid_constants(&chassis.swingPID, 8.5, 0, 50, 0);
   }
 
   // Prepare the bot for the autonomous period of a match
@@ -206,6 +206,16 @@ namespace superstruct {
     }
   }
 
+  void toggleIntake(bool val) {
+    int valTo = (val == true) ? 1 : 0;
+    intake_piston.set_value(valTo);
+  }
+
+  void toggleRemovalMech(bool val) {
+    int valTo = (val == true) ? 1 : 0;
+    doinker_piston.set_value(valTo);
+  }
+
   /*
     Handle respective controls
   */
@@ -220,5 +230,11 @@ namespace superstruct {
     cataControl(RIA_PTO_TOGGLE, RIA_CATA_CONTROL);
     wingsControlSingle(RIA_WINGS_CONTROL);
     intakeControl(RIA_INTAKE_CONTROL);
+  }
+
+  void chris_control() {
+    cataControl(RENU_PTO_TOGGLE, RENU_CATA_CONTROL);
+    wingsControlSingle(RENU_WING_CONTROL);
+    intakeControl(RENU_INTAKE_CONTROL);
   }
 }

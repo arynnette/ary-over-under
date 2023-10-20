@@ -20,11 +20,12 @@ using namespace superstruct;
 
 void near_side() {
   // Score the triball preload
-  driveSync(107, true); // Go forward
+  driveSync(107, true);
+  // Go forward
   
   // Get the furthest triball
   driveSync(-38, true); // Move away from the goal
-  turnSync(-99); // Turn towards the triball against the barrier
+   turnSync(-99); // Turn towards the triball against the barrier
   driveSync(95, true); // Drive towards the triball
 
   // Turn towards the goal, and score the triball.
@@ -39,10 +40,25 @@ void near_side() {
   turnSync(-90); // Turn to the triball and intake
   driveSync(12, true);
 
-  // chassis.set_drive_pid(2, DRIVE_SPEED, false, true);
-  // chassis.wait_drive();
+  
 }
 
 void far_side() {
+  toggleIntake(true);
+  driveSync(60, true);
+  turnSync(-90);
+  
+  toggleIntake(false);
+  driveSync(30, true);
+  driveSync(-30, true);
+
+  turnSync(-45);
+  driveSync(100, true);
+  toggleRemovalMech(true);
+  driveSync(-35, true);
+  toggleRemovalMech(false);
+
+  turnSync(55);
+  driveSync(70, true);
 
 }

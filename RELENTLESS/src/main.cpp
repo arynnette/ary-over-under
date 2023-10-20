@@ -71,12 +71,12 @@ void opcontrol() {
 		if (currentuser == RENU) {
 			chassis.tank_control();
 			renu_control();
-		} else if (currentuser = RIA) {
+		} else if (currentuser == RIA) {
 			chassis.tank_control(); // 
 			ria_control();
 		} else if (currentuser == CHRIS) {
-			chassis.arcade_standard(ary::SPLIT, ary::DEFAULT);
-			renu_control();
+			chassis.arcade_standard(ary::SINGLE, ary::DEFAULT);
+			chris_control();
 		} else {
 			renu_control(); 
 		}
