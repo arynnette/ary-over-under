@@ -20,40 +20,46 @@ using namespace superstruct;
 
 void near_side() {
   // Score the triball preload
-  driveSync(107, true);
-  // Go forward
-  
-  // Get the furthest triball
-  driveSync(-38, true); // Move away from the goal
-   turnSync(-99); // Turn towards the triball against the barrier
-  driveSync(95, true); // Drive towards the triball
+  toggleIntake(true);
+  driveSync(100, true);
+  turnSync(90);
 
-  // Turn towards the goal, and score the triball.
-  driveSync(-10, true); // Move away from the point
-  turnSync(15); // Turn towards the goal 
-  driveSync(40, true); // Drive towards the goal and score the triball
-  leftSwing(60);
-  chassis.wait_drive();
+  toggleIntake(false);
+  pros::delay(50);
+  driveSync(22, true);
+  driveSync(-22, true);
 
-  //Drive backwards, turn to get the next triball off the line
-  driveSync(-48, true); // Move away from the goal towards the nearest triball
-  turnSync(-90); // Turn to the triball and intake
-  driveSync(12, true);
+  turnSync(-120);
+  driveSync(48.5, true);
+  pros::delay(150);
+  toggleIntake(true);
+  pros::delay(100);
 
+  driveSync(-35, true);
+  turnSync(90);
+
+  pros::delay(100);
+  toggleIntake(false);
+  driveSync(55, true);
+  driveSync(-20, true);
+
+  //driveSync(100, true);
   
 }
 
 void far_side() {
   toggleIntake(true);
-  driveSync(60, true);
+  driveSync(100, true);
   turnSync(-90);
   
   toggleIntake(false);
-  driveSync(30, true);
+  pros::delay(250);
+  driveSync(31, true);
   driveSync(-30, true);
 
-  turnSync(-45);
-  driveSync(100, true);
+  turnSync(-160);
+  driveSync(125, true);
+  pros::delay(1000);
   toggleRemovalMech(true);
   driveSync(-35, true);
   toggleRemovalMech(false);

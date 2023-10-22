@@ -72,8 +72,8 @@ void opcontrol() {
 			chassis.tank_control();
 			renu_control();
 		} else if (currentuser == RIA) {
-			chassis.tank_control(); // 
-			ria_control();
+			chassis.tank_control();
+			renu_control();
 		} else if (currentuser == CHRIS) {
 			chassis.arcade_standard(ary::SINGLE, ary::DEFAULT);
 			chris_control();
