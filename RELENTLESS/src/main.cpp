@@ -40,7 +40,8 @@ void initialize() {
 	*/
 	ary::autonselector::auton_selector.add_autons({
 		Auton("Near side (close to alliance goal) \n\nTo run when near alliance goal", near_side),
-		Auton("Far side (far from alliance goal) \n\nTo run when far from alliance goal", far_side)
+		Auton("Far side (far from alliance goal) \n\nTo run when far from alliance goal", far_side),
+		Auton("Skills \n\nPEAK!!!", skills)
 	});
 
 	motorsCoast(); // Allow the motors to coast initially

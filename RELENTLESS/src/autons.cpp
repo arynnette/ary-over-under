@@ -68,3 +68,7 @@ void far_side() {
   driveSync(70, true);
 
 }
+
+void skills() {
+  
+}
