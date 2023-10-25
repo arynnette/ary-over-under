@@ -15,6 +15,21 @@ file, You can obtain one at http://mozilla.org/MPL/2.0/.
 #include "ary-lib/util.hpp"
 #include "pros/motors.h"
 
+#define VELOCITY_TO_VOLTS_LIN 196.001723856
+#define VELOCITY_TO_VOLTS_ANG 127 / 0.796332147963
+
+#define LINEAR_MAX_VEL 0.647953484803
+#define LINEAR_FWD_ACCEL 0.647953484803 / 26
+#define LINEAR_FWD_DECEL 0.647953484803 / 18
+#define LINEAR_REV_ACCEL 0.647953484803 / 18
+#define LINEAR_REV_DECEL 0.647953484803 / 32
+
+#define ANGULAR_MAX_VEL 0.796332147963
+#define ANGULAR_FWD_ACCEL 0.796332147963 / 40
+#define ANGULAR_FWD_DECEL 0.796332147963 / 40
+#define ANGULAR_REV_ACCEL 0.796332147963 / 40
+#define ANGULAR_REV_DECEL 0.796332147963 / 40
+
 using namespace ary;
 
 class Drive {
@@ -512,6 +527,16 @@ class Drive {
    *        toggle for heading correction
    */
   void set_drive(double target, int speed, bool slew_on = false, bool toggle_heading = true);
+
+  /**
+   * Drives the robot forward using a trapezoidal motional profile
+   * 
+   * /param target
+   *  target value in inches
+   * /param endTimeout
+   *  timeout value
+  */
+ void set_proifiled_drive(Drive& chassis, double target, int endTimeout);
 
   /**
    * Sets the robot to turn using PID.

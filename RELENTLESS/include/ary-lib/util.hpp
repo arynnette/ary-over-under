@@ -9,6 +9,7 @@ file, You can obtain one at http://mozilla.org/MPL/2.0/.
 #include <bits/stdc++.h>
 #include <stdio.h>
 #include <string.h>
+#include <vector>
 
 #include "api.h"
 
@@ -100,6 +101,9 @@ bool is_reversed(double input);
  * Returns input restricted to min-max threshold
  */
 double clip_num(double input, double max, double min);
+
+
+std::vector<double> trapezoidalMotionProfile(double target, double maxVel, double accel, double decel);
 
 /**
  * Is the SD card plugged in?

@@ -112,3 +112,25 @@ void Drive::set_swing(e_swing type, double target, int speed) {
   // Run task
   set_mode(SWING);
 }
+
+void set_profiled_drive(Drive& chassis, double target, int endTimeout) {
+  //kv: rpm -> voltage
+  //sf: in/ms -> rpm
+  int sign = ary::util::signum(target);
+  target = fabs(target);
+  std::vector<double> profile;
+  // std::cout << "reached 1" << std::endl;
+  if(sign > 0) profile = ary::util::trapezoidalMotionProfile(target, LINEAR_MAX_VEL, LINEAR_FWD_ACCEL, LINEAR_FWD_DECEL);
+  else profile = ary::util::trapezoidalMotionProfile(target, LINEAR_MAX_VEL, LINEAR_REV_ACCEL, LINEAR_REV_DECEL);
+  
+  for (int i = 0; i < profile.size(); i++)
+  {
+    chassis.set_tank(profile[i] * VELOCITY_TO_VOLTS_LIN * sign, profile[i] * VELOCITY_TO_VOLTS_LIN * sign);
+    pros::delay(10);
+  }
+  
+  chassis.set_tank(0, 0);
+  chassis.set_drive_brake(MOTOR_BRAKE_BRAKE);
+  pros::delay(endTimeout);
+
+}
