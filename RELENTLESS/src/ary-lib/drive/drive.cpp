@@ -288,6 +288,10 @@ void Drive::imu_loading_display(int iter) {
   }
 }
 
+void Drive::stop_drive(Drive& chassis) {
+  chassis.set_tank(0, 0);
+}
+
 bool Drive::imu_calibrate(bool run_loading_animation) {
   imu.reset();
   int iter = 0;

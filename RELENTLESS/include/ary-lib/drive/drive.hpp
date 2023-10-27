@@ -528,6 +528,12 @@ class Drive {
    */
   void set_drive(double target, int speed, bool slew_on = false, bool toggle_heading = true);
 
+  /*
+
+    Stops movement on the drivetrain
+  */
+  void stop_drive(Drive& chassis);
+
   /**
    * Drives the robot forward using a trapezoidal motional profile
    * 

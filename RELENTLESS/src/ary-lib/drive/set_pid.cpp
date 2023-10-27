@@ -129,7 +129,7 @@ void set_profiled_drive(Drive& chassis, double target, int endTimeout) {
     pros::delay(10);
   }
   
-  chassis.set_tank(0, 0);
+  chassis.set_tank(0, 0); // Stop the drive
   chassis.set_drive_brake(MOTOR_BRAKE_BRAKE);
   pros::delay(endTimeout);
 
