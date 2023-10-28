@@ -5,6 +5,7 @@ file, You can obtain one at http://mozilla.org/MPL/2.0/.
 */
 
 #include "main.h"
+#include "globals.hpp"
 
 // Updates max speed
 void Drive::set_max_speed(int speed) {
@@ -111,4 +112,25 @@ void Drive::set_swing_pid(e_swing type, double target, int speed) {
 
   // Run task
   set_mode(SWING);
+}
+
+void Drive::set_profiled_drive(double target, int endTimeout) {
+  //kv: rpm -> voltage
+  //sf: in/ms -> rpm
+  int sign = ary::util::sgn(target);
+  target = fabs(target);
+  std::vector<double> profile;
+  // std::cout << "reached 1" << std::endl;
+  if(sign > 0) profile = ary::util::trapezoidalMotionProfile(target, LINEAR_MAX_VEL, LINEAR_FWD_ACCEL, LINEAR_FWD_DECEL);
+  else profile = ary::util::trapezoidalMotionProfile(target, LINEAR_MAX_VEL, LINEAR_REV_ACCEL, LINEAR_REV_DECEL);
+
+  for (int i = 0; i < profile.size(); i++)
+  {
+    globals::chassisRight.set_tank(profile[i] * VELOCITY_TO_VOLTS_LIN * sign, profile[i] * VELOCITY_TO_VOLTS_LIN * sign);
+    pros::delay(10);
+  }
+
+  globals::chassisRight.set_tank(0, 0);
+  globals::chassisRight.set_drive_brake(MOTOR_BRAKE_COAST);
+  pros::delay(endTimeout);
 }

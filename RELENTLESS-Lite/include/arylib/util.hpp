@@ -9,6 +9,7 @@ file, You can obtain one at http://mozilla.org/MPL/2.0/.
 #include <bits/stdc++.h>
 #include <stdio.h>
 #include <string.h>
+#include <vector>
 
 #include "api.h"
 
@@ -90,6 +91,8 @@ extern bool AUTON_RAN;
  * Returns 1 if input is positive and -1 if input is negative
  */
 int sgn(double input);
+
+std::vector<double> trapezoidalMotionProfile(double target, double maxVel, double accel, double decel);
 
 /**
  * Returns true if the input is < 0

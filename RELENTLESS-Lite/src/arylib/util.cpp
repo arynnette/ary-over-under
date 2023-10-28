@@ -147,5 +147,38 @@ double clip_num(double input, double max, double min) {
   return input;
 }
 
+std::vector<double> trapezoidalMotionProfile(double dist, double maxVel, double accel, double decel) {
+  double max = std::min(std::sqrt((2 * accel * decel * dist) / accel + decel), maxVel);
+  double accelTime = max / accel;
+  double decelTime = max / decel;
+  double coastDist = (dist / max) - (max / (2 * accel)) - (max / (2 * decel));
+  double coastTime = coastDist / max;
+  double totalTime = accelTime + decelTime + coastTime;
+  double vel = 0;
+  double diff;
+  std::vector<double> profile;
+
+  for (int i = 0; i < std::ceil(totalTime); i++)
+  {
+    if (i < std::floor(accelTime))
+    {
+      profile.push_back(vel);
+      vel += accel;
+    }
+
+    else if (i < coastTime + accelTime)
+    {
+      profile.push_back(max);
+    }
+
+    else
+    {
+      profile.push_back(vel);
+      vel -= decel;
+    }
+  }
+  return profile;
+}
+
 }  // namespace util
 }  // namespace ary
