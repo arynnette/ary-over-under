@@ -38,6 +38,44 @@ namespace globals {
 
     Wings wings;
 
+    pros::Imu inertial_sensor(18);
+
+    lemlib::Drivetrain_t dt_odom {
+        &left_drive,
+        &right_drive,
+        TRACK_WIDTH,
+        WHEEL_SIZE,
+        DRIVE_RPM
+    };
+
+    lemlib::OdomSensors_t chassis_sensors {
+        nullptr,
+        nullptr,
+        nullptr,
+        nullptr,
+        &inertial_sensor
+    };
+
+    lemlib::ChassisController_t latController {
+        0.55, // kP
+        5, // kD
+        1, // smallErrorRange
+        100, // smallErrorTimeout
+        3, // largeErrorRange
+        500, // largeErrorTimeout
+        5 // slew rate
+    };
+
+    lemlib::ChassisController_t angController {
+        6.5, // kP
+        35, // kD
+        1, // smallErrorRange
+        100, // smallErrorTimeout
+        3, // largeErrorRange
+        500, // largeErrorTimeout
+        40 // slew rate
+    };
+
     Drive chassis(
         {-2, -6, 12, 5},
         {-16, 1, 4, -3},
@@ -45,7 +83,9 @@ namespace globals {
         WHEEL_SIZE,
         600,
         DRIVE_RATIO
-    ); 
+    );
+    
+    lemlib::Chassis chassis_odom(dt_odom, latController, angController, chassis_sensors);
 
     pros::Motor& cata_left = chassis.left_motors[3];
     pros::Motor& cata_right = chassis.right_motors[3];

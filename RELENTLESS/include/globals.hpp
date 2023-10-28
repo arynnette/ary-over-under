@@ -26,7 +26,14 @@ namespace globals {
     extern pros::Motor_Group left_drive;
     extern pros::Motor_Group right_drive;
 
-    extern lemlib::Drivetrain_t chassis_odom;
+    extern lemlib::Drivetrain_t dt_odom;
+
+    extern lemlib::OdomSensors_t chassis_sensors;
+
+    extern lemlib::ChassisController_t latController;
+    extern lemlib::ChassisController_t angController;
+
+    extern lemlib::Chassis chassis_odom;
 
     extern pros::Rotation rot_vert;
     extern pros::Rotation rot_horiz;
@@ -45,6 +52,8 @@ namespace globals {
 
     extern lemlib::TrackingWheel vert_tracking_wheel;
     extern lemlib::TrackingWheel horiz_tracking_wheel;
+
+    extern pros::Imu inertial_sensor; 
 
     extern Drive chassis;
 

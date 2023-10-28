@@ -72,3 +72,8 @@ void far_side() {
 void skills() {
   
 }
+
+void odom_test() {
+  chassis_odom.moveTo(10, 10, 1000);
+  chassis_odom.turnTo(15, 15, 1000);
+};

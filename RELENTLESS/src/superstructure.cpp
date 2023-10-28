@@ -36,6 +36,19 @@ namespace superstruct {
     /* Adjust the adjust the factor by which the drive velocity is adjusted */ 
     chassis.set_joystick_drivescale(1.0);
     chassis.set_joystick_turnscale(1.0); 
+
+    chassis_odom.calibrate();
+    chassis_odom.setPose(0, 0, 0);
+  }
+
+  void telemetry() {
+    while (true) {
+      lemlib::Pose bot_pose = chassis_odom.getPose();
+      pros::lcd::print(0, "x: %f", bot_pose.x); // print the x position
+        pros::lcd::print(1, "y: %f", bot_pose.y); // print the y position
+        pros::lcd::print(2, "heading: %f", bot_pose.theta); // print the heading
+        pros::delay(10);
+    }
   }
 
   void opControlInit() {

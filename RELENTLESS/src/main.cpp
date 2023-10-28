@@ -41,13 +41,16 @@ void initialize() {
 	ary::autonselector::auton_selector.add_autons({
 		Auton("Near side (close to alliance goal) \n\nTo run when near alliance goal", near_side),
 		Auton("Far side (far from alliance goal) \n\nTo run when far from alliance goal", far_side),
-		Auton("Skills \n\nPEAK!!!", skills)
+		Auton("Skills \n\nPEAK!!!", skills),
+		Auton("Testing Odometry \n\nBaltimore behavior", odom_test)
 	});
 
 	motorsCoast(); // Allow the motors to coast initially
 
 	chassis.initialize();
 	ary::autonselector::initialize();
+
+	pros::Task telemetryTask(telemetry);
 }
 
 void disabled() {}
@@ -70,7 +73,7 @@ void opcontrol() {
 		*/
 
 		if (currentuser == RENU) {
-			chassis.tank_control();
+			chassis.arcade_standard(ary::SPLIT, ary::DEFAULT);
 			renu_control();
 		} else if (currentuser == RIA) {
 			chassis.tank_control();

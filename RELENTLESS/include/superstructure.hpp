@@ -22,6 +22,7 @@
 namespace superstruct {
     //configs
     void chassisInit();
+    void telemetry();
     void opControlInit();
     void configureExitConditions();
     void configureConstants();
