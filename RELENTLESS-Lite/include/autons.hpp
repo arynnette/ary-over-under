@@ -4,7 +4,7 @@
 
 void test_auton();
 void test_second();
-void arc_testing();
+void motion_profile_test();
 
 void default_constants();
 void exit_condition_defaults();

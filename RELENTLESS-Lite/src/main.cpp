@@ -43,7 +43,7 @@ void initialize() {
   ary::autonselector::auton_selector.add_autons({
     Auton("Test Auton\n\nTesting Autonomous on field", test_auton),
     Auton("Test Auton - The Sequel\n\nyo mama", test_second), // TODO: Change this before putting this in the notebook LOL
-    Auton("CURVATURE, ARCING, AND EVERYTHING IN BETWEEN", arc_testing)
+    Auton("CURVATURE, ARCING, AND EVERYTHING IN BETWEEN more like motion profiles", motion_profile_test)
   });
 
   chassisRight.set_drive_brake(MOTOR_BRAKE_COAST);

@@ -125,13 +125,6 @@ void test_second() {
   // chassisRight.wait_drive();
 }
 
-void arc_testing() {
-  while (true) {
-    if (!taskSwing) {
-      chassisRight.set_swing_pid(ary::LEFT_SWING, 45, 110);
-      pros::delay(10);
-      taskSwing = true;
-    }
-    pros::delay(10);
-  }
+void motion_profile_test() {
+  chassisRight.set_profiled_drive(20, 1000);
 }
