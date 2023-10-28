@@ -179,7 +179,7 @@ void Drive::tank() {
 
   // Put the joysticks through the curve function
   int l_stick = left_curve_function(master.get_analog(ANALOG_LEFT_Y));
-  int r_stick = left_curve_function(master.get_analog(ANALOG_RIGHT_Y));
+  int r_stick = -left_curve_function(master.get_analog(ANALOG_RIGHT_Y));
 
   // Set robot to l_stick and r_stick, check joystick threshold, set active brake
   joy_thresh_opcontrol(l_stick * JOYSTICK_DRIVE_SCALE, r_stick * JOYSTICK_DRIVE_SCALE);
@@ -205,8 +205,8 @@ void Drive::arcade_standard(e_type stick_type, e_curve_type curve_type) {
   } else if (stick_type == SINGLE) {
     // Put the joysticks through the curve function
     if (curve_type == DEFAULT) {
-      fwd_stick = left_curve_function(master.get_analog(ANALOG_LEFT_Y));
-      turn_stick = right_curve_function(master.get_analog(ANALOG_LEFT_X));
+      fwd_stick = left_curve_function(master.get_analog(ANALOG_LEFT_X));
+      turn_stick = right_curve_function(master.get_analog(ANALOG_LEFT_Y));
     } else if (curve_type == LOGARITHMIC) {
       //fwd_stick = (master.get_analog(ANALOG_LEFT_Y) >= 1) ? 10
     } else if (curve_type == SQRT) {
