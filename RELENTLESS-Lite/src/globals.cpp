@@ -27,7 +27,7 @@ namespace globals {
         DRIVE_RPM
     };
 
-    Drive chassisRight(
+    Drive chassisLeft(
         {-20, -17, 8},
         {12, 1, -4},
         10,
@@ -36,10 +36,10 @@ namespace globals {
         0.75
     );
 
-    Drive chassisLeft(
-        {-20, -17, 8},
-        {12, 1, -4},
-        10,
+    Drive chassisRight(
+        {-20, 10, -9},
+        {-13, -17, 12},
+        21,
         2.75,
         600,
         0.75
