@@ -7,6 +7,11 @@
 #include "main.h"
 #include "wings.h"
 
+#include "asset.h"
+#include "gif-pros/gifclass.hpp"
+
+ASSET(griddy_gif)
+
 using namespace globals;
 using namespace superstruct;
 
@@ -49,7 +54,7 @@ void initialize() {
 
 	chassis.initialize();
 	ary::autonselector::initialize();
-
+	//pros::lcd::register_btn1_cb(centerButtonCallback);
 	pros::Task telemetryTask(telemetry);
 }
 
@@ -62,16 +67,15 @@ void autonomous() {
 }
 
 void opcontrol() {
+	//Gif gif(griddy_gif, lv_scr_act());
 	opControlInit(); // Configure the chassis for driver control
 
 	while (true) {	
-
 		/*
 			Handle controls for whoever is driving the bot at the moment, each available user a respective set of controls'
 			Available Options:
 			RENU, RIA, CHRIS
 		*/
-
 		if (currentuser == RENU) {
 			chassis.arcade_standard(ary::SPLIT, ary::DEFAULT);
 			renu_control();

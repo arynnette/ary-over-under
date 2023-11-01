@@ -12,6 +12,11 @@ namespace globals {
     // Chassis
     pros::Controller master(CONTROLLER_MASTER);
 
+    /*
+        {-2, -6, 12, 5}, -> left
+        {-16, 1, 4, -3}, -> right
+    */
+
     pros::Motor motor_tlf(12, MOTOR_GEARSET_06, false);
     pros::Motor motor_blb(6, MOTOR_GEARSET_06, true);
     pros::Motor motor_blf(2, MOTOR_GEARSET_06, true);
@@ -25,8 +30,6 @@ namespace globals {
     pros::Motor_Group right_drive({ motor_trf, motor_trb, motor_brf, motor_brb });
 
     // Electronics / Pneumatics / Sensors
-    pros::Distance intake_dist_sens(21);
-
     pros::ADIDigitalOut pto_piston('A');
 
     pros::ADIDigitalOut left_wing_piston('C');
