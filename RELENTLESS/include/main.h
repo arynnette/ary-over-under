@@ -47,6 +47,8 @@
 #include "autons.hpp"
 #include "superstructure.hpp"
 #include "globals.hpp"
+#include "asset.h"
+#include "gif-pros/gifclass.hpp"
 
 /**
  * If you find doing pros::Motor() to be tedious and you'd prefer just to do
