@@ -7,9 +7,6 @@
 #include "main.h"
 #include "wings.h"
 
-#include "asset.h"
-#include "gif-pros/gifclass.hpp"
-
 ASSET(griddy_gif)
 
 using namespace globals;
@@ -67,7 +64,7 @@ void autonomous() {
 }
 
 void opcontrol() {
-	//Gif gif(griddy_gif, lv_scr_act());
+	Gif gif(griddy_gif, lv_scr_act());
 	opControlInit(); // Configure the chassis for driver control
 
 	while (true) {	
