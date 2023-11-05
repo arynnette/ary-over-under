@@ -39,6 +39,16 @@
 /**
  * You should add more #includes here
  */
+#include "ary-lib/api.hpp"
+#include "lemlib/api.hpp"
+
+#include "globals.hpp"
+#include "superstructure.hpp"
+#include "autons.hpp"
+#include "wings.h"
+
+#include "asset.h"
+#include "gif-pros/gifclass.hpp"
 //#include "okapi/api.hpp"
 //#include "pros/api_legacy.h"
 
