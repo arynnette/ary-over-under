@@ -60,9 +60,9 @@ void far_side() {
   turnSync(-160);
   driveSync(125, true);
   pros::delay(1000);
-  toggleRemovalMech(true);
+  //toggleRemovalMech(true);
   driveSync(-35, true);
-  toggleRemovalMech(false);
+  //toggleRemovalMech(false);
 
   turnSync(55);
   driveSync(70, true);
@@ -71,6 +71,12 @@ void far_side() {
 
 void skills() {
   
+}
+
+void test_seq() {
+  driveSync(10);
+  turnSync(90);
+  turnSync(90);
 }
 
 void odom_test() {
