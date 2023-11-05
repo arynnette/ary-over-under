@@ -7,10 +7,13 @@
 #include "main.h"
 #include "wings.h"
 
-ASSET(griddy_gif)
+#include "asset.h"
+#include "gif-pros/gifclass.hpp"
 
 using namespace globals;
 using namespace superstruct;
+
+ASSET(clear_gif)
 
 e_controlsch currentuser = RENU;
 
@@ -44,6 +47,7 @@ void initialize() {
 		Auton("Near side (close to alliance goal) \n\nTo run when near alliance goal", near_side),
 		Auton("Far side (far from alliance goal) \n\nTo run when far from alliance goal", far_side),
 		Auton("Skills \n\nPEAK!!!", skills),
+		Auton("TESTING TURNS", test_seq),
 		Auton("Testing Odometry \n\nBaltimore behavior", odom_test)
 	});
 
@@ -64,7 +68,7 @@ void autonomous() {
 }
 
 void opcontrol() {
-	Gif gif(griddy_gif, lv_scr_act());
+	Gif gif(clear_gif, lv_scr_act());	
 	opControlInit(); // Configure the chassis for driver control
 
 	while (true) {	
@@ -74,7 +78,7 @@ void opcontrol() {
 			RENU, RIA, CHRIS
 		*/
 		if (currentuser == RENU) {
-			chassis.arcade_standard(ary::SPLIT, ary::DEFAULT);
+			chassis.tank_control();
 			renu_control();
 		} else if (currentuser == RIA) {
 			chassis.tank_control();

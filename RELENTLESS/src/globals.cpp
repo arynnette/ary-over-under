@@ -32,12 +32,12 @@ namespace globals {
     // Electronics / Pneumatics / Sensors
     pros::ADIDigitalOut pto_piston('A');
 
-    pros::ADIDigitalOut left_wing_piston('C');
-    pros::ADIDigitalOut right_wing_piston('B');
+    pros::ADIDigitalOut left_wing_piston('E');
+    pros::ADIDigitalOut right_wing_piston('F');
 
     pros::ADIDigitalOut intake_piston('D');
 
-    pros::ADIDigitalOut doinker_piston('E');
+    //pros::ADIDigitalOut doinker_piston('E');
 
     Wings wings;
 

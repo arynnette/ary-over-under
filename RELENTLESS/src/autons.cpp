@@ -60,9 +60,7 @@ void far_side() {
   turnSync(-160);
   driveSync(125, true);
   pros::delay(1000);
-  //toggleRemovalMech(true);
   driveSync(-35, true);
-  //toggleRemovalMech(false);
 
   turnSync(55);
   driveSync(70, true);
@@ -74,7 +72,7 @@ void skills() {
 }
 
 void test_seq() {
-  driveSync(10);
+  driveSync(10, true);
   turnSync(90);
   turnSync(90);
 }

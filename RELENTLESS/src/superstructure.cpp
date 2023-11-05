@@ -161,7 +161,7 @@ namespace superstruct {
   }
 
   void setSwingScale(double val) {
-    swingScale = std::clamp(val, 0.1, 1.0);
+    swingScale = std::clamp(val, 0.1, 1.0); // 
   }
 
   // Structure methods
@@ -224,10 +224,10 @@ namespace superstruct {
     intake_piston.set_value(valTo);
   }
 
-  void toggleRemovalMech(bool val) {
-    int valTo = (val == true) ? 1 : 0;
-    doinker_piston.set_value(valTo);
-  }
+  // void toggleRemovalMech(bool val) {
+  //   int valTo = (val == true) ? 1 : 0;
+  //   doinker_piston.set_value(valTo);
+  // }
 
   /*
     Handle respective controls
