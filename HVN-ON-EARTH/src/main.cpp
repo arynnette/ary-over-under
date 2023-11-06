@@ -20,6 +20,7 @@ e_controlsch currentuser = RENU;
  * to keep execution time for this mode under a few seconds.
  */
 void initialize() {
+	
 	ary::printScr();
   
 	pros::delay(500); // Give time for legacy ports configure
@@ -64,7 +65,7 @@ void autonomous() {
 }
 
 void opcontrol() {
-	Gif gif(chip_gif, lv_scr_act());	
+	Gif gif(chip_gif, lv_scr_act());
 	opControlInit(); // Configure the chassis for driver control
 
 	while (true) {	
