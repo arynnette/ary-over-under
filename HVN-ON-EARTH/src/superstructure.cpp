@@ -37,8 +37,8 @@ namespace superstruct {
     chassis.set_joystick_drivescale(1.0);
     chassis.set_joystick_turnscale(1.0); 
 
-    chassis_odom.calibrate();
-    chassis_odom.setPose(0, 0, 0);
+    // chassis_odom.calibrate();
+    // chassis_odom.setPose(0, 0, 0);
   }
 
   void telemetry() {
@@ -68,9 +68,9 @@ namespace superstruct {
     chassis.set_slew_min_power(80, 80);
     chassis.set_slew_distance(7, 7);
     chassis.set_pid_constants(&chassis.headingPID, 16, 0, 32, 0);
-    chassis.set_pid_constants(&chassis.forward_drivePID, 0.55, 0, 5, 0);
-    chassis.set_pid_constants(&chassis.backward_drivePID, 0.55, 0, 5, 0);
-    chassis.set_pid_constants(&chassis.turnPID, 6.5, 0.003, 35, 15);
+    chassis.set_pid_constants(&chassis.forward_drivePID, 0.5, 0, 5, 0);
+    chassis.set_pid_constants(&chassis.backward_drivePID, 0.5, 0, 5, 0);
+    chassis.set_pid_constants(&chassis.turnPID, 6.25, 0.003, 57, 15);
     chassis.set_pid_constants(&chassis.swingPID, 8.5, 0, 50, 0);
   }
 

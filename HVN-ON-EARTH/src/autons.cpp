@@ -21,26 +21,38 @@ using namespace superstruct;
 void near_side() {
   // Score the triball preload
   toggleIntake(true);
-  driveSync(100, true);
+  driveSync(90, true);
   turnSync(90);
 
   toggleIntake(false);
   pros::delay(50);
   driveSync(22, true);
-  driveSync(-22, true);
+  driveSync(-19, true);
 
-  turnSync(-120);
-  driveSync(48.5, true);
+  turnSync(-118);
+  driveSync(50, true);
   pros::delay(150);
   toggleIntake(true);
   pros::delay(100);
 
   driveSync(-35, true);
-  turnSync(90);
+  turnSync(75);
 
   pros::delay(100);
   toggleIntake(false);
-  driveSync(55, true);
+  driveSync(35, true);
+  driveSync(-20, true);
+
+  turnSync(300);
+  driveSync(50, true);
+  pros::delay(400);
+  toggleIntake(true);
+  driveSync(-31, true);
+  turnSync(90);
+  toggleIntake(false);
+  wings.open();
+  driveSync(50, true);
+  wings.close();
   driveSync(-20, true);
 
   //driveSync(100, true);
@@ -49,32 +61,24 @@ void near_side() {
 
 void far_side() {
   toggleIntake(true);
-  driveSync(100, true);
-  turnSync(-90);
-  
-  toggleIntake(false);
-  pros::delay(250);
-  driveSync(31, true);
-  driveSync(-30, true);
-
-  turnSync(-160);
-  driveSync(125, true);
+  wings.open();
   pros::delay(1000);
-  driveSync(-35, true);
-
-  turnSync(55);
-  driveSync(70, true);
-
+  turnSync(-180);
 }
+
+// void far_side() {
+//   driveSync(20, true);
+//   rightSwing(25);
+//   chassis.wait_drive();
+  
+// }
 
 void skills() {
   
 }
 
 void test_seq() {
-  driveSync(10, true);
-  turnSync(90);
-  turnSync(90);
+  driveSync(20, true);
 }
 
 void odom_test() {

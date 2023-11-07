@@ -1,7 +1,7 @@
 #include "main.h"
 
 #define DRIVE_SPEED 110
-#define TURN_SPEED 90
+#define TURN_SPEED 127
 #define SWING_SPEED 90
 // R1 -> WINGS, L1 -> CATA, L2 -> PTO, R2 -> INTAKE
 // Renu's control preferences
