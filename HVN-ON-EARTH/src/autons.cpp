@@ -35,35 +35,43 @@ void near_side() {
   toggleIntake(true);
   pros::delay(100);
 
-  driveSync(-35, true);
+  driveSync(-28, true);
   turnSync(75);
 
   pros::delay(100);
   toggleIntake(false);
   driveSync(35, true);
-  driveSync(-20, true);
+  driveSync(-35, true);
 
-  turnSync(300);
-  driveSync(50, true);
+  turnSync(313);
+  driveSync(40, true);
   pros::delay(400);
   toggleIntake(true);
-  driveSync(-31, true);
+  driveSync(-2, true);
+  setTurnScale(0.75);
   turnSync(90);
   toggleIntake(false);
   wings.open();
-  driveSync(50, true);
+  driveSync(55, true);
   wings.close();
   driveSync(-20, true);
 
   //driveSync(100, true);
-  
 }
 
 void far_side() {
-  toggleIntake(true);
   wings.open();
-  pros::delay(1000);
-  turnSync(-180);
+  toggleIntake(true);
+  driveSync(30, true);
+  wings.close();
+  turnSync(40);
+  toggleIntake(false);
+  driveSync(35, true);
+  driveSync(-10, true);
+  turnSync(135);
+  driveSync(90, true);
+  wings.open();
+  turnSync(120);
 }
 
 // void far_side() {
@@ -74,14 +82,13 @@ void far_side() {
 // }
 
 void skills() {
-  
+  toggleIntake(true);
+  driveSync(30, true);
+  toggleIntake(false);
+  turnSync(45);
+  driveSync(35, true);
+  driveSync(-35, true);
+  turnSync(-60);
+  driveSync(10, true);
+  wings.open();
 }
-
-void test_seq() {
-  driveSync(20, true);
-}
-
-void odom_test() {
-  chassis_odom.moveTo(10, 10, 1000);
-  chassis_odom.turnTo(15, 15, 1000);
-};

@@ -49,7 +49,7 @@
 
 #include "asset.h"
 #include "gif-pros/gifclass.hpp"
-//#include "okapi/api.hpp"
+#include "okapi/api.hpp"
 //#include "pros/api_legacy.h"
 
 /**
