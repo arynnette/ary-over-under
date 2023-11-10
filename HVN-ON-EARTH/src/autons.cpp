@@ -74,13 +74,6 @@ void far_side() {
   turnSync(120);
 }
 
-// void far_side() {
-//   driveSync(20, true);
-//   rightSwing(25);
-//   chassis.wait_drive();
-  
-// }
-
 void skills() {
   toggleIntake(true);
   driveSync(30, true);
