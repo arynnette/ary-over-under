@@ -1,6 +1,7 @@
 #pragma once
 
 #include "ary-lib/drive/drive.hpp"
+#include "main.h"
 
 void near_side();
 void far_side();

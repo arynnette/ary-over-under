@@ -12,4 +12,3 @@ file, You can obtain one at http://mozilla.org/MPL/2.0/.
 #include "ary-lib/drive/drive.hpp"
 #include "ary-lib/autonselector.hpp"
 #include "ary-lib/util.hpp"
-#include "ary-lib/Timer.h"

@@ -11,6 +11,7 @@
 #define RENU_LEFT_WING_CONTROL DIGITAL_LEFT
 #define RENU_RIGHT_WING_CONTROL DIGITAL_RIGHT
 #define RENU_WING_CONTROL DIGITAL_L2
+#define RENU_CLIMB_CONTROL DIGITAL_A
 
 // Ria's control preferences
 #define RIA_PTO_TOGGLE DIGITAL_LEFT
@@ -50,13 +51,14 @@ namespace superstruct {
 
     //- Structure methods
     void intakeControl(pros::controller_digital_e_t intakeButton);
-    void togglePto();
+    void togglePto(bool toggle);
     void runCata(double inpt);
     void runAntiBlock(double inpt);
     void subsysControl(pros::controller_digital_e_t ptoToggleButton, pros::controller_digital_e_t cataRunButton);
     void wingsControl();
     void wingsControlSingle(pros::controller_digital_e_t wingControlButton);
     void wingsControlComplex(pros::controller_analog_e_t leftWingButton, pros::controller_analog_e_t rightWingButton, pros::controller_analog_e_t wingButton);
+    void climbControl(pros::controller_digital_e_t climbButton);
 
     //More methods
     void toggleIntake(bool val);

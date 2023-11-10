@@ -75,7 +75,7 @@ void far_side() {
   toggleIntake(true); // Secure preload triball
 
   // Drive forward to removal match load triball with wings, close wings immediately
-  driveSync(30, true); 
+  driveSync(30, true);
   wings.close();
 
   //Score the preload
@@ -101,4 +101,14 @@ void skills() {
   turnSync(-60);
   driveSync(10, true);
   wings.open();
+
+  togglePto(true);
+  timer.reset();
+  while (timer.getElapsedTimeMS() < 30000) {
+    runCata(-12000);
+  }
+  runCata(0);
+  togglePto(false);
+
+  wings.close();
 }

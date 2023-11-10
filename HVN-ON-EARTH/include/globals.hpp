@@ -2,6 +2,7 @@
 
 #include "main.h"
 #include "Wings.h"
+#include "Timer.h"
 
 #define TRACK_WIDTH 11.5
 #define PLACEHOLDER_TC_OFFSET 2.5
@@ -44,9 +45,10 @@ namespace globals {
 
     extern pros::ADIDigitalOut intake_piston;
 
-    extern pros::ADIDigitalOut doinker_piston;
+    extern pros::ADIDigitalOut climb_piston;
 
     extern Wings wings;
+    extern Timer timer;
 
     extern lemlib::TrackingWheel vert_tracking_wheel;
     extern lemlib::TrackingWheel horiz_tracking_wheel;

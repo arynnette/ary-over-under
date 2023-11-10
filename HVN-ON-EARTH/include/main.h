@@ -46,6 +46,7 @@
 #include "superstructure.hpp"
 #include "autons.hpp"
 #include "wings.h"
+#include "Timer.h"
 
 #include "asset.h"
 #include "gif-pros/gifclass.hpp"

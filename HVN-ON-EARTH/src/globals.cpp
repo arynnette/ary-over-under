@@ -37,9 +37,10 @@ namespace globals {
 
     pros::ADIDigitalOut intake_piston('D');
 
-    //pros::ADIDigitalOut doinker_piston('E');
+    pros::ADIDigitalOut climb_piston('B'); 
 
     Wings wings;
+    Timer timer;
 
     pros::Imu inertial_sensor(18);
 

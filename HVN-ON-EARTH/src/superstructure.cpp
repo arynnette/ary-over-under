@@ -221,10 +221,23 @@ namespace superstruct {
 
     if (globals::master.get_digital(DIGITAL_UP)) {
       runAntiBlock(-12000);
-    } else if (globals::master.get_digital(DIGITAL_UP)) {
+    } else if (globals::master.get_digital(DIGITAL_LEFT)) {
       runAntiBlock(12000);
     } else {
       runAntiBlock(0);
+    }
+  }
+
+  int climb_state = 0;
+  void climbControl(pros::controller_digital_e_t climbButton) {
+    if (globals::master.get_digital_new_press(climbButton)) {
+      if (climb_state == 0) {
+        climb_piston.set_value(1);
+        climb_state = 1;
+      } else if (climb_state == 1) {
+        climb_piston.set_value(0);
+        climb_state = 0;
+      }
     }
   }
 
@@ -255,6 +268,7 @@ namespace superstruct {
     subsysControl(RENU_PTO_TOGGLE, RENU_CATA_CONTROL);
     wingsControlSingle(RENU_WING_CONTROL);
     intakeControl(RENU_INTAKE_CONTROL);
+    climbControl(RENU_CLIMB_CONTROL);
   }
   
   void ria_control() {

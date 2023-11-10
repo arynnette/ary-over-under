@@ -1,4 +1,5 @@
-#include "ary-lib/Timer.h"
+#include "main.h"
+#include "Timer.h"
 
 Timer::Timer() {
     start = pros::millis();
