@@ -22,7 +22,7 @@ namespace globals {
     pros::Motor motor_blf(2, MOTOR_GEARSET_06, true);
     pros::Motor motor_tlb(5, MOTOR_GEARSET_06, false);
     pros::Motor motor_trf(16, MOTOR_GEARSET_06, true);
-    pros::Motor motor_trb(3, MOTOR_GEARSET_06, true);
+    pros::Motor motor_trb(3, MOTOR_GEARSET_06, true); // cata running
     pros::Motor motor_brf(1, MOTOR_GEARSET_06, false);
     pros::Motor motor_brb(4, MOTOR_GEARSET_06, false);
 

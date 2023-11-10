@@ -190,12 +190,22 @@ namespace superstruct {
 
   void runCata(double inpt) {
     if (!ptoEnabled) return;
-    cata_left = inpt;
+    //cata_left = inpt;
     cata_right = inpt;
   }
 
+  void runAntiBlock(double inpt) {
+    if (!ptoEnabled) return;
+    cata_left = inpt;
+  }
+
+  /*
+    TODO:
+      - Make anti block passable button
+  */
+
   int lock = 0;
-  void cataControl(pros::controller_digital_e_t ptoToggleButton, pros::controller_digital_e_t cataRunButton) {
+  void subsysControl(pros::controller_digital_e_t ptoToggleButton, pros::controller_digital_e_t cataRunButton) {
     if (globals::master.get_digital(ptoToggleButton) && lock == 0) { // If the PTO button has been pressed and the PTO is not engaged
       togglePto(!ptoEnabled); // Toggle the PTO so that cataput is useable
       lock = 1;
@@ -208,6 +218,14 @@ namespace superstruct {
 		} else {
 			runCata(0);
 		}
+
+    if (globals::master.get_digital(DIGITAL_UP)) {
+      runAntiBlock(-12000);
+    } else if (globals::master.get_digital(DIGITAL_UP)) {
+      runAntiBlock(12000);
+    } else {
+      runAntiBlock(0);
+    }
   }
 
   void wingsControlSingle(pros::controller_digital_e_t wingControlButton) {
@@ -234,19 +252,19 @@ namespace superstruct {
   */
 
   void renu_control() {
-    cataControl(RENU_PTO_TOGGLE, RENU_CATA_CONTROL);
+    subsysControl(RENU_PTO_TOGGLE, RENU_CATA_CONTROL);
     wingsControlSingle(RENU_WING_CONTROL);
     intakeControl(RENU_INTAKE_CONTROL);
   }
   
   void ria_control() {
-    cataControl(RIA_PTO_TOGGLE, RIA_CATA_CONTROL);
+    subsysControl(RIA_PTO_TOGGLE, RIA_CATA_CONTROL);
     wingsControlSingle(RIA_WINGS_CONTROL);
     intakeControl(RIA_INTAKE_CONTROL);
   }
 
   void chris_control() {
-    cataControl(RENU_PTO_TOGGLE, RENU_CATA_CONTROL);
+    subsysControl(RENU_PTO_TOGGLE, RENU_CATA_CONTROL);
     wingsControlSingle(RENU_WING_CONTROL);
     intakeControl(RENU_INTAKE_CONTROL);
   }

@@ -51,8 +51,9 @@ namespace superstruct {
     //- Structure methods
     void intakeControl(pros::controller_digital_e_t intakeButton);
     void togglePto();
-    void runCata();
-    void cataControl(pros::controller_digital_e_t ptoToggleButton, pros::controller_digital_e_t cataRunButton);
+    void runCata(double inpt);
+    void runAntiBlock(double inpt);
+    void subsysControl(pros::controller_digital_e_t ptoToggleButton, pros::controller_digital_e_t cataRunButton);
     void wingsControl();
     void wingsControlSingle(pros::controller_digital_e_t wingControlButton);
     void wingsControlComplex(pros::controller_analog_e_t leftWingButton, pros::controller_analog_e_t rightWingButton, pros::controller_analog_e_t wingButton);
