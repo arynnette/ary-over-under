@@ -30,7 +30,7 @@ void near_side() {
   turnSync(90);
 
   toggleIntake(false);
-  pros::delay(50);
+  pros::delay(125);
   driveSync(22, true);
   driveSync(-19, true);
 
@@ -88,7 +88,7 @@ void far_side() {
   turnSync(135);
   driveSync(90, true);
   wings.open(); // Open our wings as they are being used to contact the bar
-  turnSync(120); // Turn slightly to guarantee contact
+  turnSync(120);
 }
 
 void skills() {
@@ -103,12 +103,19 @@ void skills() {
   wings.open();
 
   togglePto(true);
+  pros::delay(100);
   timer.reset();
-  while (timer.getElapsedTimeMS() < 30000) {
-    runCata(-12000);
+  while (timer.getElapsedTimeMS() < 35000) {
+    motor_trb.move_voltage(-12000);
   }
-  runCata(0);
+  motor_trb.move_voltage(0); // i hate my life
   togglePto(false);
 
   wings.close();
+
+  driveSync(-35, true); 
+  turnSync(10);
+  driveSync(-40, true);
+  turnSync(45);
+  driveSync(125, true);
 }
