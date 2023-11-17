@@ -165,38 +165,37 @@ namespace superstruct {
   }
 
   // Structure methods
-  void intakeControl(pros::controller_digital_e_t intakeButton) {
-    if (globals::master.get_digital_new_press(intakeButton)) {
-      if (intakeEngaged == false) {
-        intake_piston.set_value(1);
-        intakeEngaged = true;
-      } else if (intakeEngaged == true) {
-        intake_piston.set_value(0);
-        intakeEngaged = false;
-      }
-    }
-  }
+  // void intakeControl(pros::controller_digital_e_t intakeButton) {
+  //   if (globals::master.get_digital_new_press(intakeButton)) {
+  //     if (intakeEngaged == false) {
+  //       intake_piston.set_value(1);
+  //       intakeEngaged = true;
+  //     } else if (intakeEngaged == true) {
+  //       intake_piston.set_value(0);
+  //       intakeEngaged = false;
+  //     }
+  //   }
+  // }
 
   void togglePto(bool toggle) {
     ptoEnabled = toggle;
-    chassis.pto_toggle({cata_left, cata_right}, toggle); // Configure the listed PTO motors to whatever value toggle is.
+    chassis.pto_toggle({intake_mtr, cata_mtr}, toggle); // Configure the listed PTO motors to whatever value toggle is.
     pto_piston.set_value(toggle);
 
     if (toggle) {
-      cata_left.set_brake_mode(MOTOR_BRAKE_COAST);
-      cata_right.set_brake_mode(MOTOR_BRAKE_COAST);
+      intake_mtr.set_brake_mode(MOTOR_BRAKE_COAST);
+      cata_mtr.set_brake_mode(MOTOR_BRAKE_COAST);
     }
   }
 
   void runCata(double inpt) {
     if (!ptoEnabled) return;
-    //cata_left = inpt;
-    cata_right = inpt;
+    cata_mtr = inpt;
   }
 
-  void runAntiBlock(double inpt) {
+  void runIntake(double inpt) {
     if (!ptoEnabled) return;
-    cata_left = inpt;
+    intake_mtr = inpt;
   }
 
   /*
@@ -205,7 +204,7 @@ namespace superstruct {
   */
 
   int lock = 0;
-  void subsysControl(pros::controller_digital_e_t ptoToggleButton, pros::controller_digital_e_t cataRunButton) {
+  void subsysControl(pros::controller_digital_e_t ptoToggleButton, pros::controller_digital_e_t cataRunButton, pros::controller_digital_e_t intakeButton, pros::controller_digital_e_t outtakeButton) {
     if (globals::master.get_digital(ptoToggleButton) && lock == 0) { // If the PTO button has been pressed and the PTO is not engaged
       togglePto(!ptoEnabled); // Toggle the PTO so that cataput is useable
       lock = 1;
@@ -219,12 +218,12 @@ namespace superstruct {
 			runCata(0);
 		}
 
-    if (globals::master.get_digital(DIGITAL_UP)) {
-      runAntiBlock(-12000);
-    } else if (globals::master.get_digital(DIGITAL_LEFT)) {
-      runAntiBlock(12000);
+    if (globals::master.get_digital(intakeButton)) {
+      runIntake(-12000);
+    } else if (globals::master.get_digital(outtakeButton)) {
+      runIntake(12000);
     } else {
-      runAntiBlock(0);
+      runIntake(-1000);
     }
   }
 
@@ -265,21 +264,21 @@ namespace superstruct {
   */
 
   void renu_control() {
-    subsysControl(RENU_PTO_TOGGLE, RENU_CATA_CONTROL);
+    subsysControl(RENU_PTO_TOGGLE, RENU_CATA_CONTROL, RENU_INTAKE_CONTROL_INTAKE, RENU_INTAKE_CONTROL_OUTTAKE);
     wingsControlSingle(RENU_WING_CONTROL);
-    intakeControl(RENU_INTAKE_CONTROL);
+    //intakeControl(RENU_INTAKE_CONTROL);
     climbControl(RENU_CLIMB_CONTROL);
   }
   
   void ria_control() {
-    subsysControl(RIA_PTO_TOGGLE, RIA_CATA_CONTROL);
-    wingsControlSingle(RIA_WINGS_CONTROL);
-    intakeControl(RIA_INTAKE_CONTROL);
+    // subsysControl(RIA_PTO_TOGGLE, RIA_CATA_CONTROL);
+    // wingsControlSingle(RIA_WINGS_CONTROL);
+    //intakeControl(RIA_INTAKE_CONTROL);
   }
 
   void chris_control() {
-    subsysControl(RENU_PTO_TOGGLE, RENU_CATA_CONTROL);
+    subsysControl(RENU_PTO_TOGGLE, RENU_CATA_CONTROL, RENU_INTAKE_CONTROL_INTAKE, RENU_INTAKE_CONTROL_OUTTAKE);
     wingsControlSingle(RENU_WING_CONTROL);
-    intakeControl(RENU_INTAKE_CONTROL);
+    //intakeControl(RENU_INTAKE_CONTROL);
   }
 }

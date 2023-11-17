@@ -57,8 +57,8 @@ namespace globals {
 
     extern Drive chassis;
 
-    extern pros::Motor& cata_left;
-    extern pros::Motor& cata_right;
+    extern pros::Motor& intake_mtr;
+    extern pros::Motor& cata_mtr;
 
     enum e_controlsch {
         RENU,

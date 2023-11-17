@@ -91,6 +91,6 @@ namespace globals {
     
     lemlib::Chassis chassis_odom(dt_odom, latController, angController, chassis_sensors);
 
-    pros::Motor& cata_left = chassis.left_motors[3];
-    pros::Motor& cata_right = chassis.right_motors[3];
+    pros::Motor& intake_mtr = chassis.left_motors[3];
+    pros::Motor& cata_mtr = chassis.right_motors[3];
 }
