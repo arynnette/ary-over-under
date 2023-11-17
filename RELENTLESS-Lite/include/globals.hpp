@@ -20,14 +20,10 @@ namespace globals {
     extern pros::Motor_Group left_drive;
     extern pros::Motor_Group right_drive;
 
-    extern lemlib::Drivetrain_t chassis_odom;
+    extern lemlib::Drivetrain drivetrain;
+    extern lemlib::linearController;
+    extern lemlib::angularController;
+    extern lemlib::sensors;
+    extern lemlib::Chassis chassis;
     extern Drive chassisRight;
     extern Drive chassisLeft;
-
-    extern pros::Motor cata_left;
-    extern pros::Motor cata_right;
-
-    extern pros::Rotation enc_left;
-    extern pros::Rotation enc_right;
-    extern pros::Rotation enc_theta;
-}

@@ -19,14 +19,6 @@ namespace globals {
         Two seperate drivetrains, chassis 
     */
 
-    lemlib::Drivetrain_t chassis_odom {
-        &left_drive,
-        &right_drive,
-        TRACK_WIDTH,
-        WHEEL_SIZE, 
-        DRIVE_RPM
-    };
-
     Drive chassisLeft(
         {-20, -17, 8},
         {12, 1, -4},
@@ -45,15 +37,43 @@ namespace globals {
         0.75
     );
 
-    // pros::Motor cata_left(15, MOTOR_GEAR_100, true);
-    // pros::Motor cata_right(13, MOTOR_GEAR_100, false);
+    lemlib::Drivetrain drivetrain(&leftMotors, // left motor group
+        &rightMotors, // right motor group
+        10, // 10 inch track width
+        lemlib::Omniwheel::NEW_325, // using new 3.25" omnis
+        360, // drivetrain rpm is 360
+        2 // chase power is 2. If we had traction wheels, it would have been 8
+    );
 
-    
-    // Electronics / Pneumatics / Sensors
-    // pros::Rotation enc_left();
-    // pros::Rotation enc_right();
-    // pros::Rotation enc_theta();
+    // lateral motion controller
+    lemlib::ControllerSettings linearController(10, // proportional gain (kP)
+        30, // derivative gain (kD)
+        1, // small error range, in inches
+        100, // small error range timeout, in milliseconds
+        3, // large error range, in inches
+        500, // large error range timeout, in milliseconds
+        20 // maximum acceleration (slew)
+    );
 
-    // Misc
+    // angular motion controller
+    lemlib::ControllerSettings angularController(2, // proportional gain (kP)
+        10, // derivative gain (kD)
+        1, // small error range, in degrees
+        100, // small error range timeout, in milliseconds
+        3, // large error range, in degrees
+        500, // large error range timeout, in milliseconds
+        20 // maximum acceleration (slew)
+    );
 
+// sensors for odometry
+// note that in this example we use internal motor encoders, so we don't pass vertical tracking wheels
+    lemlib::OdomSensors sensors(nullptr, // vertical tracking wheel 1, set to nullptr as we don't have one
+        nullptr, // vertical tracking wheel 2, set to nullptr as we don't have one
+        &horizontal, // horizontal tracking wheel 1
+        nullptr, // horizontal tracking wheel 2, set to nullptr as we don't have a second one
+        &imu // inertial sensor
+    );
+
+    // create the chassis
+    lemlib::Chassis chassis(drivetrain, linearController, angularController, sensors);
 }
