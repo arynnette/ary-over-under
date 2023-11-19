@@ -19,12 +19,11 @@ pros::MotorGroup leftMotors({lF, lM, lB}); // left motor group
 pros::MotorGroup rightMotors({rF, rM, rB}); // right motor group
 
 // Inertial Sensor on port 11
-pros::Imu imu(12);
+pros::Imu imu(21);
 
 // tracking wheels
-pros::Rotation horizontalEnc(4);
-// horizontal tracking wheel. 2.75" diameter, 3.7" offset, back of the robot
-lemlib::TrackingWheel horizontal(&horizontalEnc, lemlib::Omniwheel::NEW_275, -3.7);
+//pros::Rotation horizontalEnc(4);
+// horizontal tracking wheel. 2.75" diameter, 3.7" offset, back of the robot;
 
 // drivetrain settings
 lemlib::Drivetrain drivetrain(&leftMotors, // left motor group
@@ -59,7 +58,7 @@ lemlib::ControllerSettings angularController(2, // proportional gain (kP)
 // note that in this example we use internal motor encoders, so we don't pass vertical tracking wheels
 lemlib::OdomSensors sensors(nullptr, // vertical tracking wheel 1, set to nullptr as we don't have one
                             nullptr, // vertical tracking wheel 2, set to nullptr as we don't have one
-                            &horizontal, // horizontal tracking wheel 1
+                            nullptr, // horizontal tracking wheel 1
                             nullptr, // horizontal tracking wheel 2, set to nullptr as we don't have a second one
                             &imu // inertial sensor
 );
