@@ -17,14 +17,14 @@ namespace globals {
         {-16, 1, 4, -3}, -> right
     */
 
-    pros::Motor motor_tlf(12, MOTOR_GEARSET_06, false);
-    pros::Motor motor_blb(6, MOTOR_GEARSET_06, true);
-    pros::Motor motor_blf(2, MOTOR_GEARSET_06, true);
-    pros::Motor motor_tlb(5, MOTOR_GEARSET_06, false);
-    pros::Motor motor_trf(16, MOTOR_GEARSET_06, true);
-    pros::Motor motor_trb(3, MOTOR_GEARSET_06, true); // cata running
-    pros::Motor motor_brf(1, MOTOR_GEARSET_06, false);
-    pros::Motor motor_brb(4, MOTOR_GEARSET_06, false);
+    pros::Motor motor_tlf(14, MOTOR_GEARSET_06, false);
+    pros::Motor motor_blb(9, MOTOR_GEARSET_06, true);
+    pros::Motor motor_blf(3, MOTOR_GEARSET_06, true);
+    pros::Motor motor_tlb(7, MOTOR_GEARSET_06, false);
+    pros::Motor motor_trf(15, MOTOR_GEARSET_06, true);
+    pros::Motor motor_trb(6, MOTOR_GEARSET_06, true); // cata running
+    pros::Motor motor_brf(12, MOTOR_GEARSET_06, false);
+    pros::Motor motor_brb(5, MOTOR_GEARSET_06, false);
 
     pros::Motor_Group left_drive({ motor_tlf, motor_tlb, motor_blf, motor_blb });
     pros::Motor_Group right_drive({ motor_trf, motor_trb, motor_brf, motor_brb });
@@ -42,7 +42,7 @@ namespace globals {
     Wings wings;
     Timer timer;
 
-    pros::Imu inertial_sensor(18);
+    pros::Imu inertial_sensor(11);
 
     lemlib::Drivetrain_t dt_odom {
         &left_drive,
