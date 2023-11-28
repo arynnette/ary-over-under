@@ -63,7 +63,7 @@ void autonomous() {
 }
 
 void opcontrol() {
-	//Gif gif(chip_gif, lv_scr_act());
+	Gif gif(chip_gif, lv_scr_act());
 	disableActiveBrake();
 	opControlInit(); // Configure the chassis for driver control
 

@@ -36,9 +36,6 @@
 
 #include "api.h"
 
-/**
- * You should add more #includes here
- */
 #include "ary-lib/api.hpp"
 #include "lemlib/api.hpp"
 
@@ -48,9 +45,13 @@
 #include "wings.h"
 #include "Timer.h"
 
-#include "asset.h"
 #include "gif-pros/gifclass.hpp"
 #include "okapi/api.hpp"
+
+/**
+ * You should add more #includes here
+ */
+//#include "okapi/api.hpp"
 //#include "pros/api_legacy.h"
 
 /**
