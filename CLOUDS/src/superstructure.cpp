@@ -212,11 +212,6 @@ namespace superstruct {
     }
   }
 
-  void toggleIntake(bool val) {
-    int valTo = (val == true) ? 1 : 0;
-    intake_piston.set_value(valTo);
-  }
-
   /*
     Controls -> For whoever is controlling the robot
   */
