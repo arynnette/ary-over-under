@@ -60,6 +60,5 @@ namespace superstruct {
     /* Controls */
     void renu_control();
     void ria_control();
-    void chris_control();
-    
+    void chris_control();  
 }
