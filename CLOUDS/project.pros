@@ -1,46 +1,9 @@
 {
     "py/object": "pros.conductor.project.Project",
     "py/state": {
-        "project_name": "HVN-ON-EARTH",
+        "project_name": "CLOUDS",
         "target": "v5",
         "templates": {
-            "LemLib": {
-                "location": "C:\\Users\\cjans\\AppData\\Roaming\\PROS\\templates\\LemLib@0.5.0-rc1",
-                "metadata": {
-                    "origin": "local"
-                },
-                "name": "LemLib",
-                "py/object": "pros.conductor.templates.local_template.LocalTemplate",
-                "supported_kernels": "^3.8.0",
-                "system_files": [
-                    "include\\lemlib\\pose.hpp",
-                    "include\\lemlib\\logger\\baseSink.hpp",
-                    "include\\lemlib\\logger\\stdout.hpp",
-                    "include\\lemlib\\logger\\logger.hpp",
-                    "include\\fmt\\args.h",
-                    "static\\example.txt",
-                    "include\\lemlib\\pid.hpp",
-                    "firmware\\LemLib.a",
-                    "include\\lemlib\\logger\\message.hpp",
-                    "include\\lemlib\\timer.hpp",
-                    "include\\fmt\\core.h",
-                    "include\\lemlib\\chassis\\chassis.hpp",
-                    "firmware\\asset.mk",
-                    "include\\fmt\\format.h",
-                    "include\\lemlib\\logger\\telemetrySink.hpp",
-                    "include\\lemlib\\chassis\\trackingWheel.hpp",
-                    "include\\lemlib\\asset.hpp",
-                    "include\\lemlib\\logger\\buffer.hpp",
-                    "include\\lemlib\\chassis\\odom.hpp",
-                    "include\\fmt\\format-inl.h",
-                    "include\\lemlib\\api.hpp",
-                    "include\\lemlib\\logger\\infoSink.hpp",
-                    "include\\lemlib\\util.hpp"
-                ],
-                "target": "v5",
-                "user_files": [],
-                "version": "0.5.0-rc1"
-            },
             "kernel": {
                 "location": "C:\\Users\\cjans\\AppData\\Roaming\\PROS\\templates\\kernel@3.8.0",
                 "metadata": {
@@ -345,9 +308,6 @@
                 "version": "4.8.0"
             }
         },
-        "upload_options": {
-            "description": "rip relentless </3",
-            "icon": "X"
-        }
+        "upload_options": {}
     }
 }
