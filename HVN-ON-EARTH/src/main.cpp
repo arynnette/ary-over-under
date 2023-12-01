@@ -6,9 +6,6 @@
 
 #include "main.h"
 
-ASSET(chip_gif)
-ASSET(romantical_gif)
-
 using namespace globals;
 using namespace superstruct;
 
@@ -64,7 +61,6 @@ void autonomous() {
 }
 
 void opcontrol() {
-	//Gif gif(romantical_gif, lv_scr_act());
 	disableActiveBrake();
 	opControlInit(); // Configure the chassis for driver control
 

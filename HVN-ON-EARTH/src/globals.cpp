@@ -81,8 +81,8 @@ namespace globals {
     };
 
     Drive chassis(
-        {-2, -6, 12, 5},
-        {-16, 1, 4, -3},
+        {14, -9, -3, 7},
+        {-15, 12, 5, -6},
         18,
         WHEEL_SIZE,
         600,

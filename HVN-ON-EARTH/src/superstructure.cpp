@@ -223,7 +223,7 @@ namespace superstruct {
     } else if (globals::master.get_digital(outtakeButton)) {
       runIntake(12000);
     } else {
-      runIntake(-1000);
+      runIntake(-25);
     }
   }
 
