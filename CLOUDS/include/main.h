@@ -36,9 +36,14 @@
 
 #include "api.h"
 
-/**
- * You should add more #includes here
- */
+#include "ary-lib/api.hpp"
+#include "lemlib/api.hpp"
+#include "globals.hpp"
+#include "superstructure.hpp"
+#include "autons.hpp"
+#include "Wings.h"
+#include "Timer.h"
+
 //#include "okapi/api.hpp"
 //#include "pros/api_legacy.h"
 
