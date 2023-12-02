@@ -3,9 +3,8 @@
 using namespace ary;
 using namespace globals;
 
-bool ptoEnabled = false;
+bool ptoEnabled = true;
 bool wingsOpen = false;
-bool intakeEngaged = false;
 
 /*
   SCALE SPEEDS: Determines what percentage speeds of autonomous movements should move at
@@ -166,7 +165,7 @@ namespace superstruct {
     intake_mtr = inpt;
   }
 
-  int lock = 0;
+  int lock = 1;
   void subsysControl(pros::controller_digital_e_t ptoToggleButton, pros::controller_digital_e_t cataRunButton, pros::controller_digital_e_t intakeButton, pros::controller_digital_e_t outtakeButton) {
     if (globals::master.get_digital(ptoToggleButton) && lock == 0) { // If the PTO button has been pressed and the PTO is not engaged
       togglePto(!ptoEnabled); // Toggle the PTO so that cataput is useable
@@ -190,19 +189,6 @@ namespace superstruct {
     }
   }
 
-  int climb_state = 0;
-  void climbControl(pros::controller_digital_e_t climbButton) {
-    if (globals::master.get_digital_new_press(climbButton)) {
-      if (climb_state == 0) {
-        climb_piston.set_value(1);
-        climb_state = 1;
-      } else if (climb_state == 1) {
-        climb_piston.set_value(0);
-        climb_state = 0;
-      }
-    }
-  }
-
   void wingsControl(pros::controller_digital_e_t wingControlButton) {
     if (globals::master.get_digital_new_press(wingControlButton)) {
       if (wings.getState() == 0) // A value of 0 indicates that both wings are closed
@@ -218,13 +204,11 @@ namespace superstruct {
   void renu_control() {
     subsysControl(RENU_PTO_TOGGLE, RENU_CATA_CONTROL, RENU_INTAKE_CONTROL_INTAKE, RENU_INTAKE_CONTROL_OUTTAKE);
     wingsControl(RENU_WING_CONTROL);
-    climbControl(RENU_CLIMB_CONTROL);
   }
   
   void ria_control() {
     subsysControl(RENU_PTO_TOGGLE, RENU_CATA_CONTROL, RENU_INTAKE_CONTROL_INTAKE, RENU_INTAKE_CONTROL_OUTTAKE);
     wingsControl(RENU_WING_CONTROL);
-    climbControl(RENU_CLIMB_CONTROL);
   }
 
   void chris_control() {

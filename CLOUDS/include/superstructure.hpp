@@ -5,14 +5,11 @@
 #define SWING_SPEED 90
 // R1 -> WINGS, L1 -> CATA, L2 -> PTO, R2 -> INTAKE
 // Renu's control preferences
-#define RENU_PTO_TOGGLE DIGITAL_R2
-#define RENU_CATA_CONTROL DIGITAL_R1
+#define RENU_PTO_TOGGLE DIGITAL_R1
+#define RENU_CATA_CONTROL DIGITAL_A
 #define RENU_INTAKE_CONTROL_INTAKE DIGITAL_L1
-#define RENU_INTAKE_CONTROL_OUTTAKE DIGITAL_B
-#define RENU_LEFT_WING_CONTROL DIGITAL_LEFT
-#define RENU_RIGHT_WING_CONTROL DIGITAL_RIGHT
-#define RENU_WING_CONTROL DIGITAL_L2
-#define RENU_CLIMB_CONTROL DIGITAL_A
+#define RENU_INTAKE_CONTROL_OUTTAKE DIGITAL_L2
+#define RENU_WING_CONTROL DIGITAL_R2
 
 // Ria's control preferences
 #define RIA_PTO_TOGGLE DIGITAL_LEFT
@@ -55,7 +52,6 @@ namespace superstruct {
     void runAntiBlock(double inpt);
     void subsysControl(pros::controller_digital_e_t ptoToggleButton, pros::controller_digital_e_t cataRunButton, pros::controller_digital_e_t intakeButton, pros::controller_digital_e_t outtakeButton);
     void wingsControl(pros::controller_digital_e_t wingControlButton);
-    void climbControl(pros::controller_digital_e_t climbButton);
 
     /* Controls */
     void renu_control();
