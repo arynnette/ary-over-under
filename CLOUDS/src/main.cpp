@@ -24,8 +24,8 @@ void initialize() {
 	*/
 	ary::autonselector::auton_selector.add_autons({
 		Auton("Far side \n\nFar from alliance goal", near_side),
-		Auton("Far side (far from alliance goal) \n\nTo run when far from alliance GOAL", far_side),
-		Auton("Skills \n\ncloudabunga ", skills)
+		Auton("Near side (far from alliance goal) \n\nCLOSE TO ALLIANCE GOAL", far_side),
+		Auton("Skills \n\ncloudabunga", skills)
 	});
 
 	motorsCoast();
