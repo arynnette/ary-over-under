@@ -7,12 +7,12 @@
 pros::Controller controller(pros::E_CONTROLLER_MASTER);
 
 // drive motors
-pros::Motor lF(-20, pros::E_MOTOR_GEARSET_06); // left front motor. port 8, reversed
-pros::Motor lM(10, pros::E_MOTOR_GEARSET_06); // left middle motor. port 20, reversed
-pros::Motor lB(-9, pros::E_MOTOR_GEARSET_06); // left back motor. port 19
-pros::Motor rF(12, pros::E_MOTOR_GEARSET_06); // right front motor. port 2
-pros::Motor rM(-17, pros::E_MOTOR_GEARSET_06); // right middle motor. port 11
-pros::Motor rB(-13, pros::E_MOTOR_GEARSET_06); // right back motor. port 13, reversed
+pros::Motor lF(-9, pros::E_MOTOR_GEARSET_06); // left front motor. port 8, reversed
+pros::Motor lM(-7, pros::E_MOTOR_GEARSET_06); // left middle motor. port 20, reversed
+pros::Motor lB(8, pros::E_MOTOR_GEARSET_06); // left back motor. port 19
+pros::Motor rF(-4, pros::E_MOTOR_GEARSET_06); // right front motor. port 2
+pros::Motor rM(12, pros::E_MOTOR_GEARSET_06); // right middle motor. port 11
+pros::Motor rB(2, pros::E_MOTOR_GEARSET_06); // right back motor. port 13, reversed
 
 // motor groups
 pros::MotorGroup leftMotors({lF, lM, lB}); // left motor group
@@ -31,7 +31,7 @@ lemlib::Drivetrain drivetrain(&leftMotors, // left motor group
                               10, // 10 inch track width
                               lemlib::Omniwheel::NEW_275, // using new 3.25" omnis
                               450, // drivetrain rpm is 360
-                              8 // chase power is 2. If we had traction wheels, it would have been 8
+                              2 // chase power is 2. If we had traction wheels, it would have been 8
 );
 
 // lateral motion controller
@@ -121,8 +121,10 @@ ASSET(testingpath_txt);
  * This is an example autonomous routine which demonstrates a lot of the features LemLib has to offer
  */
 void autonomous() {
+    chassis.setPose(9.72, -59.062, 90, false);
     chassis.follow(testingpath_txt, 15, 4000);
     chassis.waitUntilDone();
+    pros::lcd::print(4, "pure pursuit finished!");
     
     // chassis.moveTo(20, 15, 90, 4000);
     
