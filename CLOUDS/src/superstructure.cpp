@@ -3,7 +3,7 @@
 using namespace ary;
 using namespace globals;
 
-bool ptoEnabled = true;
+bool ptoEnabled = false;
 bool wingsOpen = false;
 
 /*
@@ -157,15 +157,15 @@ namespace superstruct {
 
   void runCata(double inpt) {
     if (!ptoEnabled) return;
-    cata_mtr = inpt;
+    cata_mtr.move_voltage(inpt);
   }
 
   void runIntake(double inpt) {
     if (!ptoEnabled) return;
-    intake_mtr = inpt;
+    intake_mtr.move_voltage(inpt);
   }
 
-  int lock = 1;
+  int lock = 0;
   void subsysControl(pros::controller_digital_e_t ptoToggleButton, pros::controller_digital_e_t cataRunButton, pros::controller_digital_e_t intakeButton, pros::controller_digital_e_t outtakeButton) {
     if (globals::master.get_digital(ptoToggleButton) && lock == 0) { // If the PTO button has been pressed and the PTO is not engaged
       togglePto(!ptoEnabled); // Toggle the PTO so that cataput is useable
@@ -185,7 +185,7 @@ namespace superstruct {
     } else if (globals::master.get_digital(outtakeButton)) {
       runIntake(12000);
     } else {
-      runIntake(-25);
+      runIntake(0);
     }
   }
 

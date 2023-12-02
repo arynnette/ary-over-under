@@ -11,10 +11,11 @@ using namespace superstruct;
 */
 void near_side() {
   // Score the triball preload
-  
+  togglePto(true);
   // INTAKE PLACEHOLDER -> IN
+  runIntake(-12000);
   driveSync(90, true);
-  turnSync(90);
+turnSync(90);
 
   // INTAKE PLACERHOLDER -> OUT
   pros::delay(125);

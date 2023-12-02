@@ -19,7 +19,7 @@ namespace globals {
 
     pros::Motor motor_tlf(14, MOTOR_GEARSET_06, false);
     pros::Motor motor_blb(9, MOTOR_GEARSET_06, true);
-    pros::Motor motor_blf(3, MOTOR_GEARSET_06, true);
+    pros::Motor motor_blf(2, MOTOR_GEARSET_06, true);
     pros::Motor motor_tlb(7, MOTOR_GEARSET_06, false);
     pros::Motor motor_trf(15, MOTOR_GEARSET_06, true);
     pros::Motor motor_trb(6, MOTOR_GEARSET_06, true);
@@ -41,7 +41,7 @@ namespace globals {
     Timer timer;
 
     Drive chassis(
-        {14, -9, -3, 7},
+        {14, -9, -2, 7},
         {-15, 12, 5, -6},
         18,
         WHEEL_SIZE,

@@ -49,7 +49,7 @@ namespace superstruct {
     /* Structure */
     void togglePto(bool toggle);
     void runCata(double inpt);
-    void runAntiBlock(double inpt);
+    void runIntake(double inpt);
     void subsysControl(pros::controller_digital_e_t ptoToggleButton, pros::controller_digital_e_t cataRunButton, pros::controller_digital_e_t intakeButton, pros::controller_digital_e_t outtakeButton);
     void wingsControl(pros::controller_digital_e_t wingControlButton);
 
