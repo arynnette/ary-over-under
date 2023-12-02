@@ -148,9 +148,9 @@ void opcontrol() {
     while (true) {
         // get joystick positions
         int leftY = controller.get_analog(pros::E_CONTROLLER_ANALOG_LEFT_Y);
-        int rightX = controller.get_analog(pros::E_CONTROLLER_ANALOG_RIGHT_X);
+        int rightY = controller.get_analog(pros::E_CONTROLLER_ANALOG_RIGHT_Y);
         // move the chassis with curvature drive
-        chassis.curvature(leftY, rightX);
+        chassis.tank(leftY, rightY);
         // delay to save resources
         pros::delay(10);
     }
