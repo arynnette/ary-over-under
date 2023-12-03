@@ -5,7 +5,10 @@ using namespace superstruct;
 
 e_controlsch currentuser = RENU;
 
+pros::Task controlTask(renu_control);
+
 void initialize() {
+	controlTask.suspend();
 	ary::printScr();
 	pros::delay(500); // Ports config
 
@@ -34,15 +37,19 @@ void initialize() {
 	ary::autonselector::initialize();
 }
 
-void disabled() {}
+void disabled() {
+	controlTask.suspend();
+}
 void competition_initialize() {}
 
 void autonomous() {
+	controlTask.resume();
 	autonomousResets();
 	ary::autonselector::auton_selector.call_selected_auton();
 }
 
 void opcontrol() {
+	controlTask.resume();
 	disableActiveBrake();
 	opControlInit(); // Configure the chassis for driver control
 
