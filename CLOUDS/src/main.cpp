@@ -5,10 +5,34 @@ using namespace superstruct;
 
 e_controlsch currentuser = RENU;
 
-pros::Task controlTask(renu_control);
+void taskMethods() {
+	while (true) {
+		/*
+			Handle controls for whoever is driving the bot at the moment, each available user a respective set of controls
+			Available Options:
+			RENU, RIA, CHRIS
+		*/
+		if (currentuser == RENU) {
+			chassis.tank_control();
+			renu_control();
+		} else if (currentuser == RIA) {
+			chassis.tank_control();
+			renu_control();
+		} else if (currentuser == CHRIS) {
+			chassis.arcade_standard(ary::SINGLE, ary::DEFAULT);
+			chris_control();
+		} else {
+			renu_control(); 
+		}
+
+ 		pros::delay(ary::util::DELAY_TIME);
+	}
+}
+
+pros::Task subsystemsTask(taskMethods);
 
 void initialize() {
-	controlTask.suspend();
+	subsystemsTask.suspend();
 	ary::printScr();
 	pros::delay(500); // Ports config
 
@@ -38,40 +62,18 @@ void initialize() {
 }
 
 void disabled() {
-	controlTask.suspend();
+	subsystemsTask.suspend();
 }
 void competition_initialize() {}
 
 void autonomous() {
-	controlTask.resume();
+	subsystemsTask.resume();
 	autonomousResets();
 	ary::autonselector::auton_selector.call_selected_auton();
 }
 
 void opcontrol() {
-	controlTask.resume();
+	subsystemsTask.resume();
 	disableActiveBrake();
 	opControlInit(); // Configure the chassis for driver control
-
-	while (true) {	
-		/*
-			Handle controls for whoever is driving the bot at the moment, each available user a respective set of controls
-			Available Options:
-			RENU, RIA, CHRIS
-		*/
-		if (currentuser == RENU) {
-			chassis.tank_control();
-			renu_control();
-		} else if (currentuser == RIA) {
-			chassis.tank_control();
-			renu_control();
-		} else if (currentuser == CHRIS) {
-			chassis.arcade_standard(ary::SINGLE, ary::DEFAULT);
-			chris_control();
-		} else {
-			renu_control(); 
-		}
-
- 		pros::delay(ary::util::DELAY_TIME);
-	}
 }
