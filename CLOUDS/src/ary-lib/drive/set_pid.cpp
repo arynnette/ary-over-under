@@ -114,23 +114,23 @@ void Drive::set_swing(e_swing type, double target, int speed) {
 }
 
 void set_profiled_drive(Drive& chassis, double target, int endTimeout) {
-  //kv: rpm -> voltage
-  //sf: in/ms -> rpm
   int sign = ary::util::signum(target);
   target = fabs(target);
-  std::vector<double> profile;
-  // std::cout << "reached 1" << std::endl;
+  std::vector<double> profile; // The vector that stores all the velocity points
+  
+  /*
+    Handle generation of motion profile, taking into account direction
+  */
   if(sign > 0) profile = ary::util::trapezoidalMotionProfile(target, LINEAR_MAX_VEL, LINEAR_FWD_ACCEL, LINEAR_FWD_DECEL);
   else profile = ary::util::trapezoidalMotionProfile(target, LINEAR_MAX_VEL, LINEAR_REV_ACCEL, LINEAR_REV_DECEL);
   
   for (int i = 0; i < profile.size(); i++)
   {
-    chassis.set_tank(profile[i] * VELOCITY_TO_VOLTS_LIN * sign, profile[i] * VELOCITY_TO_VOLTS_LIN * sign);
-    pros::delay(10);
+    chassis.set_tank(profile[i] * VELOCITY_TO_VOLTS_LIN * sign, profile[i] * VELOCITY_TO_VOLTS_LIN * sign); // Convert to volts, respect direction
+    pros::delay(10); // Delay to prevent any resource errors
   }
   
   chassis.set_tank(0, 0); // Stop the drive
   chassis.set_drive_brake(MOTOR_BRAKE_BRAKE);
-  pros::delay(endTimeout);
-
+  pros::delay(endTimeout); // The amount of the time to wait after completing the movement
 }

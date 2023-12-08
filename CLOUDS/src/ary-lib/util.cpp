@@ -148,16 +148,16 @@ double clip_num(double input, double max, double min) {
 }
 
 std::vector<double> trapezoidalMotionProfile(double dist, double maxVel, double accel, double decel) {
-  double max = std::min(std::sqrt((2 * accel * decel * dist) / accel + decel), maxVel);
-  double accelTime = max / accel;
+  double max = std::min(std::sqrt((2 * accel * decel * dist) / accel + decel), maxVel); // Utilize kinematic equations to determine a max velocity 
+  double accelTime = max / accel; // Calculate time required to accelerate and decelerate
   double decelTime = max / decel;
-  double coastDist = (dist / max) - (max / (2 * accel)) - (max / (2 * decel));
+  double coastDist = (dist / max) - (max / (2 * accel)) - (max / (2 * decel)); // Coast time is the moment from where motors go unpowered, and the remaining distance that the robot travels
   double coastTime = coastDist / max;
   double totalTime = accelTime + decelTime + coastTime;
   double vel = 0;
-  double diff;
   std::vector<double> profile;
 
+  /* Add the points to the vector*/
   for (int i = 0; i < std::ceil(totalTime); i++)
   {
     if (i < std::floor(accelTime))
