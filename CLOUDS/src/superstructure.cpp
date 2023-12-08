@@ -30,7 +30,7 @@ namespace superstruct {
     chassis.set_curve_buttons(pros::E_CONTROLLER_DIGITAL_LEFT, pros::E_CONTROLLER_DIGITAL_RIGHT);
     chassis.toggle_modify_curve_with_controller(true);
     chassis.set_active_brake(0.1);
-    chassis.set_curve_default(0.375, 0.375);
+    chassis.set_curve_default(1.075, 1.075);
 
     /* Adjust the adjust the factor by which the drive velocity is adjusted */ 
     chassis.set_joystick_drivescale(1.0);
