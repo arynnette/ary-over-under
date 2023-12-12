@@ -10,7 +10,8 @@
 #define DRIVE_RATIO 0.75
 #define DRIVE_RPM 450
 
-namespace globals {
+namespace globals
+{
     extern pros::Controller master;
 
     extern pros::Motor motor_tlf;
@@ -21,8 +22,8 @@ namespace globals {
     extern pros::Motor motor_trb;
     extern pros::Motor motor_brf;
     extern pros::Motor motor_brb;
-    
-    extern pros::Imu inertial_sensor; 
+
+    extern pros::Imu inertial_sensor;
 
     extern pros::Motor_Group left_drive;
     extern pros::Motor_Group right_drive;
@@ -31,17 +32,19 @@ namespace globals {
     extern pros::ADIDigitalOut pto_piston;
     extern pros::ADIDigitalOut left_wing_piston;
     extern pros::ADIDigitalOut right_wing_piston;
-    extern pros::ADIDigitalOut climb_piston;
+    extern pros::ADIDigitalOut climb_piston_one;
+    extern pros::ADIDigitalOut climb_piston_two;
 
     extern Wings wings;
     extern Timer timer;
 
     extern Drive chassis;
 
-    extern pros::Motor& intake_mtr;
-    extern pros::Motor& cata_mtr;
+    extern pros::Motor &intake_mtr;
+    extern pros::Motor &cata_mtr;
 
-    enum e_controlsch {
+    enum e_controlsch
+    {
         RENU,
         RIA,
         CHRIS
