@@ -9,22 +9,8 @@ void taskMethods() {
 	while (true) {
 		/*
 			Handle controls for whoever is driving the bot at the moment, each available user a respective set of controls
-			Available Options:
-			RENU, RIA, CHRIS
 		*/
-		if (currentuser == RENU) {
-			chassis.tank_control();
-			renu_control();
-		} else if (currentuser == RIA) {
-			chassis.tank_control();
-			renu_control();
-		} else if (currentuser == CHRIS) {
-			chassis.arcade_standard(ary::SINGLE, ary::DEFAULT);
-			chris_control();
-		} else {
-			renu_control(); 
-		}
-
+		renu_control();
  		pros::delay(ary::util::DELAY_TIME);
 	}
 }
@@ -52,12 +38,13 @@ void initialize() {
 	ary::autonselector::auton_selector.add_autons({
 		Auton("Far side \n\nFar from alliance goal", near_side),
 		Auton("Near side (far from alliance goal) \n\nCLOSE TO ALLIANCE GOAL", far_side),
+		Auton("Six triball\n\nThey ain't believe in us\nBut GOD DID :speaking_head:", six_triball),
 		Auton("Skills \n\ncloudabunga", skills)
 	});
 
-	motorsCoast();
+	superstruct::motorsCoast();
 
-	chassis.initialize();
+	globals::chassis.initialize();
 	ary::autonselector::initialize();
 }
 
@@ -76,4 +63,8 @@ void opcontrol() {
 	subsystemsTask.resume();
 	disableActiveBrake();
 	opControlInit(); // Configure the chassis for driver control
+
+	while (true) {
+		globals::chassis.tank_control();
+	}
 }
