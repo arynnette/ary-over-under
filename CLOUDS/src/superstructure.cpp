@@ -44,14 +44,14 @@ namespace superstruct {
 
   // Adjust exit conditions to allow for quick movements
   void configureExitConditions() {
-    chassis.set_exit_condition(chassis.turn_exit, 50, 2, 220, 3, 500, 500);
-    chassis.set_exit_condition(chassis.swing_exit, 100, 3, 500, 7, 500, 500);
-    chassis.set_exit_condition(chassis.drive_exit, 40, 80, 300, 150, 500, 500);
+    chassis.set_exit_condition(chassis.turn_exit, 50, 2, 220, 3, 150, 500);
+    chassis.set_exit_condition(chassis.swing_exit, 100, 3, 500, 7, 150, 500);
+    chassis.set_exit_condition(chassis.drive_exit, 40, 80, 300, 150, 150, 500);
   }
 
   // Adjust PID constants for accurate movements
   void configureConstants() {
-    chassis.set_slew_min_power(80, 80);
+    chassis.set_slew_min_power(100, 100);
     chassis.set_slew_distance(7, 7);
     chassis.set_pid_constants(&chassis.headingPID, 16, 0, 32, 0);
     chassis.set_pid_constants(&chassis.forward_drivePID, 0.5, 0, 5, 0);
@@ -198,21 +198,35 @@ namespace superstruct {
     }
   }
 
+  void actuateClimb() {
+    climb_piston_one.set_value(1);
+    climb_piston_two.set_value(1);
+  }
+
+  void climbControl(pros::controller_digital_e_t but1, pros::controller_digital_e_t but2) {
+    if (globals::master.get_digital(but1) && globals::master.get_digital(but2)) {
+      actuateClimb();
+    }
+  }
+
   /*
     Controls -> For whoever is controlling the robot
   */
   void renu_control() {
     subsysControl(RENU_PTO_TOGGLE, RENU_CATA_CONTROL, RENU_INTAKE_CONTROL_INTAKE, RENU_INTAKE_CONTROL_OUTTAKE);
     wingsControl(RENU_WING_CONTROL);
+    climbControl(RENU_CLIMB_CONTROL_ONE, RENU_CLIMB_CONTROL_TWO);
   }
   
   void ria_control() {
     subsysControl(RENU_PTO_TOGGLE, RENU_CATA_CONTROL, RENU_INTAKE_CONTROL_INTAKE, RENU_INTAKE_CONTROL_OUTTAKE);
     wingsControl(RENU_WING_CONTROL);
+    climbControl(RENU_CLIMB_CONTROL_ONE, RENU_CLIMB_CONTROL_TWO);
   }
 
   void chris_control() {
     subsysControl(RENU_PTO_TOGGLE, RENU_CATA_CONTROL, RENU_INTAKE_CONTROL_INTAKE, RENU_INTAKE_CONTROL_OUTTAKE);
     wingsControl(RENU_WING_CONTROL);
+    climbControl(RENU_CLIMB_CONTROL_ONE, RENU_CLIMB_CONTROL_TWO);
   }
 }
