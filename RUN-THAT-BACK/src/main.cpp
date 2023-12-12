@@ -31,7 +31,7 @@ lemlib::Drivetrain drivetrain(&leftMotors, // left motor group
                               10, // 10 inch track width
                               lemlib::Omniwheel::NEW_275, // using new 3.25" omnis
                               450, // drivetrain rpm is 360
-                              2 // chase power is 2. If we had traction wheels, it would have been 8
+                              1 // chase power is 2. If we had traction wheels, it would have been 8
 );
 
 // lateral motion controller
@@ -45,7 +45,7 @@ lemlib::ControllerSettings linearController(10, // proportional gain (kP)
 );
 
 // angular motion controller
-lemlib::ControllerSettings angularController(2, // proportional gain (kP)
+lemlib::ControllerSettings angularController(1.25, // proportional gain (kP)
                                              10, // derivative gain (kD)
                                              1, // small error range, in degrees
                                              100, // small error range timeout, in milliseconds
@@ -120,7 +120,7 @@ ASSET(testingpath_txt);
  *
  * This is an example autonomous routine which demonstrates a lot of the features LemLib has to offer
  */
-void autonomous() {
+void autonomous() { 
     chassis.setPose(9.72, -59.062, 90, false);
     chassis.follow(testingpath_txt, 15, 4000);
     chassis.waitUntilDone();
