@@ -3,6 +3,7 @@
 #define DRIVE_SPEED 127
 #define TURN_SPEED 120
 #define SWING_SPEED 120
+
 // R1 -> WINGS, L1 -> CATA, L2 -> PTO, R2 -> INTAKE
 // Renu's control preferences
 #define RENU_PTO_TOGGLE DIGITAL_R1
@@ -30,6 +31,7 @@ namespace superstruct {
     void motorsCoast();
     void motorsHold();
     void motorsBrake();
+    void controllerTelemtry();
 
     void disableActiveBrake();
     
@@ -51,7 +53,7 @@ namespace superstruct {
     /* Structure */
     void togglePto(bool toggle);
     void runCata(double inpt);
-    void runIntake(double inpt);
+    void setIntakeSpeed(double inpt);
     void subsysControl(pros::controller_digital_e_t ptoToggleButton, pros::controller_digital_e_t cataRunButton, pros::controller_digital_e_t intakeButton, pros::controller_digital_e_t outtakeButton);
     void wingsControl(pros::controller_digital_e_t wingControlButton);
     void actuateClimb();
