@@ -50,9 +50,9 @@ namespace superstruct
   // Adjust exit conditions to allow for quick movements
   void configureExitConditions()
   {
-    chassis.set_exit_condition(chassis.turn_exit, 50, 2, 220, 3, 150, 500);
-    chassis.set_exit_condition(chassis.swing_exit, 100, 3, 500, 7, 150, 500);
-    chassis.set_exit_condition(chassis.drive_exit, 40, 80, 300, 150, 150, 500);
+    chassis.set_exit_condition(chassis.turn_exit, 50, 2, 175, 3, 150, 500);
+    chassis.set_exit_condition(chassis.swing_exit, 100, 3, 250, 7, 150, 500);
+    chassis.set_exit_condition(chassis.drive_exit, 40, 80, 250, 150, 150, 500);
   }
 
   // Adjust PID constants for accurate movements
