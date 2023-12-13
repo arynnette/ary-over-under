@@ -44,7 +44,7 @@ namespace globals {
     Drive chassis(
         { 8, -12, -19, 15 },
         { -7, 9, 17, -16 },
-        18,
+        10,
         WHEEL_SIZE,
         600,
         DRIVE_RATIO
