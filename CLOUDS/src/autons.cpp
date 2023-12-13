@@ -11,8 +11,8 @@ using namespace superstruct;
 */
 void near_side() {
   // Score the triball preload
-  togglePto(true);
-  runIntake(-12000);
+  //togglePto(true);
+  setIntakeSpeed(-12000);
   driveSync(90, true);
   turnSync(90);
 
@@ -78,6 +78,34 @@ void far_side() {
   turnSync(120);
 }
 
+void six_triball() {
+  /*  */
+  togglePto(true);
+  driveSync(35, true);
+  turnSync(-37);
+  setIntakeSpeed(-12000);
+  driveSync(80, true);
+  turnSync(90);
+  wings.open();
+  setIntakeSpeed(12000);
+  driveSync(55, true);
+  wings.close();
+  driveSync(-10, true);
+  turnSync(-130);
+  setIntakeSpeed(-12000);
+  driveSync(60, true);
+  driveSync(-10, true);
+  turnSync(67);
+  setIntakeSpeed(12000);
+  wings.open();
+  driveSync(80, true);
+  driveSync(-10, true);
+  wings.close();
+  turnSync(180);
+  driveSync(55, true);
+  
+}
+
 void skills() {
   //toggleIntake(true);
   driveSync(30, true);
@@ -106,4 +134,11 @@ void skills() {
   turnSync(45);
   driveSync(125, true);
   //turnSync();
+}
+
+void testingAsyncRunning() {
+  togglePto(true);
+  setIntakeSpeed(-12000);
+  pros::delay(5000);
+  driveSync(30, true);
 }
