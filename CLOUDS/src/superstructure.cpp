@@ -50,9 +50,9 @@ namespace superstruct
   // Adjust exit conditions to allow for quick movements
   void configureExitConditions()
   {
-    chassis.set_exit_condition(chassis.turn_exit, 50, 2, 220, 3, 500, 500);
-    chassis.set_exit_condition(chassis.swing_exit, 100, 3, 500, 7, 500, 500);
-    chassis.set_exit_condition(chassis.drive_exit, 40, 80, 300, 150, 500, 500);
+    chassis.set_exit_condition(chassis.turn_exit, 50, 2, 220, 3, 150, 500);
+    chassis.set_exit_condition(chassis.swing_exit, 100, 3, 500, 7, 150, 500);
+    chassis.set_exit_condition(chassis.drive_exit, 40, 80, 300, 150, 150, 500);
   }
 
   // Adjust PID constants for accurate movements
@@ -61,9 +61,9 @@ namespace superstruct
     chassis.set_slew_min_power(80, 80);
     chassis.set_slew_distance(7, 7);
     chassis.set_pid_constants(&chassis.headingPID, 16, 0, 32, 0);
-    chassis.set_pid_constants(&chassis.forward_drivePID, 0.5, 0, 5, 0);
-    chassis.set_pid_constants(&chassis.backward_drivePID, 0.5, 0, 5, 0);
-    chassis.set_pid_constants(&chassis.turnPID, 6.25, 0.003, 57, 15);
+    chassis.set_pid_constants(&chassis.forward_drivePID, 1, 0.003, 10, 0);
+    chassis.set_pid_constants(&chassis.backward_drivePID, 1, 0.003, 10, 0);
+    chassis.set_pid_constants(&chassis.turnPID, 7, 0.003, 62, 15);
     chassis.set_pid_constants(&chassis.swingPID, 8.5, 0, 50, 0);
   }
 
@@ -106,22 +106,6 @@ namespace superstruct
   }
 
   pros::Task intakeManager(handleIntake);
-
-  // void controllerTelemetry()
-  // {
-  //   while (1)
-  //   {
-  //     for (int i = 0; i < 4; i++)
-  //     {
-  //       double localavg_one = 0;
-  //     }
-
-  //     for (int i = 0; i < 4; i++)
-  //     {
-  //       double 
-  //     }
-  //   }
-  // }
 
   // Drives forward, runs next commands WITHOUT waiting for the drive to complete
   void driveAsync(double dist, bool useHeadingCorrection)
