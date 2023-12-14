@@ -78,37 +78,94 @@ void far_side() {
   turnSync(120);
 }
 
-void six_triball() {
+void four_triball_contact() {
   /*  */
   togglePto(true);
-  driveSync(35, true);
+  driveSync(25, true);
   turnSync(-37);
   setIntakeSpeed(-12000);
-  driveSync(80, true);
+  driveSync(35, true);
+  turnSync(80);
+  setIntakeSpeed(8000);
+  driveSync(10, true);
+  driveSync(-20, true);
+  pros::delay(250);
+  turnSync(-37);
+  setIntakeSpeed(-12000);
+  driveSync(25, true);
   turnSync(90);
   wings.open();
   setIntakeSpeed(12000);
-  driveSync(55, true);
+  driveSync(53, true);
   wings.close();
   driveSync(-10, true);
-  turnSync(-130);
+  turnSync(-134);
   setIntakeSpeed(-12000);
-  driveSync(60, true);
+  driveSync(53, true);
   driveSync(-10, true);
+
+
   turnSync(67);
   setIntakeSpeed(12000);
   wings.open();
-  driveSync(80, true);
-  driveSync(-10, true);
+  driveSync(45, true);
+  driveSync(-15, true);
   wings.close();
+  pros::delay(250);
   turnSync(180);
-  driveSync(55, true);
-  
+  driveSync(35, true);
+  turnSync(125);
+  driveSync(30, true);
+  wings.open();
+  turnSync(30);
+  driveSync(12, true);
+  rightSwing(0);
+  wings.close();
+  driveSync(35, true);
+}
+
+void five_triball_remove() {
+  /*  */
+  togglePto(true);
+  driveSync(25, true);
+  turnSync(-37);
+  setIntakeSpeed(-12000);
+  driveSync(35, true);
+  turnSync(80);
+  setIntakeSpeed(8000);
+  driveSync(10, true);
+  driveSync(-20, true);
+  pros::delay(250);
+  turnSync(-37);
+  setIntakeSpeed(-12000);
+  driveSync(25, true);
+  turnSync(90);
+  wings.open();
+  setIntakeSpeed(12000);
+  driveSync(53, true);
+  wings.close();
+  driveSync(-10, true);
+  turnSync(-134);
+  setIntakeSpeed(-12000);
+  driveSync(53, true);
+  driveSync(-20, true);
+
+  turnSync(125);
+  driveSync(65, true);
+
+  wings.open();
+  turnSync(30);
+
+  driveSync(12, true);
+  rightSwing(0);
+  wings.close();
+  driveSync(35, true);
+  togglePto(false);
 }
 
 void skills() {
   //toggleIntake(true);
-  driveSync(30, true);
+  driveSync(10, true);
   //toggleIntake(false);
   turnSync(45);
   driveSync(35, true);

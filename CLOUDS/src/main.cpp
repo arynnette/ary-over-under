@@ -23,10 +23,11 @@ void initialize() {
 		Add autonomous paths to the auto selection
 	*/
 	ary::autonselector::auton_selector.add_autons({
-		Auton("Six triball\n\nThey ain't believe in us\nBut GOD DID :speaking_head:", six_triball),
+		Auton("Five triballl\n\nThey ain't believe in us.. but GOD DID :speaking_head:", five_triball),
 		Auton("Far side \n\nFar from alliance goal", near_side),
 		Auton("Near side (far from alliance goal) \n\nCLOSE TO ALLIANCE GOAL", far_side),
-		Auton("Skills \n\ncloudabunga", skills)
+		Auton("Four triball contact\n\nfour triballs and then contact elevation", four_triball_contact),
+		Auton("Skills \n\nCLOUDABUNGAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA", skills)
 	});
 
 	superstruct::motorsCoast();
