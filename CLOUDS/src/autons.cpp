@@ -134,7 +134,7 @@ void five_triball_remove() {
   turnSync(80);
   setIntakeSpeed(8000);
   driveSync(10, true);
-  driveSync(-20, true);
+  driveSync(-17.5, true);
   pros::delay(250);
   turnSync(-37);
   setIntakeSpeed(-12000);
@@ -150,16 +150,18 @@ void five_triball_remove() {
   driveSync(53, true);
   driveSync(-20, true);
 
-  turnSync(125);
-  driveSync(65, true);
+  turnSync(138);
+  driveSync(77, true);
 
   wings.open();
   turnSync(30);
 
   driveSync(12, true);
-  rightSwing(0);
+  rightSwing(15);
   wings.close();
-  driveSync(35, true);
+  setIntakeSpeed(12000);
+  driveSync(32, true);
+  driveSync(-10, true);
   togglePto(false);
 }
 

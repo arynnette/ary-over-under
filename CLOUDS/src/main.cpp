@@ -23,7 +23,7 @@ void initialize() {
 		Add autonomous paths to the auto selection
 	*/
 	ary::autonselector::auton_selector.add_autons({
-		Auton("Five triballl\n\nThey ain't believe in us.. but GOD DID :speaking_head:", five_triball),
+		Auton("Five triballl\n\nThey ain't believe in us..", five_triball_remove),
 		Auton("Far side \n\nFar from alliance goal", near_side),
 		Auton("Near side (far from alliance goal) \n\nCLOSE TO ALLIANCE GOAL", far_side),
 		Auton("Four triball contact\n\nfour triballs and then contact elevation", four_triball_contact),
@@ -52,6 +52,7 @@ void opcontrol() {
 
 	while (true) {
 		globals::chassis.tank_control();
-		renu_control();	
+		renu_control();
+		pros::delay(ary::util::DELAY_TIME);
 	}
 }

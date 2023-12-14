@@ -50,9 +50,9 @@ namespace superstruct
   // Adjust exit conditions to allow for quick movements
   void configureExitConditions()
   {
-    chassis.set_exit_condition(chassis.turn_exit, 25, 2, 75, 3, 50, 75);
-    chassis.set_exit_condition(chassis.swing_exit, 100, 3, 75, 7, 50, 75);
-    chassis.set_exit_condition(chassis.drive_exit, 15, 85, 75, 150, 50, 75);
+    chassis.set_exit_condition(chassis.turn_exit, 45, 2, 150, 3, 435, 435);
+    chassis.set_exit_condition(chassis.swing_exit, 100, 3, 400, 7, 435, 435);
+    chassis.set_exit_condition(chassis.drive_exit, 35, 80, 200, 150, 435, 435);
   }
 
   // Adjust PID constants for accurate movements
@@ -60,10 +60,10 @@ namespace superstruct
   {
     chassis.set_slew_min_power(80, 80);
     chassis.set_slew_distance(7, 7);
-    chassis.set_pid_constants(&chassis.headingPID, 16, 0, 40, 0);
-    chassis.set_pid_constants(&chassis.forward_drivePID, 2.5, 0.003, 16.5, 0);
-    chassis.set_pid_constants(&chassis.backward_drivePID, 2.5, 0.003, 16.5, 0);
-    chassis.set_pid_constants(&chassis.turnPID, 8.5, 0.002, 75, 15);
+    chassis.set_pid_constants(&chassis.headingPID, 16, 0, 52, 0);
+    chassis.set_pid_constants(&chassis.forward_drivePID, 3, 0, 18, 0);
+    chassis.set_pid_constants(&chassis.backward_drivePID, 3, 0, 18, 0);
+    chassis.set_pid_constants(&chassis.turnPID, 8, 0.001, 80, 15);
     chassis.set_pid_constants(&chassis.swingPID, 8.5, 0, 50, 0);
   }
 
