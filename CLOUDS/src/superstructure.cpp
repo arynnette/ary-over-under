@@ -61,9 +61,9 @@ namespace superstruct
     chassis.set_slew_min_power(80, 80);
     chassis.set_slew_distance(7, 7);
     chassis.set_pid_constants(&chassis.headingPID, 16, 0, 40, 0);
-    chassis.set_pid_constants(&chassis.forward_drivePID, 1.5, 0.003, 13.5, 0);
-    chassis.set_pid_constants(&chassis.backward_drivePID, 1.5, 0.003, 13.5, 0);
-    chassis.set_pid_constants(&chassis.turnPID, 7, 0.002, 70, 15);
+    chassis.set_pid_constants(&chassis.forward_drivePID, 2.5, 0.003, 16.5, 0);
+    chassis.set_pid_constants(&chassis.backward_drivePID, 2.5, 0.003, 16.5, 0);
+    chassis.set_pid_constants(&chassis.turnPID, 8.5, 0.002, 75, 15);
     chassis.set_pid_constants(&chassis.swingPID, 8.5, 0, 50, 0);
   }
 
