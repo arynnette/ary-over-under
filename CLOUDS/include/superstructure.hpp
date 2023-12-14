@@ -1,7 +1,7 @@
 #include "main.h"
 
 #define DRIVE_SPEED 127
-#define TURN_SPEED 120
+#define TURN_SPEED 122
 #define SWING_SPEED 120
 
 // R1 -> WINGS, L1 -> CATA, L2 -> PTO, R2 -> INTAKE
