@@ -102,6 +102,7 @@ namespace superstruct
   void handleIntake() {
     while (true) {
       intake_mtr.move_voltage(intakeSpeed);
+      pros::delay(ary::util::DELAY_TIME);
     }
   }
 
@@ -194,9 +195,12 @@ namespace superstruct
 
   void setIntakeSpeed(double inpt)
   {
-    if (!ptoEnabled)
+    if (!ptoEnabled) {
       intakeSpeed = 0;
-    intakeSpeed = inpt;
+    } else {
+       intakeSpeed = inpt;
+    }
+    
   }
 
   int lock = 0;

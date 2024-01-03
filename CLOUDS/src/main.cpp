@@ -24,10 +24,10 @@ void initialize() {
 	*/
 	ary::autonselector::auton_selector.add_autons({
 		Auton("Five triballl\n\nThey ain't believe in us..", five_triball_remove),
-		Auton("Far side \n\nFar from alliance goal", near_side),
 		Auton("Near side (far from alliance goal) \n\nCLOSE TO ALLIANCE GOAL", far_side),
-		Auton("Four triball contact\n\nfour triballs and then contact elevation", four_triball_contact),
-		Auton("Skills \n\nCLOUDABUNGAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA", skills)
+		Auton("Skills \n\nCLOUDABUNGAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA", skills),
+		Auton("Far side \n\nFar from alliance goal", near_side),
+		Auton("Four triball contact\n\nfour triballs and then contact elevation", four_triball_contact)
 	});
 
 	superstruct::motorsCoast();

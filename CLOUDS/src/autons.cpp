@@ -58,24 +58,23 @@ void near_side() {
   far from our alliance goal.
 */
 void far_side() {
-  wings.open(); // Prepare for removal of match load triball
-  //toggleIntake(true); // Secure preload triball
-
-  // Drive forward to removal match load triball with wings, close wings immediately
-  driveSync(30, true);
+  driveSync(-30, true);
+  rightSwing(45);
+  driveSync(-33, true);
+  driveSync(23, true);
+  rightSwing(0);
+  wings.open();
+  driveSync(40, true);
   wings.close();
-
-  //Score the preload
-  turnSync(40);
-  //toggleIntake(false);
+  
+  turnSync(-94);
+  driveSync(40, true);
+  turnSync(-45);
   driveSync(35, true);
-  driveSync(-10, true);
+  wings.open();
+  turnSync(-58);
 
-  //Turn towards the elevation bar area
-  turnSync(135);
-  driveSync(90, true);
-  wings.open(); // Open our wings as they are being used to contact the bar
-  turnSync(120);
+
 }
 
 void four_triball_contact() {
@@ -166,12 +165,8 @@ void five_triball_remove() {
 }
 
 void skills() {
-  //toggleIntake(true);
   driveSync(10, true);
-  //toggleIntake(false);
   turnSync(45);
-  driveSync(35, true);
-  driveSync(-35, true);
   turnSync(-60);
   driveSync(10, true);
   wings.open();
@@ -179,7 +174,7 @@ void skills() {
   togglePto(true);
   pros::delay(100);
   timer.reset();
-  while (timer.getElapsedTimeMS() < 35000) {
+  while (timer.getElapsedTimeMS() < 31500) {
     motor_trb.move_voltage(-12000);
   }
   motor_trb.move_voltage(0); // i hate my life
@@ -187,12 +182,51 @@ void skills() {
 
   wings.close();
 
-  driveSync(-35, true); 
-  turnSync(10);
-  driveSync(-40, true);
+  turnSync(0);
+  driveSync(-28.5, true);
+  turnSync(-45);
+  driveSync(-140, true);
+  leftSwing(-90);
+  chassis.wait_drive();
+  driveSync(-35, true);
+  leftSwing(-135);
+  chassis.wait_drive();
+  driveSync(-30, true);
+  driveSync(15, true);
+  leftSwing(-25);
+  chassis.wait_drive();
+  driveSync(62.5, true);
+  leftSwing(60);
+  chassis.wait_drive();
+  wings.open();
+  driveSync(35, true);
+  leftSwing(125);
+  chassis.wait_drive();
+  driveSync(40, true);
+  pros::delay(250);
+  wings.close();
+  driveSync(-55, true);
+
+  wings.open();
+  setIntakeSpeed(12000);
+  driveSync(47, true);
+  wings.close();
+  driveSync(-55, true);
+
+  setIntakeSpeed(0);
+
   turnSync(45);
-  driveSync(125, true);
-  //turnSync();
+  driveSync(50, true);
+  leftSwing(-157);
+  chassis.wait_drive();
+  wings.open();
+
+  leftSwing(130);
+  chassis.wait_drive();
+  wings.open();
+  driveSync(40, true);
+  wings.close();
+  driveSync(-40, true);
 }
 
 void testingAsyncRunning() {
