@@ -1,17 +1,10 @@
 #include "main.h"
 
-// void on_center_button() {
-// 	static bool pressed = false;
-// 	pressed = !pressed;
-// 	if (pressed) {
-// 		pros::lcd::set_text(2, "I was pressed!");
-// 	} else {
-// 		pros::lcd::clear_line(2);
-// 	}
-// }
+pros::Task telemetry(superstruct::chassis_telemetry);
 
 void initialize() {
 	pros::lcd::initialize();
+	superstruct::initialize_superstruct();
 	ary::printScr();
 	pros::delay(500);
 
@@ -25,9 +18,6 @@ void initialize() {
 	});
 
 	ary::autonselector::initialize();
-
-
-	//pros::lcd::register_btn1_cb(on_center_button);
 }
 
 void disabled() {}
