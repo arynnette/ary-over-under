@@ -35,6 +35,11 @@
 #define PROS_USE_LITERALS
 
 #include "api.h"
+#include "ary-lib/api.hpp"
+#include "lemlib/api.hpp"
+#include "globals.hpp"
+#include "superstructure.hpp"
+#include "autons.hpp"
 
 /**
  * You should add more #includes here
