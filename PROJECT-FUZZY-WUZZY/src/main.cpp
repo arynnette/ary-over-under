@@ -6,7 +6,7 @@ void initialize() {
 	pros::lcd::initialize();
 	superstruct::initialize_superstruct();
 	ary::printScr();
-	pros::delay(500);
+	pros::delay(700);
 
 	/*
 		initialize everything else
