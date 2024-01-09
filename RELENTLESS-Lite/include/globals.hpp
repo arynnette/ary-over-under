@@ -11,10 +11,8 @@ namespace globals {
     extern pros::Controller master;
 
     extern pros::Motor motor_fl;
-    extern pros::Motor motor_ml;
     extern pros::Motor motor_bl;
     extern pros::Motor motor_fr;
-    extern pros::Motor motor_mr;
     extern pros::Motor motor_br;
 
     extern pros::Motor_Group left_drive;
@@ -26,4 +24,4 @@ namespace globals {
     extern lemlib::sensors;
     extern lemlib::Chassis chassis;
     extern Drive chassisRight;
-    extern Drive chassisLeft;
+}

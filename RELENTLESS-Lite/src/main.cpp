@@ -28,15 +28,7 @@ void initialize() {
 
   chassisRight.set_joystick_drivescale(1.0);
   chassisRight.set_joystick_turnscale(1.0);
-
-  chassisLeft.set_curve_buttons(pros::E_CONTROLLER_DIGITAL_LEFT, pros::E_CONTROLLER_DIGITAL_RIGHT);
-  chassisLeft.toggle_modify_curve_with_controller(true);
-  chassisLeft.set_active_brake(0.1);
-  chassisLeft.set_curve_default(0.5, 0.5);
-
-  chassisLeft.set_joystick_drivescale(1.0);
-  chassisLeft.set_joystick_turnscale(1.0);
-
+  
   default_constants(); 
   exit_condition_defaults();
 
