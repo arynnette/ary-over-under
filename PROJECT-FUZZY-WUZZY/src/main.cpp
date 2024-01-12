@@ -28,6 +28,10 @@ void autonomous() {}
 
 void opcontrol() {
 	while (true) {
+		int leftY = globals::master.get_analog(pros::E_CONTROLLER_ANALOG_LEFT_Y);
+		int rightY = globals::master.get_analog(pros::E_CONTROLLER_ANALOG_RIGHT_Y);
+
+		globals::chassis.tank(leftY, rightY, DRIVE_GAIN);
 		pros::delay(20);
 	}
 }

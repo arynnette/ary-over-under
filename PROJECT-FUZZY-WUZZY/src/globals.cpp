@@ -6,15 +6,15 @@ using namespace lemlib;
 namespace globals {
     pros::Controller master(pros::E_CONTROLLER_MASTER);
 
-    pros::Motor left_front(1, pros::E_MOTOR_GEARSET_06, false);
-    pros::Motor left_middle(2, pros::E_MOTOR_GEARSET_06, false);
-    pros::Motor left_back(3, pros::E_MOTOR_GEARSET_06, false);
-    pros::Motor right_front(4, pros::E_MOTOR_GEARSET_06, false);
-    pros::Motor right_middle(5, pros::E_MOTOR_GEARSET_06, false);
-    pros::Motor right_back(6, pros::E_MOTOR_GEARSET_06, false);
+    pros::Motor motor_LF(PORT_LF, pros::E_MOTOR_GEARSET_06, true);
+    pros::Motor motor_LM(PORT_LM, pros::E_MOTOR_GEARSET_06, true);
+    pros::Motor motor_LB(PORT_LB, pros::E_MOTOR_GEARSET_06, true);
+    pros::Motor motor_RF(PORT_RF, pros::E_MOTOR_GEARSET_06, false);
+    pros::Motor motor_RM(PORT_RM, pros::E_MOTOR_GEARSET_06, false);
+    pros::Motor motor_RB(PORT_RB, pros::E_MOTOR_GEARSET_06, false);
     
-    pros::Motor_Group left_drive({ left_front, left_middle, left_back });
-    pros::Motor_Group right_drive({ right_front, right_middle, right_back });
+    pros::Motor_Group left_drive({ motor_LF, motor_LM, motor_LB });
+    pros::Motor_Group right_drive({ motor_RF, motor_RM, motor_RB });
     
     pros::Imu imu(7);
 

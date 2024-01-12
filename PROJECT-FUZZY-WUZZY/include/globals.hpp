@@ -1,11 +1,22 @@
 #pragma once
 
-// CONSTANTS DEFINITIONS
+/* Ports */
+#define PORT_LF 11
+#define PORT_LM 13
+#define PORT_LB 12
+#define PORT_RF 1
+#define PORT_RM 4
+#define PORT_RB 3
+
+/* Chassis constants*/
 #define HORIZONTAL_TW_OFFSET 1.0
 #define VERTICAL_TW_OFFSET 1.0
 #define CHASSIS_TRACK_WIDTH 12.5
 #define CHASSIS_RPM 450
 #define CHASE_POWER 2
+
+/* Drive constants */
+#define DRIVE_GAIN 1.0
 
 #include "main.h"
 
