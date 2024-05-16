@@ -22,11 +22,10 @@ void disabled() {}
 void competition_initialize() {}
 
 void autonomous() {
-	// manager::xGoTo(3.75, 1500);
-	manager::yGoTo(2.0, 1500);
-	// manager::xGoTo(-3.75, 1500);
-	//manager::yGoTo(-2.0, 1500);
-
+	manager::yGoTo(2.5, 1500);
+	manager::xGoTo(3.75, 1500);
+	manager::yGoTo(-2.5, 1500);
+	manager::xGoTo(-3.25, 350);
 }
 
 void opcontrol() {

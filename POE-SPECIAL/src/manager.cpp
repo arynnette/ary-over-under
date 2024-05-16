@@ -67,10 +67,10 @@ namespace manager {
     }
 
     void telemetry() {
-        pros::lcd::print(0, "x axis distance value: %.2f", getPosX_inches());
-        pros::lcd::print(1, "err: %.2f", (3.75 - getPosX_inches()));
-        pros::lcd::print(2, "x axis distance value: %.2f", getPosY_inches());
-        pros::lcd::print(3, "err: %.2f", (2.0 - getPosY_inches()));
+        // pros::lcd::print(0, "x axis distance value: %.2f", getPosX_inches());
+        // pros::lcd::print(1, "err: %.2f", (3.75 - getPosX_inches()));
+        // pros::lcd::print(2, "x axis distance value: %.2f", getPosY_inches());
+        // pros::lcd::print(3, "err: %.2f", (2.0 - getPosY_inches()));
         // pros::lcd::print(3, "x axis position value: %d", config::enc_x_ax.get_position());
         // pros::lcd::print(4, "y axis position value: %d", config::enc_y_ax.get_position());
         // pros::lcd::print(5, "z axis position value: %d", config::enc_z_ax.get_position());
@@ -102,20 +102,19 @@ namespace manager {
         double startTime = timer.getElapsedTimeMS();
         double err = sp - getPosX_inches(); // err = setpoint - current
 
-        while (err > 0.4) {
+        while (fabs(err) > 0.3) {
             double p = KP_X * err;
             mtr_x_ax_1.move(p);
-            mtr_x_ax_2.move_voltage(p);
+            mtr_x_ax_2.move(p);
 
             err = sp - getPosX_inches();
 
-            if (timer.getElapsedTimeMS() - startTime < timeoutMS)
+            if (timer.getElapsedTimeMS() - startTime > timeoutMS) {
                 break;
-
-            pros::delay(20);
+            }
         }
         mtr_x_ax_1.move(0);
-        mtr_x_ax_2.move_voltage(0);
+        mtr_x_ax_2.move(0);
         
     }
 
@@ -124,18 +123,21 @@ namespace manager {
         double startTime = timer.getElapsedTimeMS();
         double err = sp - getPosY_inches(); // err = setpoint - current
 
-        while (err > 0.4) {
+        while (fabs(err) > 0.3) {
             double p = KP_Y * err;
             mtr_y_ax.move(-p);
 
             err = sp - getPosY_inches();
-            pros::delay(20);
-            pros::lcd::print(4, "elapsed time ms: %.2f", timer.getElapsedTimeMS() - startTime);
+            pros::lcd::print(0, "y elapsed time ms: %.2f", timer.getElapsedTimeMS() - startTime);
+            pros::lcd::print(1, "y err: %.2f", err);
 
-            if (timer.getElapsedTimeMS() - startTime > timeoutMS)
+            if (timer.getElapsedTimeMS() - startTime > timeoutMS) {
+                pros::lcd::print(2, "y exited loop: {}", true);
                 break;
+            }
         }
         mtr_y_ax.move(0);
+        pros::lcd::print(3, "y ended: {}", true);
     }
 
     void zGoTo(double sp) {
